@@ -32,7 +32,10 @@ nav ul li a {
 }
 
 main {
-  padding: 20px;
+  background-image: url('img/backgrounds/white_wood_background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .recipes {
