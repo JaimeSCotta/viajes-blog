@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favoritos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="https://jaimescotta.github.io/viajes-blog/">Home</a></li>
+        <li><a href="favorites.html">Favoritos</a></li>
+      </ul>
+    </nav>
+    <h1>Your Favorite Trips</h1>
+  </header>
+
+  <main id="favorites-list">
+    <!-- Aquí se llenarán los favoritos desde JavaScript -->
+  </main>
+
+  <footer>
+    <p>© 2024 Blog de Viajes</p>
+  </footer>
+
+  <script>
+    // Mostrar solo los viajes favoritos
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const trips = [
+      { name: 'Tenerife 2024', url: 'trips/Tenerife_2024.html', img: 'img/IMG_20240826_122217_105.jpg' },
+      { name: 'Alemania 2023', url: 'trips/Alemania_2023.html', img: 'img/PXL_20240827_161123415.MP.jpg' },
+      { name: 'Soria 2022', url: 'trips/Soria_2022.html', img: 'img/PXL_20240827_184443432.jpg' }
+    ];
+
+    const favoritesList = document.getElementById('favorites-list');
+    trips.forEach(trip => {
+      if (favorites.includes(trip.name.replace(/\s+/g, '_'))) {
+        favoritesList.innerHTML += `
+          <article>
+            <img src="${trip.img}" alt="${trip.name}">
+            <h2>${trip.name}</h2>
+            <a href="${trip.url}" class="read-more">Read More</a>
+          </article>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>

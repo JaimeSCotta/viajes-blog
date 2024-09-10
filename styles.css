@@ -1,3 +1,4 @@
+/* Estilos generales */
 body {
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
@@ -15,16 +16,58 @@ header {
 nav ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
 nav ul li {
-  display: inline;
+  position: relative; /* Importante para el menú desplegable */
   margin-right: 15px;
 }
 
 nav ul li a {
   color: white;
   text-decoration: none;
+  padding: 10px;
+}
+
+nav ul li a:hover {
+  background-color: #555;
+}
+
+/* Estilos para el menú desplegable */
+.dropdown-menu {
+  display: none; /* Ocultar el submenú por defecto */
+  position: absolute;
+  top: 100%; /* Colocar el submenú justo debajo de "Trips" */
+  left: 0;
+  background-color: rgba(200, 200, 200, 0.9); /* Fondo gris claro con transparencia */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.dropdown-menu li {
+  padding: 10px;
+  white-space: nowrap;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px;
+  color: #333;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #333;
+  color: white;
+}
+
+/* Mostrar el menú cuando el cursor esté sobre "Trips" */
+.dropdown:hover .dropdown-menu {
+  display: block;
 }
 
 main {
@@ -41,6 +84,7 @@ main {
 }
 
 article {
+  position: relative;
   background-color: white;
   padding: 20px;
   text-align: center;
@@ -52,30 +96,7 @@ article img {
   max-width: 100%;
 }
 
-button {
-  background-color: #333;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #555;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #333;
-  color: white;
-}
-
-a {
-  text-decoration: none; /* Elimina el subrayado predeterminado */
-  color: inherit; /* Hace que el enlace herede el color del texto (sin azul) */
-}
-
+/* Estilos para el botón "Read More" */
 a.read-more {
   display: inline-block;
   padding: 10px 20px;
@@ -89,4 +110,45 @@ a.read-more {
 a.read-more:hover {
   background-color: #555; /* Cambia el color de fondo al hacer hover */
   border-color: #555; /* Cambia el color del borde al hacer hover */
+}
+
+/* Estilos para el botón de favoritos (corazón) */
+.fav-button {
+  font-size: 24px;
+  border: none; /* Sin borde */
+  background: none; /* Sin fondo */
+  color: gray; /* Color del corazón por defecto */
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition: color 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+/* Estilo cuando el corazón está activo */
+.fav-button.active {
+  color: red; /* Color del corazón cuando está activo */
+}
+
+/* Eliminar outline al hacer clic o enfocar el botón */
+.fav-button:focus,
+.fav-button:hover {
+  outline: none; /* Elimina el contorno */
+  box-shadow: none; /* Elimina cualquier sombra que podría aparecer */
+}
+
+.fav-button:hover {
+  color: #555; /* Cambia el color del corazón al pasar el cursor sobre él */
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+}
+
+a {
+  text-decoration: none; /* Elimina el subrayado predeterminado */
+  color: inherit; /* Hace que el enlace herede el color del texto (sin azul) */
 }
