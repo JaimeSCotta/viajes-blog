@@ -22,7 +22,6 @@ nav ul {
 }
 
 nav ul li {
-  position: relative; /* Importante para el menú desplegable */
   margin-right: 15px;
 }
 
@@ -32,43 +31,71 @@ nav ul li a {
   padding: 10px;
 }
 
-nav ul li a:hover {
-  background-color: #555;
-}
-
-/* Estilos para el menú desplegable */
-.dropdown-menu {
-  display: none; /* Ocultar el submenú por defecto */
-  position: absolute;
-  top: 100%; /* Colocar el submenú justo debajo de "Trips" */
-  left: 0;
-  background-color: rgba(200, 200, 200, 0.9); /* Fondo gris claro con transparencia */
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-}
-
-.dropdown-menu li {
-  padding: 10px;
-  white-space: nowrap;
-}
-
-.dropdown-menu li a {
-  display: block;
-  padding: 10px;
-  color: #333;
-}
-
-.dropdown-menu li a:hover {
-  background-color: #333;
-  color: white;
-}
-
-/* Mostrar el menú cuando el cursor esté sobre "Trips" */
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
+  /* Botón hamburguesa */
+  .hamburger {
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001; /* Para que esté encima de otros elementos */
+  }
+  
+  /* Barra lateral */
+  .sidebar {
+    height: 100%;
+    width: 0; /* Ancho inicial de 0 para efecto de deslizamiento */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    color: white;
+    overflow-x: hidden;
+    transition: 0.5s; /* Transición suave para deslizamiento */
+    padding-top: 60px;
+    z-index: 1000; /* Aparece por encima del contenido */
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 8px;
+  }
+  
+  .sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    display: block;
+    padding: 8px;
+  }
+  
+  .sidebar ul li a:hover {
+    background-color: #575757;
+  }
+  
+  /* Botón cerrar */
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* Mostrar el sidebar */
+  .sidebar.open {
+    width: 250px; /* Ancho del menú cuando está abierto */
+  }
 
 main {
   background-image: url('img/backgrounds/white_wood_background.jpg');
