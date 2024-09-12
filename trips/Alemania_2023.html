@@ -4,34 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alemania 2023</title>
-  <link rel="stylesheet" href="../styles.css"> <!-- Asegúrate de que la ruta al CSS es correcta -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="/menu.js" defer></script>
+  <script src="/sidebar.js" defer></script>
 </head>
 <body>
   <header>
     <nav>
       <ul>
         <li><a href="https://jaimescotta.github.io/viajes-blog/">Home</a></li>
-
-        <!-- Menú desplegable Trips (igual que en index.html) -->
-        <li class="dropdown">
-          <a href="#">Trips</a>
-          <ul class="dropdown-menu">
-            <li><a href="Tenerife_2024.html">Tenerife 2024</a></li>
-            <li><a href="Alemania_2023.html">Alemania 2023</a></li>
-            <li><a href="Soria_2022.html">Soria 2022</a></li>
-          </ul>
-        </li>
-
-        <li><a href="#">Contact</a></li>
+        <li><a href="/favorites.html">Favorites</a></li> <!-- Página para ver favoritos -->
       </ul>
     </nav>
     <h1>Alemania 2023</h1>
   </header>
+
+  <!-- Botón hamburguesa para abrir el menú lateral -->
+  <button class="hamburger" id="openSidebar">
+    <i class="fas fa-bars"></i> <!-- Ícono de tres líneas -->
+  </button>
+
+  <!-- Barra lateral -->
+  <div id="sidebar" class="sidebar">
+    <button id="closeSidebar" class="close-btn">&times;</button> <!-- Botón de cerrar -->
+    <ul>
+      <!-- Aquí se llenará dinámicamente con menu.js -->
+    </ul>
+  </div>
   
   <main>
     <section class="main_trips"> <!-- Utilizamos la clase main_trips para los mismos estilos -->
       <article>
-        <img src="../img/PXL_20240827_184443432.jpg" alt="Alemania 2023"> <!-- Ruta corregida -->
+        <img src="/img/PXL_20240827_184443432.jpg" alt="Alemania 2023"> <!-- Ruta corregida -->
         <p>Aquí puedes escribir toda la información sobre este viaje o tema específico...</p>
         <p>Es un destino maravilloso, lleno de naturaleza y con un paisaje inolvidable...</p>
       </article>

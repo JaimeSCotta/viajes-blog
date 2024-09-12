@@ -1,9 +1,16 @@
 // sidebar.js
-document.getElementById("openSidebar").addEventListener("click", function() {
-    document.getElementById("sidebar").classList.add("open");
-  });
-  
-  document.getElementById("closeSidebar").addEventListener("click", function() {
-    document.getElementById("sidebar").classList.remove("open");
-  });
+const sidebar = document.getElementById("sidebar");
+const openBtn = document.getElementById("openSidebar");
+const closeBtn = document.getElementById("closeSidebar");
+
+// Alternar la barra lateral al hacer clic en la hamburguesa
+openBtn.addEventListener("click", function() {
+    sidebar.classList.toggle("open");
+});
+
+// Cerrar la barra lateral al hacer clic en la "X"
+closeBtn.addEventListener("click", function() {
+    sidebar.classList.remove("open");
+});
+
   
