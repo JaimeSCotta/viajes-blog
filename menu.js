@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('trips.json')
+    fetch('./trips.json')
       .then(response => response.json())
       .then(data => {
         data.sort((a, b) => {
