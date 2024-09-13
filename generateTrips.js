@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           // Estructura del artículo con la información del JSON
           article.innerHTML = `
-            <img src="./img/img_por_defecto.jpg" alt="${trip.name}">
+            <img src="./img/PXL_20240827_184443432.jpg" alt="${trip.name}">
             <h2>${trip.name}</h2>
             <a href="./${trip.url}" class="read-more">Read More</a>
             <button class="fav-button" data-trip="${trip.name.replace(/\s+/g, '_')}" aria-label="Añadir a favoritos ${trip.name}" type="button">
