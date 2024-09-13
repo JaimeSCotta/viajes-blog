@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('./trips.json')
+    fetch('/viajes-blog/trips.json')
       .then(response => response.json())
       .then(data => {
         data.sort((a, b) => {
@@ -15,8 +15,10 @@ document.addEventListener('DOMContentLoaded', function () {
           const a = document.createElement('a');
           
           // Construir la URL correctamente
-          const baseUrl = new URL(window.location.href).origin;
-          a.href = new URL(trip.url, baseUrl).href;
+          //const baseUrl = new URL(window.location.href).origin;
+          const baseUrl = 'https://jaimescotta.github.io/viajes-blog/';
+          //a.href = new URL(trip.url, baseUrl).href;
+          a.href = baseUrl + trip.url;
           
           a.textContent = `${trip.name}`;
           li.appendChild(a);
