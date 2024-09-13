@@ -11,6 +11,7 @@
   <script src="favorites.js" defer></script> <!-- Añadimos el archivo JavaScript -->
   <script src="sidebar.js" defer></script>
   <script src="menu.js" defer></script>
+  <script src="generateTrips.js" defer></script>
 </head>
 <body>
   <header>
@@ -38,32 +39,10 @@
   
   <main>
     <section class="main_trips">
-      <article>
-        <img src="./img/IMG_20240826_122217_105.jpg" alt="Tenerife 2024">
-        <h2>Tenerife 2024</h2>
-        <a href="./trips/Tenerife_2024.html" class="read-more">Read More</a>
-        <button class="fav-button" data-trip="Tenerife_2024" aria-label="Añadir a favoritos Tenerife 2024" type="button">
-          <i class="fa-solid fa-heart"></i>
-        </button> <!-- Botón de favorito -->
-      </article>      
-      <article>
-        <img src="./img/PXL_20240827_161123415.MP.jpg" alt="Alemania 2023">
-        <h2>Alemania 2023</h2>
-        <a href="./trips/Alemania_2023.html" class="read-more">Read More</a>
-        <button class="fav-button" data-trip="Alemania_2023" aria-label="Añadir a favoritos Tenerife 2024" type="button">
-          <i class="fa-solid fa-heart"></i>
-        </button> <!-- Botón de favorito -->
-      </article>
-      <article>
-        <img src="img/PXL_20240827_184443432.jpg" alt="Soria 2022">
-        <h2>Soria 2022</h2>
-        <a href="trips/Soria_2022.html" class="read-more">Read More</a>
-        <button class="fav-button" data-trip="Soria_2022" aria-label="Añadir a favoritos Soria 2022" type="button">
-          <i class="fa-solid fa-heart"></i>
-        </button> <!-- Botón de favorito -->
-      </article>
+      <!-- Aquí se llenará dinámicamente cuando se agregue un viaje a trips.json con la plantilla -->
     </section>
   </main>
+  
 
   <footer>
     <p>© 2024 Blog de Viajes</p>
