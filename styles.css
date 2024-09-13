@@ -97,16 +97,18 @@ nav ul li a {
     width: 250px; /* Ancho del menú cuando está abierto */
   }
 
-main {
-  background-image: url('img/backgrounds/white_wood_background.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+  main {
+    min-height: calc(100vh - 100px); /* Ajusta según la altura del header y footer */
+    background-image: url('img/backgrounds/white_wood_background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }  
 
 .main_trips {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 3 columnas adaptables */
+  gap: 20px; /* Espacio entre los elementos */
   padding: 20px;
 }
 
@@ -115,8 +117,8 @@ article {
   background-color: white;
   padding: 20px;
   text-align: center;
-  width: 30%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
 
 article img {
