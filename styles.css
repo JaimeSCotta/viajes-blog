@@ -119,17 +119,31 @@ main {
 }
 
 /* Ajustes en los artículos de viajes para compactar contenido */
-article {
+/*article {
   position: relative;
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Compacta el contenido hacia arriba */
-  padding: 10px; /* Reduce el padding para un diseño más compacto */
+  justify-content: flex-start; 
+  padding: 10px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+}*/
+
+/*
+article {
+  max-height: 400px; 
+  overflow: hidden; 
 }
+*/
+
+article {
+  background-color: transparent; /* O puedes usar otro color si no deseas blanco */
+  padding: 5px; /* Ajusta el padding si es necesario */
+  height: auto; /* Ajusta la altura al contenido, evitando artículos largos */
+}
+
 
 article img {
   width: 100%;
