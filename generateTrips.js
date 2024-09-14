@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     .then(response => response.json())
     .then(tripsData => {
       generateTrips(tripsData); // Llama a la función generateTrips pasando los datos del JSON
+      loadFavorites();
     })
     .catch(error => console.error('Error al cargar los viajes:', error));
 });

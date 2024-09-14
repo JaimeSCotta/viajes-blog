@@ -29,13 +29,18 @@ function loadFavorites() {
     });
 }
 
-// Agregar evento a los botones de favorito
+// Agregar evento a los botones de favorito usando event delegation
 document.addEventListener('DOMContentLoaded', () => {
-    const buttons = document.querySelectorAll('.fav-button');
-    buttons.forEach(button => {
-        button.addEventListener('click', () => toggleFavorite(button));
+    const tripsContainer = document.querySelector('.main_trips');
+
+    // Usamos event delegation en el contenedor de viajes
+    tripsContainer.addEventListener('click', (event) => {
+        if (event.target.classList.contains('fav-button') || event.target.closest('.fav-button')) {
+            const button = event.target.closest('.fav-button');
+            toggleFavorite(button);
+        }
     });
 
-    // Cargar los favoritos en la página
+    // Asegúrate de cargar los favoritos después de que los artículos se generen
     loadFavorites();
 });
