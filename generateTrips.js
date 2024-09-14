@@ -1,28 +1,32 @@
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('/viajes-blog/trips.json')
-      .then(response => response.json())
-      .then(data => {
-        // Selecciona el contenedor donde se añadirán los viajes
-        const tripsContainer = document.querySelector('.main_trips');
+  fetch('/viajes-blog/trips.json') // Ruta de tu archivo trips.json
+    .then(response => response.json())
+    .then(tripsData => {
+      generateTrips(tripsData); // Llama a la función generateTrips pasando los datos del JSON
+    })
+    .catch(error => console.error('Error al cargar los viajes:', error));
+});
 
-        // Recorre cada entrada del JSON para crear los artículos
-        data.forEach(trip => {
-          // Crea un nuevo artículo para cada viaje
-          const article = document.createElement('article');
+// Función para generar los viajes dinámicamente
+function generateTrips(trips) {
+const tripsContainer = document.querySelector('.main_trips');
 
-          // Estructura del artículo con la información del JSON
-          article.innerHTML = `
-            <img src="./img/PXL_20240827_184443432.jpg" alt="${trip.name}">
+trips.forEach(trip => {
+    // Asigna automáticamente la imagen desde la carpeta, el nombre de la imagen debe coincidir con el id
+    const imageUrl = `img/trips/${trip.id}.jpg`;
+
+    // Estructura HTML de cada artículo
+    const tripHtml = `
+        <article>
+            <img src="${imageUrl}" alt="${trip.name}">
             <h2>${trip.name}</h2>
-            <a href="./${trip.url}" class="read-more">Read More</a>
-            <button class="fav-button" data-trip="${trip.name.replace(/\s+/g, '_')}" aria-label="Añadir a favoritos ${trip.name}" type="button">
+            <a href="${trip.url}" class="read-more">Read More</a>
+            <button class="fav-button" data-trip="${trip.id}" aria-label="Añadir a favoritos ${trip.name}" type="button">
                 <i class="fa-solid fa-heart"></i>
             </button>
-          `;
-
-          // Añade el artículo generado al contenedor de los viajes
-          tripsContainer.appendChild(article);
-        });
-      })
-      .catch(error => console.error('Error al cargar los viajes:', error));
+        </article>`;
+    
+    // Inserta el HTML generado en el contenedor
+    tripsContainer.innerHTML += tripHtml;
 });
+}

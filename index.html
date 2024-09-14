@@ -8,10 +8,12 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <script src="favorites.js" defer></script> <!-- Añadimos el archivo JavaScript -->
-  <script src="sidebar.js" defer></script>
-  <script src="menu.js" defer></script>
-  <script src="generateTrips.js" defer></script>
+  
+  <!-- Scripts para la funcionalidad de la página -->
+  <script src="favorites.js" defer></script> <!-- Funcionalidad de favoritos -->
+  <script src="sidebar.js" defer></script> <!-- Funcionalidad de la barra lateral -->
+  <script src="menu.js" defer></script> <!-- Menú lateral dinámico -->
+  <script src="generateTrips.js" defer></script> <!-- Generación dinámica de los viajes -->
 </head>
 <body>
   <header>
@@ -37,40 +39,10 @@
     </ul>
   </div>
   
+  <!-- Contenedor principal -->
   <main>
     <section class="main_trips">
-      <article>
-        <img src="./img/IMG_20240826_122217_105.jpg" alt="Tenerife 2024">
-        <h2>Tenerife 2024</h2>
-        <a href="./trips/Tenerife_2024.html" class="read-more">Read More</a>
-        <button class="fav-button" data-trip="Tenerife_2024" aria-label="Añadir a favoritos Tenerife 2024" type="button">
-          <i class="fa-solid fa-heart"></i>
-        </button> <!-- Botón de favorito -->
-      </article>      
-      <article>
-        <img src="./img/PXL_20240827_161123415.MP.jpg" alt="Alemania 2023">
-        <h2>Alemania 2023</h2>
-        <a href="./trips/Alemania_2023.html" class="read-more">Read More</a>
-        <button class="fav-button" data-trip="Alemania_2023" aria-label="Añadir a favoritos Tenerife 2024" type="button">
-          <i class="fa-solid fa-heart"></i>
-        </button> <!-- Botón de favorito -->
-      </article>
-      <article>
-        <img src="./img/IMG_20240826_122217_105.jpg" alt="Llanes 2023">
-        <h2>Llanes 2023</h2>
-        <a href="./trips/Llanes_2023.html" class="read-more">Read More</a>
-        <button class="fav-button" data-trip="Llanes_2023" aria-label="Añadir a favoritos Llanes 2023" type="button">
-          <i class="fa-solid fa-heart"></i>
-        </button> <!-- Botón de favorito -->
-      </article>
-      <article>
-        <img src="img/PXL_20240827_184443432.jpg" alt="Soria 2022">
-        <h2>Soria 2022</h2>
-        <a href="trips/Soria_2022.html" class="read-more">Read More</a>
-        <button class="fav-button" data-trip="Soria_2022" aria-label="Añadir a favoritos Soria 2022" type="button">
-          <i class="fa-solid fa-heart"></i>
-        </button> <!-- Botón de favorito -->
-      </article>
+      <!-- El contenido dinámico generado por JavaScript aparecerá aquí -->
     </section>
   </main>
 
