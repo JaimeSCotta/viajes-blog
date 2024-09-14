@@ -5,6 +5,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  margin: 0; /* Asegura que no haya márgenes innecesarios en el body */
 }
 
 header {
@@ -104,27 +105,27 @@ main {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  padding: 0 20px;
 }
 
-/* Ajustes en .main_trips para extender el scroll y mejorar el espaciado */
+/* Ajustes en .main_trips para evitar scroll de la página y mejorar el espaciado */
 .main_trips {
-  max-height: calc(100vh - 200px); /* Deja espacio para el footer */
-  overflow-y: auto;
-  padding-bottom: 20px; /* Espacio antes del footer */
+  max-height: calc(100vh - 140px); /* Ajusta para evitar el scroll en la página, dejando el footer visible */
+  overflow-y: auto; /* Permite scroll solo dentro del contenedor de viajes */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  padding: 20px;
+  padding: 20px 0;
 }
 
-/* Ajustes en los artículos de viajes para eliminar espacio blanco extra */
+/* Ajustes en los artículos de viajes para compactar contenido */
 article {
   position: relative;
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Asegura que el contenido esté bien distribuido */
-  padding: 20px;
+  justify-content: flex-start; /* Compacta el contenido hacia arriba */
+  padding: 10px; /* Reduce el padding para un diseño más compacto */
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -133,12 +134,17 @@ article {
 article img {
   width: 100%;
   height: auto;
-  object-fit: cover; /* Asegura que la imagen no se deforme y se ajuste bien */
+  object-fit: cover;
   border-radius: 5px;
+  margin-bottom: 10px; /* Pequeño margen entre la imagen y el contenido */
+}
+
+article h3 {
+  margin: 10px 0; /* Compacta el espacio entre el título y la imagen */
 }
 
 a.read-more {
-  margin-top: auto; /* Empuja el botón al final de la tarjeta */
+  margin-top: 10px; /* Ajusta la separación con el contenido previo */
   display: inline-block;
   padding: 10px 20px;
   background-color: #333;
@@ -184,6 +190,7 @@ footer {
   padding: 20px;
   background-color: #333;
   color: white;
+  margin-top: auto; /* Asegura que el footer esté siempre al final */
 }
 
 a {
