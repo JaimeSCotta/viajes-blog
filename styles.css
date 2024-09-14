@@ -134,10 +134,11 @@ article {
 
 article img {
   width: 100%;
-  height: auto;
-  object-fit: cover;
+  height: 200px;
+  object-fit: contain;
   border-radius: 5px;
-  margin-bottom: 10px; /* Pequeño margen entre la imagen y el contenido */
+  display: block;
+  margin: auto;
 }
 
 article h3 {
