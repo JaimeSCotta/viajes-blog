@@ -119,7 +119,7 @@ main {
 }
 
 /* Ajustes en los artículos de viajes para compactar contenido */
-/*article {
+article {
   position: relative;
   background-color: white;
   display: flex;
@@ -129,9 +129,6 @@ main {
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-}*/
-
-article {
   max-height: 400px; 
   overflow: hidden; 
 }
