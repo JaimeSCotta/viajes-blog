@@ -131,19 +131,10 @@ main {
   border-radius: 5px;
 }*/
 
-/*
 article {
   max-height: 400px; 
   overflow: hidden; 
 }
-*/
-
-article {
-  background-color: transparent; /* O puedes usar otro color si no deseas blanco */
-  padding: 5px; /* Ajusta el padding si es necesario */
-  height: auto; /* Ajusta la altura al contenido, evitando artículos largos */
-}
-
 
 article img {
   width: 100%;
