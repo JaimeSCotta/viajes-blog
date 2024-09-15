@@ -181,7 +181,7 @@ footer {
   main {
     margin-top: 80px; /* Asegura que el contenido no se superponga al header */
     margin-bottom: 80px; /* Espacio para el footer */
-    padding-bottom: 100px; /* Espacio adicional para evitar que el contenido se corte antes del footer */
+    padding-bottom: 80px; /* Espacio adicional para evitar que el contenido se corte antes del footer */
   }
 }
 
