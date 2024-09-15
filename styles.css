@@ -24,7 +24,7 @@ header {
 header h1 {
   font-size: 24px; 
   margin: 0; 
-  padding: 0; 
+  padding: 10; 
   line-height: 1.2;
 }
 
@@ -117,9 +117,9 @@ main {
   background-repeat: no-repeat;
   background-position: center;
   padding: 20px;
-  margin-top: 80px; /* Evita que el contenido se superponga al header */
+  margin-top: 60px; /* Evita que el contenido se superponga al header */
   margin-bottom: 60px; /* Deja espacio para el footer */
-  padding-bottom: 100px;
+  padding-bottom: 500px;
   overflow-y: auto; /* Habilita el scroll solo en el contenido central */
 }
 
