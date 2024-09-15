@@ -119,6 +119,7 @@ main {
   padding: 20px;
   margin-top: 60px; /* Evita que el contenido se superponga al header */
   margin-bottom: 60px; /* Deja espacio para el footer */
+  padding-bottom: 80px;
   overflow-y: auto; /* Habilita el scroll solo en el contenido central */
 }
 
