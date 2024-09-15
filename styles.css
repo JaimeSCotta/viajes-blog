@@ -22,11 +22,16 @@ header {
 }
 
 header h1 {
-  font-size: 24px; 
-  margin: 0; 
-  padding: 10; 
+  font-size: 24px;
+  margin: 10px 0;
+  padding: 0; 
   line-height: 1.2;
 }
+
+nav {
+  margin-bottom: 10px;
+}
+
 
 nav ul {
   list-style-type: none;
@@ -116,12 +121,12 @@ main {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  padding: 20px;
-  margin-top: 60px; /* Evita que el contenido se superponga al header */
-  margin-bottom: 60px; /* Deja espacio para el footer */
-  padding-bottom: 500px;
-  overflow-y: auto; /* Habilita el scroll solo en el contenido central */
+  margin-top: 80px; /* Ajuste para evitar que el contenido se superponga al header */
+  margin-bottom: 60px; /* Asegura que haya espacio suficiente antes del footer */
+  padding-bottom: 150px; /* Espacio adicional para evitar que el contenido se corte antes del footer */
+  overflow-y: auto; /* Mantén el scroll dentro del main */
 }
+
 
 .main_trips {
   display: grid;
