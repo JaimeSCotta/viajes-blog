@@ -113,7 +113,7 @@ main {
   max-height: calc(100vh - 140px); /* Ajusta para evitar el scroll en la página, dejando el footer visible */
   overflow-y: auto; /* Permite scroll solo dentro del contenedor de viajes */
   display: grid;
-  /* grid-template-columns: repeat(3, 1fr);  Siempre 3 columnas */
+  grid-template-columns: repeat(3, 1fr); /* Siempre 3 columnas en pantallas grandes */
   gap: 20px; /* Espacio entre cada tarjeta */
   padding: 20px 0;
 }
