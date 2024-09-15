@@ -113,9 +113,21 @@ main {
   max-height: calc(100vh - 140px); /* Ajusta para evitar el scroll en la página, dejando el footer visible */
   overflow-y: auto; /* Permite scroll solo dentro del contenedor de viajes */
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Siempre 3 columnas */
+  /* grid-template-columns: repeat(3, 1fr);  Siempre 3 columnas */
   gap: 20px; /* Espacio entre cada tarjeta */
   padding: 20px 0;
+}
+
+@media (max-width: 900px) {
+  .main_trips {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
+  }
+}
+
+@media (max-width: 600px) {
+  .main_trips {
+    grid-template-columns: repeat(1, 1fr); /* 1 columna en pantallas pequeñas */
+  }
 }
 
 /* Ajustes en los artículos de viajes para compactar contenido */
@@ -129,7 +141,7 @@ article {
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  max-height: 400px; 
+  max-height: 800px; 
 }
 
 article img {
