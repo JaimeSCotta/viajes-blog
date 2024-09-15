@@ -110,23 +110,39 @@ main {
 
 /* Ajustes en .main_trips para evitar scroll de la página y mejorar el espaciado */
 .main_trips {
-  max-height: calc(100vh - 140px); /* Ajusta para evitar el scroll en la página, dejando el footer visible */
-  overflow-y: auto; /* Permite scroll solo dentro del contenedor de viajes */
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Siempre 3 columnas en pantallas grandes */
-  gap: 20px; /* Espacio entre cada tarjeta */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Las columnas se adaptan al tamaño disponible */
+  gap: 20px; /* Espacio entre tarjetas */
   padding: 20px 0;
 }
 
-@media (max-width: 900px) {
-  .main_trips {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
+/* Para pantallas grandes */
+@media (min-width: 1200px) {
+  article {
+    padding: 20px; 
+  }
+  article img {
+    height: 250px; /* Imágenes más grandes */
   }
 }
 
+/* Para pantallas medianas */
+@media (max-width: 900px) {
+  .main_trips {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  }
+  article img {
+    height: 200px; 
+  }
+}
+
+/* Para pantallas pequeñas (móviles) */
 @media (max-width: 600px) {
   .main_trips {
-    grid-template-columns: repeat(1, 1fr); /* 1 columna en pantallas pequeñas */
+    grid-template-columns: repeat(1, 1fr);
+  }
+  article img {
+    height: 150px; 
   }
 }
 
@@ -147,7 +163,7 @@ article {
 article img {
   width: 100%;
   height: 200px;
-  object-fit: contain;
+  object-fit: cover; /* Ajusta la imagen sin distorsión */
   border-radius: 5px;
   display: block;
   margin: auto;
