@@ -51,10 +51,11 @@
     .then(trips => {const favoritesList = document.getElementById('favorites-list');
 
     trips.forEach(trip => {
+          const imageUrl = `img/trips/${trip.id}.jpg`;
           if (favorites.includes(trip.id)) {
             favoritesList.innerHTML += `
               <article>
-                <img src="img/${trip.id}.jpg" alt="${trip.name}">
+                <img src="${imageUrl}" alt="${trip.name}">
                 <h2>${trip.name}</h2>
                 <a href="${trip.url}" class="read-more">Read More</a>
               </article>
