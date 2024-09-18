@@ -124,7 +124,7 @@ main {
   margin-top: 80px; /* Ajuste para evitar que el contenido se superponga al header */
   margin-bottom: 160px; /* Asegura que haya espacio suficiente antes del footer */
   padding-bottom: 150px; /* Espacio adicional para evitar que el contenido se corte antes del footer */
-  min-height: calc(160vh - 80px);
+  min-height: calc(10vh - 80px);
   overflow-y: auto; /* Mantén el scroll dentro del main */
 }
 
