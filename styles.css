@@ -180,6 +180,7 @@ footer {
   }
 }
 
+/* Estilos globales para todos los elementos <article> */
 article {
   position: relative;
   background-color: white;
@@ -191,6 +192,7 @@ article {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   max-height: 800px;
+  margin-bottom: 20px; /* Añadido para dar espacio entre artículos */
 }
 
 article img {
@@ -202,7 +204,7 @@ article img {
   margin: auto;
 }
 
-article h3 {
+article h2 {
   margin: 10px 0;
 }
 
@@ -247,6 +249,7 @@ a.read-more:hover {
 .fav-button:hover {
   color: #555;
 }
+
 
 a {
   text-decoration: none;
