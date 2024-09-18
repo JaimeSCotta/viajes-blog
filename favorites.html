@@ -44,12 +44,31 @@
   <script>
     // Mostrar solo los viajes favoritos
     const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    const trips = [
-      { name: 'Tenerife 2024', url: 'trips/Tenerife_2024.html', img: 'img/IMG_20240826_122217_105.jpg' },
-      { name: 'Alemania 2023', url: 'trips/Alemania_2023.html', img: 'img/PXL_20240827_161123415.MP.jpg' },
-      { name: 'Soria 2022', url: 'trips/Soria_2022.html', img: 'img/PXL_20240827_184443432.jpg' }
-    ];
 
+    // Cargar los viajes desde trips.json
+    fetch('trips.json')
+    .then(response => response.json())
+    .then(trips => {const favoritesList = document.getElementById('favorites-list');
+
+    trips.forEach(trip => {
+          if (favorites.includes(trip.id)) {
+            favoritesList.innerHTML += `
+              <article>
+                <img src="img/${trip.id}.jpg" alt="${trip.name}">
+                <h2>${trip.name}</h2>
+                <a href="${trip.url}" class="read-more">Read More</a>
+              </article>
+            `;
+          }
+        });
+      })
+      .catch(error => {
+        console.error("Error al cargar los viajes: ", error);
+      });
+  </script>
+</body>
+</html>
+ <!--
     const favoritesList = document.getElementById('favorites-list');
     trips.forEach(trip => {
       if (favorites.includes(trip.name.replace(/\s+/g, '_'))) {
