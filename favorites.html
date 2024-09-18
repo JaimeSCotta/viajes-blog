@@ -47,19 +47,23 @@
   <script>
     // Mostrar solo los viajes favoritos
     const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-
+  
     // Cargar los viajes desde trips.json
     fetch('trips.json')
-    .then(response => response.json())
-    .then(trips => {const favoritesList = document.getElementById('favorites-list');
-
-    trips.forEach(trip => {
+      .then(response => response.json())
+      .then(trips => {
+        const favoritesList = document.getElementById('favorites-list');
+  
+        trips.forEach(trip => {
           const imageUrl = `img/trips/${trip.id}.jpg`;
           if (favorites.includes(trip.id)) {
             favoritesList.innerHTML += `
               <article>
                 <img src="${imageUrl}" alt="${trip.name}">
-                <h2>${trip.name}</h2>
+                <h3>${trip.name}</h3>
+                <button class="fav-button active" data-trip="${trip.id}">
+                  <i class="fas fa-heart"></i>
+                </button>
                 <a href="${trip.url}" class="read-more">Read More</a>
               </article>
             `;
@@ -70,5 +74,6 @@
         console.error("Error al cargar los viajes: ", error);
       });
   </script>
+  
 </body>
 </html>
