@@ -121,12 +121,12 @@ main {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  margin-top: 80px; /* Ajuste para evitar que el contenido se superponga al header */
-  margin-bottom: 160px; /* Asegura que haya espacio suficiente antes del footer */
-  padding-bottom: 150px; /* Espacio adicional para evitar que el contenido se corte antes del footer */
-  overflow-y: auto; /* Mantén el scroll dentro del main */
+  margin-top: 80px;
+  margin-bottom: 0; /* Elimina el margen adicional innecesario en la parte inferior */
+  padding-bottom: 150px; /* Mantén el espacio adicional */
+  min-height: calc(100vh - 80px); /* Asegura que el main cubra al menos toda la pantalla menos el header */
+  overflow-y: auto;
 }
-
 
 .main_trips {
   display: grid;
