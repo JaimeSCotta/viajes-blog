@@ -48,6 +48,11 @@
     // Mostrar solo los viajes favoritos
     const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
   
+    // Función para actualizar los favoritos en localStorage
+    function updateFavorites(newFavorites) {
+      localStorage.setItem('favorites', JSON.stringify(newFavorites));
+    }
+  
     // Cargar los viajes desde trips.json
     fetch('trips.json')
       .then(response => response.json())
@@ -58,7 +63,7 @@
           const imageUrl = `img/trips/${trip.id}.jpg`;
           if (favorites.includes(trip.id)) {
             favoritesList.innerHTML += `
-              <article>
+              <article id="trip-${trip.id}">
                 <img src="${imageUrl}" alt="${trip.name}">
                 <h3>${trip.name}</h3>
                 <button class="fav-button active" data-trip="${trip.id}">
@@ -69,11 +74,30 @@
             `;
           }
         });
+  
+        // Añadir eventos de click a los botones de favoritos
+        const favButtons = document.querySelectorAll('.fav-button');
+        favButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            const tripId = this.getAttribute('data-trip');
+            const index = favorites.indexOf(tripId);
+            if (index > -1) {
+              // Eliminar de favoritos
+              favorites.splice(index, 1);
+              updateFavorites(favorites);
+  
+              // Cambiar el color del corazón (opcional si quieres mantener el botón pero inactivo)
+              this.classList.remove('active');
+  
+              // Eliminar el artículo del DOM
+              document.getElementById(`trip-${tripId}`).remove();
+            }
+          });
+        });
       })
       .catch(error => {
         console.error("Error al cargar los viajes: ", error);
       });
-  </script>
-  
+  </script> 
 </body>
 </html>
