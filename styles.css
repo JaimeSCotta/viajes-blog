@@ -1,13 +1,18 @@
 /* Estilos generales */
-body {
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
-  margin: 0; /* Asegura que no haya márgenes innecesarios en el body */
+  background-image: url('img/backgrounds/white_wood_background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   overflow: hidden; /* Evita el scroll del body, delegándolo al main */
 }
+
 
 header {
   background-color: #333;
