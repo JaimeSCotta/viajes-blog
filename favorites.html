@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <script src="menu.js" defer></script>
   <script src="sidebar.js" defer></script>
+  <script src="favorites.js" defer></script> <!-- Carga el archivo para gestionar favoritos -->
 </head>
 <body>
   <header>
@@ -34,74 +35,18 @@
   </div>
 
   <main>
-    <section class="main_trips" id="favorites-list">
-      <!-- Aquí se llenarán los favoritos desde JavaScript -->
+    <section class="favorites-container">
+      <!-- Aquí se llenarán los favoritos desde Firestore -->
     </section>
   </main>
-  
-  
 
   <footer>
     <p>© 2024 Blog de Viajes</p>
   </footer>
 
   <script>
-    // Cargar favoritos desde localStorage
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-  
-    // Función para actualizar los favoritos en localStorage
-    function updateFavorites(newFavorites) {
-      localStorage.setItem('favorites', JSON.stringify(newFavorites));
-    }
-  
-    // Cargar los viajes desde trips.json
-    fetch('trips.json')
-      .then(response => response.json())
-      .then(trips => {
-        const favoritesList = document.getElementById('favorites-list');
-  
-        // Mostrar solo los favoritos
-        trips.forEach(trip => {
-          if (favorites.includes(trip.id)) {
-            const imageUrl = `img/trips/${trip.id}.jpg`;
-            favoritesList.innerHTML += `
-              <article id="trip-${trip.id}">
-                <img src="${imageUrl}" alt="${trip.name}">
-                <h2>${trip.name}</h2>
-                <a href="${trip.url}" class="read-more">Read More</a>
-                <button class="fav-button active" data-trip="${trip.id}">
-                  <i class="fas fa-heart"></i>
-                </button>
-              </article>
-            `;
-          }
-        });
-  
-        // Añadir evento de click a los botones de favoritos
-        favoritesList.addEventListener('click', (event) => {
-          const button = event.target.closest('.fav-button');
-          if (button) {
-            const tripId = button.getAttribute('data-trip');
-            const index = favorites.indexOf(tripId);
-  
-            if (index > -1) {
-              // Eliminar de favoritos
-              favorites.splice(index, 1);
-              updateFavorites(favorites);
-  
-              // Eliminar el artículo del DOM
-              document.getElementById(`trip-${tripId}`).remove();
-  
-              // Si existe, también actualizamos el botón de index.html si está abierto
-              const mainPageButton = document.querySelector(`.main_trips .fav-button[data-trip="${tripId}"]`);
-              if (mainPageButton) {
-                mainPageButton.classList.remove('active');
-              }
-            }
-          }
-        });
-      })
-      .catch(error => console.error('Error al cargar los viajes:', error));
-  </script>  
+    // Cargar favoritos desde Firestore cuando se cargue la página
+    document.addEventListener('DOMContentLoaded', loadFavorites);
+  </script>
 </body>
 </html>

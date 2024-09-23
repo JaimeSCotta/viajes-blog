@@ -1,46 +1,94 @@
-// Función para alternar favorito
-function toggleFavorite(button) {
-    const trip = button.getAttribute('data-trip');
-    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+import { getFirestore, doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
 
-    if (favorites.includes(trip)) {
-        // Si ya es favorito, lo quitamos
-        favorites = favorites.filter(fav => fav !== trip);
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-        button.classList.remove('active');
+const db = getFirestore();
+const auth = getAuth();
+
+// Función para guardar un favorito
+function saveFavorite(tripId, tripName) {
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const userId = user.uid;
+      const favoritesRef = doc(db, "favorites", userId);
+
+      try {
+        const docSnapshot = await getDoc(favoritesRef);
+
+        if (docSnapshot.exists()) {
+          const currentFavorites = docSnapshot.data().viajes || [];
+          const updatedFavorites = [...currentFavorites, { id: tripId, nombre: tripName }];
+          await updateDoc(favoritesRef, { viajes: updatedFavorites });
+        } else {
+          await setDoc(favoritesRef, { viajes: [{ id: tripId, nombre: tripName }] });
+        }
+      } catch (error) {
+        console.error("Error al guardar el favorito: ", error);
+      }
     } else {
-        // Si no es favorito, lo añadimos
-        favorites.push(trip);
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-        button.classList.add('active');
+      console.log("No hay usuario autenticado");
     }
+  });
 }
 
-// Función para cargar los favoritos al iniciar la página
+// Función para eliminar un favorito
+function removeFavorite(tripId) {
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const userId = user.uid;
+      const favoritesRef = doc(db, "favorites", userId);
+
+      try {
+        const docSnapshot = await getDoc(favoritesRef);
+
+        if (docSnapshot.exists()) {
+          const currentFavorites = docSnapshot.data().viajes || [];
+          const updatedFavorites = currentFavorites.filter((trip) => trip.id !== tripId);
+
+          await updateDoc(favoritesRef, { viajes: updatedFavorites });
+        }
+      } catch (error) {
+        console.error("Error al eliminar el favorito: ", error);
+      }
+    } else {
+      console.log("No hay usuario autenticado");
+    }
+  });
+}
+
+// Función para cargar los favoritos
 function loadFavorites() {
-    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    const buttons = document.querySelectorAll('.fav-button');
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const userId = user.uid;
+      const favoritesRef = doc(db, "favorites", userId);
 
-    buttons.forEach(button => {
-        const trip = button.getAttribute('data-trip');
-        if (favorites.includes(trip)) {
-            button.classList.add('active');
+      try {
+        const docSnapshot = await getDoc(favoritesRef);
+
+        if (docSnapshot.exists()) {
+          const userFavorites = docSnapshot.data().viajes || [];
+          renderFavorites(userFavorites);
+        } else {
+          console.log("No se encontraron favoritos.");
         }
-    });
+      } catch (error) {
+        console.error("Error al cargar los favoritos: ", error);
+      }
+    } else {
+      console.log("No hay usuario autenticado");
+    }
+  });
 }
 
-// Agregar evento a los botones de favorito usando event delegation
-document.addEventListener('DOMContentLoaded', () => {
-    const tripsContainer = document.querySelector('.main_trips');
+// Función para mostrar los favoritos en la página
+function renderFavorites(favorites) {
+  const favoritesContainer = document.querySelector(".favorites-container");
+  favoritesContainer.innerHTML = "";
 
-    // Usamos event delegation en el contenedor de viajes
-    tripsContainer.addEventListener('click', (event) => {
-        if (event.target.classList.contains('fav-button') || event.target.closest('.fav-button')) {
-            const button = event.target.closest('.fav-button');
-            toggleFavorite(button);
-        }
-    });
-
-    // Asegúrate de cargar los favoritos después de que los artículos se generen
-    loadFavorites();
-});
+  favorites.forEach((favorite) => {
+    const tripElement = document.createElement("div");
+    tripElement.classList.add("favorite-trip");
+    tripElement.innerHTML = `<h3>${favorite.nombre}</h3> <p>ID: ${favorite.id}</p>`;
+    favoritesContainer.appendChild(tripElement);
+  });
+}

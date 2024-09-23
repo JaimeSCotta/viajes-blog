@@ -8,42 +8,49 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  
+
+  <!-- Firebase SDK -->
+  <script defer src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js"></script>
+
   <!-- Scripts para la funcionalidad de la página -->
-  <script src="favorites.js" defer></script> <!-- Funcionalidad de favoritos -->
-  <script src="sidebar.js" defer></script> <!-- Funcionalidad de la barra lateral -->
-  <script src="menu.js" defer></script> <!-- Menú lateral dinámico -->
-  <script src="generateTrips.js" defer></script> <!-- Generación dinámica de los viajes -->
+  <script src="favorites.js" defer></script>
+  <script src="sidebar.js" defer></script>
+  <script src="menu.js" defer></script>
+  <script src="generateTrips.js" defer></script>
+  <script src="auth.js" defer></script> <!-- Autenticación de Firebase -->
+
 </head>
 <body>
   <header>
     <nav>
       <ul>
         <li><a href="https://jaimescotta.github.io/viajes-blog/">Home</a></li>
-        <li><a href="favorites.html">Favorites</a></li> <!-- Página para ver favoritos -->
+        <li><a href="favorites.html">Favorites</a></li>
       </ul>
     </nav>
     <h1>JSC Trips</h1>
   </header>
 
-  <!-- Botón hamburguesa para abrir el menú lateral -->
+  <!-- Botón de inicio de sesión/registro -->
+  <div id="auth-container">
+    <button id="loginBtn">Iniciar sesión</button>
+    <button id="logoutBtn" style="display:none;">Cerrar sesión</button>
+  </div>
+
   <button class="hamburger" id="openSidebar" aria-label="Abrir barra lateral" type="button">
-    <i class="fas fa-bars"></i> <!-- Ícono de tres líneas -->
+    <i class="fas fa-bars"></i>
   </button>
 
-  <!-- Barra lateral -->
   <div id="sidebar" class="sidebar">
-    <button id="closeSidebar" class="close-btn" type="button">&times;</button> <!-- Botón de cerrar -->
+    <button id="closeSidebar" class="close-btn" type="button">&times;</button>
     <ul>
-      <!-- Aquí se llenará dinámicamente con menu.js -->
     </ul>
   </div>
-  
-  <!-- Contenedor principal -->
+
   <main>
-    <section class="main_trips">
-      <!-- El contenido dinámico generado por JavaScript aparecerá aquí -->
-    </section>
+    <section class="main_trips"></section>
   </main>
 
   <footer>
