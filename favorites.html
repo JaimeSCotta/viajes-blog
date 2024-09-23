@@ -9,7 +9,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <script src="menu.js" defer></script>
   <script src="sidebar.js" defer></script>
-  <script src="favorites.js" defer></script> <!-- Carga el archivo para gestionar favoritos -->
+  <script src="favorites.js" defer></script>
+
+  <!-- Firebase SDK -->
+  <script defer src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js"></script>
+
 </head>
 <body>
   <header>
@@ -17,27 +22,24 @@
       <ul>
         <li><a href="https://jaimescotta.github.io/viajes-blog/">Home</a></li>
         <li><a href="favorites.html">Favorites</a></li>
+        <li><button id="loginBtn">Login</button></li>
       </ul>
     </nav>
     <h1>Your favorite trips</h1>
   </header>
 
-  <!-- Botón hamburguesa para abrir el menú lateral -->
   <button class="hamburger" id="openSidebar">
-    <i class="fas fa-bars"></i> <!-- Ícono de tres líneas -->
+    <i class="fas fa-bars"></i>
   </button>
 
-  <!-- Barra lateral -->
   <div id="sidebar" class="sidebar">
-    <button id="closeSidebar" class="close-btn">&times;</button> <!-- Botón de cerrar -->
+    <button id="closeSidebar" class="close-btn">&times;</button>
     <ul>
     </ul>
   </div>
 
   <main>
-    <section class="favorites-container">
-      <!-- Aquí se llenarán los favoritos desde Firestore -->
-    </section>
+    <section class="favorites-container"></section>
   </main>
 
   <footer>
@@ -45,8 +47,18 @@
   </footer>
 
   <script>
-    // Cargar favoritos desde Firestore cuando se cargue la página
-    document.addEventListener('DOMContentLoaded', loadFavorites);
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
+
+    const auth = getAuth();
+
+    // Verificar autenticación antes de cargar favoritos
+    onAuthStateChanged(auth, user => {
+      if (user) {
+        loadFavorites();  // Cargar favoritos si está autenticado
+      } else {
+        window.location.href = "index.html"; // Redirigir a login si no está autenticado
+      }
+    });
   </script>
 </body>
 </html>

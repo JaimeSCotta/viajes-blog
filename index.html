@@ -27,15 +27,14 @@
     <nav>
       <ul>
         <li><a href="https://jaimescotta.github.io/viajes-blog/">Home</a></li>
-        <li><a href="favorites.html">Favorites</a></li>
+        <li><a href="favorites.html" id="favoritesLink">Favorites</a></li>
+        <li><button id="loginBtn">Login</button></li>
       </ul>
     </nav>
     <h1>JSC Trips</h1>
   </header>
 
-  <!-- Botón de inicio de sesión/registro -->
   <div id="auth-container">
-    <button id="loginBtn">Iniciar sesión</button>
     <button id="logoutBtn" style="display:none;">Cerrar sesión</button>
   </div>
 
@@ -56,5 +55,41 @@
   <footer>
     <p>© 2024 Blog de Viajes</p>
   </footer>
+
+  <!-- Modal para login/signup -->
+  <div id="authModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Login</h2>
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" required>
+      <button id="signInBtn">Iniciar sesión</button>
+      <button id="signUpBtn">Regístrate</button>
+    </div>
+  </div>
+
+  <script>
+    // Mostrar el modal de autenticación
+    const loginBtn = document.getElementById('loginBtn');
+    const authModal = document.getElementById('authModal');
+    const closeModal = document.querySelector('.close-modal');
+
+    loginBtn.addEventListener('click', () => {
+      authModal.style.display = 'block';
+    });
+
+    closeModal.addEventListener('click', () => {
+      authModal.style.display = 'none';
+    });
+
+    // Cuando el usuario hace clic fuera del modal, este se cierra
+    window.onclick = function(event) {
+      if (event.target == authModal) {
+        authModal.style.display = 'none';
+      }
+    };
+  </script>
 </body>
 </html>
