@@ -46,11 +46,12 @@
     <p>© 2024 Blog de Viajes</p>
   </footer>
 
-  <script>
+  <script type="module">
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
-
+    import { loadFavorites } from './favorites.js';  // Asegúrate de que la función loadFavorites sea exportada
+  
     const auth = getAuth();
-
+  
     // Verificar autenticación antes de cargar favoritos
     onAuthStateChanged(auth, user => {
       if (user) {
@@ -59,6 +60,6 @@
         window.location.href = "index.html"; // Redirigir a login si no está autenticado
       }
     });
-  </script>
+  </script>  
 </body>
 </html>

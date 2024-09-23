@@ -5,7 +5,7 @@ const db = getFirestore();
 const auth = getAuth();
 
 // Función para guardar un favorito
-function saveFavorite(tripId, tripName) {
+export function saveFavorite(tripId, tripName) {
   onAuthStateChanged(auth, async (user) => {
     if (user) {
       const userId = user.uid;
@@ -31,7 +31,7 @@ function saveFavorite(tripId, tripName) {
 }
 
 // Función para eliminar un favorito
-function removeFavorite(tripId) {
+export function removeFavorite(tripId) {
   onAuthStateChanged(auth, async (user) => {
     if (user) {
       const userId = user.uid;
@@ -56,7 +56,7 @@ function removeFavorite(tripId) {
 }
 
 // Función para cargar los favoritos
-function loadFavorites() {
+export function loadFavorites() {
   onAuthStateChanged(auth, async (user) => {
     if (user) {
       const userId = user.uid;
