@@ -120,9 +120,3 @@ favoritesButton.addEventListener('click', (event) => {
     window.location.href = 'favorites.html';
   }
 });
-
-// Placeholder para loadFavorites si no está definida aún
-function loadFavorites() {
-  console.log('Cargando favoritos...');
-  // Aquí agregas la lógica para cargar los favoritos
-}
