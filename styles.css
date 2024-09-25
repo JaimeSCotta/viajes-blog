@@ -260,3 +260,14 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #f44336; /* Color de fondo rojo */
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  z-index: 1000;
+}

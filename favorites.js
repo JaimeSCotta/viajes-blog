@@ -92,3 +92,31 @@ function renderFavorites(favorites) {
     favoritesContainer.appendChild(tripElement);
   });
 }
+
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.innerText = message;
+    
+    document.body.appendChild(notification);
+  
+    setTimeout(() => {
+      notification.remove();
+    }, 3000); // Eliminar después de 3 segundos
+  }
+  
+
+const favoritesButton = document.getElementById('favoritesLink'); // Asegúrate de que este ID es correcto
+
+favoritesButton.addEventListener('click', (event) => {
+  event.preventDefault(); // Evitar la navegación
+
+  const user = getAuth().currentUser; // Obtener el usuario actual
+
+  if (!user) {
+    showNotification('Debes estar registrado para usar esta funcionalidad.');
+  } else {
+    // Aquí puedes redirigir a la página de favoritos si el usuario está autenticado
+    window.location.href = 'favorites.html';
+  }
+});
