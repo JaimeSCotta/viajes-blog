@@ -37,11 +37,20 @@ onAuthStateChanged(auth, user => {
 document.getElementById('signInBtn').addEventListener('click', () => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
+  const rememberMe = document.querySelector('input[type="checkbox"]').checked;
 
   signInWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
       console.log('Sesión iniciada:', userCredential.user);
-      document.getElementById('authModal').style.display = 'none'; // Cerrar modal
+      
+      // Si el usuario marca "Remember Me", almacena la sesión en localStorage
+      if (rememberMe) {
+        localStorage.setItem('userEmail', email); // También puedes almacenar el token de sesión
+      } else {
+        sessionStorage.setItem('userEmail', email); // Solo para la sesión actual
+      }
+
+      document.getElementById('authModal').style.display = 'none'; // Cierra el modal
       alert('Sesión iniciada correctamente');
     })
     .catch(error => {
@@ -77,5 +86,34 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
     .catch(error => {
       console.error('Error al cerrar sesión:', error.message);
       alert('Error al cerrar sesión: ' + error.message);
+    });
+});
+
+// Al cargar la página, puedes verificar si hay un usuario almacenado en localStorage
+window.onload = function() {
+  const storedEmail = localStorage.getItem('userEmail') || sessionStorage.getItem('userEmail');
+  if (storedEmail) {
+    console.log('Sesión recordada:', storedEmail);
+    // Puedes directamente hacer el login con las credenciales guardadas si así lo deseas
+  }
+};
+
+import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
+
+document.querySelector('.forgot-password').addEventListener('click', () => {
+  const email = document.getElementById('email').value;
+
+  if (!email) {
+    alert('Por favor, ingresa tu correo electrónico para restablecer la contraseña.');
+    return;
+  }
+
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      alert('Correo de restablecimiento de contraseña enviado. Revisa tu bandeja de entrada.');
+    })
+    .catch(error => {
+      console.error('Error al enviar correo de restablecimiento:', error.message);
+      alert('Error al enviar correo de restablecimiento: ' + error.message);
     });
 });

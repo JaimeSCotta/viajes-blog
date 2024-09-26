@@ -416,3 +416,28 @@ a {
 .signup-link a:hover {
   color: white; /* Cambiar color al pasar el cursor */
 }
+
+.initial-login-banner {
+  background-color: rgba(0, 77, 128, 0.9);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  top: 80px; /* Justo debajo del header */
+  z-index: 1000;
+}
+
+.initial-login-banner p {
+  margin: 0;
+  padding: 10px;
+}
+
+#dismissBannerBtn {
+  background-color: #004080;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-top: 5px;
+}

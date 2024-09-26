@@ -34,6 +34,11 @@
     <h1>JSC Trips</h1>
   </header>
 
+  <div id="initialLoginBanner" class="initial-login-banner">
+    <p>Want to use favorites functionality? Login down here! Nevertheless, you can continue your visit without login but with limited functions.</p>
+    <button id="dismissBannerBtn">Dismiss</button>
+  </div>  
+
   <div id="auth-container">
     <button id="logoutBtn" style="display:none;">Cerrar sesión</button>
   </div>
@@ -104,5 +109,23 @@
       }
     };
   </script>
+
+<script>
+  // Mostrar el banner al cargar la página
+  document.addEventListener('DOMContentLoaded', () => {
+  const banner = document.getElementById('initialLoginBanner');
+  const dismissBtn = document.getElementById('dismissBannerBtn');
+
+  // Mostrar el banner solo si el usuario no está autenticado
+  if (!auth.currentUser) {
+    banner.style.display = 'block';
+  }
+
+  dismissBtn.addEventListener('click', () => {
+    banner.style.display = 'none';
+  });
+  });
+</script>
+  
 </body>
 </html>
