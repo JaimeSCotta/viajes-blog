@@ -45,12 +45,17 @@ document.getElementById('signInBtn').addEventListener('click', () => {
       
       // Si el usuario marca "Remember Me", almacena la sesión en localStorage
       if (rememberMe) {
+        auth.setPersistence(auth.Auth.Persistence.LOCAL);
         localStorage.setItem('userEmail', email); // También puedes almacenar el token de sesión
+        console.log('Sesión guardada con "Remember me" activado.');
       } else {
         sessionStorage.setItem('userEmail', email); // Solo para la sesión actual
+        console.log('Sesión iniciada sin recordar.');
       }
 
       document.getElementById('authModal').style.display = 'none'; // Cierra el modal
+      document.getElementById('login-banner').style.display = 'none'; // Ocultar banner
+      mostrarDialogoBienvenida(userCredential.user.email); // Mostrar mensaje bonito
       alert('Sesión iniciada correctamente');
     })
     .catch(error => {
@@ -98,6 +103,25 @@ window.onload = function() {
   }
 };
 
+// Al cargar la página, mostrar el banner de notificación
+window.onload = () => {
+  const loginBanner = document.getElementById('login-banner');
+  
+  // Mostrar el banner solo si no está autenticado
+  onAuthStateChanged(auth, user => {
+    if (!user) {
+      loginBanner.style.display = 'block';
+    } else {
+      loginBanner.style.display = 'none'; // Ocultar el banner si ya está autenticado
+    }
+  });
+};
+
+// Cuando se cierre el modal, ocultar el banner
+closeModal.addEventListener('click', () => {
+  document.getElementById('login-banner').style.display = 'none';
+});
+
 import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
 
 document.querySelector('.forgot-password').addEventListener('click', () => {
@@ -117,3 +141,24 @@ document.querySelector('.forgot-password').addEventListener('click', () => {
       alert('Error al enviar correo de restablecimiento: ' + error.message);
     });
 });
+
+// Función para mostrar el modal de bienvenida con el nombre de usuario
+function mostrarDialogoBienvenida(email) {
+  const welcomeModal = document.getElementById('welcomeModal');
+  const userName = email.split('@')[0]; // Toma el nombre de usuario antes del "@" del correo
+  document.getElementById('userName').innerText = userName; // Colocar el nombre en el modal
+  welcomeModal.style.display = 'block';
+
+  // Ocultar el modal al hacer clic en el botón de cerrar
+  const closeWelcomeModal = document.querySelector('#welcomeModal .close-modal');
+  closeWelcomeModal.addEventListener('click', () => {
+    welcomeModal.style.display = 'none';
+  });
+  
+  // También cerrar el modal si se hace clic fuera del modal
+  window.onclick = function(event) {
+    if (event.target == welcomeModal) {
+      welcomeModal.style.display = 'none';
+    }
+  };
+}
