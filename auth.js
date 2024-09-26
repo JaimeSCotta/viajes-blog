@@ -20,18 +20,23 @@ const db = getFirestore(app);
 
 // Manejar el estado de autenticación
 onAuthStateChanged(auth, user => {
+  const banner = document.getElementById('login-banner');
+  
   if (user) {
-    // Usuario autenticado
+    // Usuario autenticado: Ocultar el banner
     document.getElementById('loginBtn').style.display = 'none';
     document.getElementById('logoutBtn').style.display = 'block';
+    banner.style.display = 'none'; // Ocultar banner si el usuario está autenticado
     console.log('Usuario autenticado:', user.email);
   } else {
-    // No hay usuario autenticado
+    // No hay usuario autenticado: Mostrar el banner
     document.getElementById('loginBtn').style.display = 'block';
     document.getElementById('logoutBtn').style.display = 'none';
+    banner.style.display = 'block'; // Mostrar banner si no hay usuario autenticado
     console.log('Ningún usuario autenticado');
   }
 });
+
 
 // Iniciar sesión
 document.getElementById('signInBtn').addEventListener('click', () => {

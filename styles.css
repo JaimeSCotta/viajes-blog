@@ -421,22 +421,28 @@ a {
 .banner-message {
   background-color: #004080;
   color: white;
-  padding: 15px;
+  padding: 10px;
   text-align: center;
-  font-size: 16px;
-  position: fixed;
-  top: 80px; /* Justo debajo del header */
-  width: 100%;
-  z-index: 1000;
+  font-size: 14px;
+  border-radius: 5px;
+  margin-bottom: 15px; /* Espacio debajo del banner para separar del formulario */
 }
 
 .banner-message p {
   margin: 0;
 }
 
-.banner-message.hidden {
-  display: none; /* Ocultar banner cuando se haga login o se cierre el modal */
+.close-banner {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
+
 
 /* Estilos del modal de bienvenida */
 #welcomeModal {
