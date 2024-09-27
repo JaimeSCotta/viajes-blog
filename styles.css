@@ -470,3 +470,7 @@ a {
   font-size: 18px;
   color: #333;
 }
+
+#signUpModal {
+  display: none;
+}
