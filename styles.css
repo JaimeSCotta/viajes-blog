@@ -507,6 +507,6 @@ a {
   /* Ajuste del texto y enlace de "Forgot Password?" */
   .modal-content .forgot-password,
   .signup-link {
-    font-size: 12px; /* Hacer que el texto sea un poco más pequeño para ajustarse mejor en pantallas pequeñas */
+    font-size: 14px; /* Hacer que el texto sea un poco más pequeño para ajustarse mejor en pantallas pequeñas */
   }
 }
