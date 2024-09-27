@@ -455,11 +455,11 @@ a {
 }
 
 #welcomeModal .modal-content h2 {
-  color: #333;
+  color: #25ffe2;
 }
 
 #welcomeModal .modal-content p {
-  color: #666;
+  color: #25ffe2;
 }
 
 #welcomeModal .close-modal {
@@ -480,7 +480,7 @@ a {
 @media (max-width: 600px) {
   /* Ajuste del tamaño del contenido del modal */
   .modal-content {
-    width: 90%; /* Reducir el ancho del modal al 90% de la pantalla */
+    width: 80%; /* Reducir el ancho del modal al 90% de la pantalla */
     padding: 20px; /* Reducir el padding para evitar que sea demasiado grande */
   }
 
@@ -494,13 +494,13 @@ a {
   /* Ajuste de los inputs en el modal */
   .modal-content input[type="email"],
   .modal-content input[type="password"] {
-    width: 100%; /* Asegura que los inputs ocupen todo el ancho disponible */
-    padding: 10px;
+    width: 80%; /* Asegura que los inputs ocupen todo el ancho disponible */
+    padding: 15px;
   }
 
   /* Ajuste del botón de login */
   .modal-content button {
-    padding: 10px; /* Reducir el padding del botón para que no sea demasiado grande */
+    padding: 15px; /* Reducir el padding del botón para que no sea demasiado grande */
     font-size: 14px;
   }
 
