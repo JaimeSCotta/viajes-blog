@@ -70,14 +70,37 @@ document.getElementById('signInBtn').addEventListener('click', () => {
 });
 
 // Registrarse
+// Botón para abrir el modal de Sign Up
 document.getElementById('signUpBtn').addEventListener('click', () => {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+  // Ocultar el modal de Login
+  document.getElementById('authModal').style.display = 'none';
+  
+  // Mostrar el modal de Sign In (Registro)
+  document.getElementById('signUpModal').style.display = 'block';
+});
 
-  createUserWithEmailAndPassword(auth, email, password)
+// Cerrar el modal de Sign In (Registro)
+document.querySelector('#signUpModal .close-modal').addEventListener('click', () => {
+  document.getElementById('signUpModal').style.display = 'none';
+});
+
+// Cuando el usuario haga clic fuera del modal de Sign In, este se cierra
+window.onclick = function(event) {
+  const signUpModal = document.getElementById('signUpModal');
+  if (event.target == signUpModal) {
+    signUpModal.style.display = 'none';
+  }
+};
+
+// Botón para registrar un nuevo usuario
+document.getElementById('registerBtn').addEventListener('click', () => {
+  const newEmail = document.getElementById('newEmail').value;
+  const newPassword = document.getElementById('newPassword').value;
+
+  createUserWithEmailAndPassword(auth, newEmail, newPassword)
     .then(userCredential => {
       console.log('Usuario registrado:', userCredential.user);
-      document.getElementById('authModal').style.display = 'none'; // Cerrar modal
+      document.getElementById('signUpModal').style.display = 'none'; // Cerrar el modal de Sign In
       alert('Usuario registrado correctamente');
     })
     .catch(error => {
@@ -85,6 +108,7 @@ document.getElementById('signUpBtn').addEventListener('click', () => {
       alert('Error al registrarse: ' + error.message);
     });
 });
+
 
 // Cerrar sesión
 document.getElementById('logoutBtn').addEventListener('click', () => {

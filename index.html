@@ -67,7 +67,7 @@
   </div>
 
 
-  <!-- Modal para login/signup -->
+  <!-- Modal para Login -->
   <div id="authModal" class="modal">
     <div class="modal-content">
       <span class="close-modal">&times;</span>
@@ -93,7 +93,27 @@
       </div>
   
       <button id="signInBtn">LOGIN</button>
-      <p class="signup-link">Not registered? <a href="#" id="signUpBtn">Sign Up!</a></p> <!-- Añadido -->
+      <p class="signup-link">Not registered? <a href="#" id="signUpBtn">Sign In!</a></p> <!-- Añadido -->
+    </div>
+  </div>
+
+  <!-- Modal para Sign In -->
+  <div id="signUpModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Sign In</h2>
+      
+      <div class="input-icon">
+        <i class="fa fa-envelope"></i>
+        <input type="email" id="newEmail" placeholder="New Email ID" required>
+      </div>
+
+      <div class="input-icon">
+        <i class="fa fa-lock"></i>
+        <input type="password" id="newPassword" placeholder="New Password" required>
+      </div>
+
+      <button id="registerBtn">REGISTER</button>
     </div>
   </div>
   
