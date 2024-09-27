@@ -471,6 +471,6 @@ a {
   color: #333;
 }
 
-#signUpModal {
+#authModal, #signUpModal {
   display: none;
 }
