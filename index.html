@@ -102,16 +102,14 @@
     // Mostrar el modal de autenticación
     const loginBtn = document.getElementById('loginBtn');
     const authModal = document.getElementById('authModal');
-    const closeModal = document.querySelector('.close-modal');
     const closeAuthModal = document.querySelector('#authModal .close-modal');
 
+    closeAuthModal.addEventListener('click', () => {
+    authModal.style.display = 'none';
+    });
 
     loginBtn.addEventListener('click', () => {
       authModal.style.display = 'block';
-    });
-
-    closeModal.addEventListener('click', () => {
-      authModal.style.display = 'none';
     });
 
     // Cuando el usuario hace clic fuera del modal, este se cierra
@@ -120,24 +118,13 @@
         authModal.style.display = 'none';
       }
     };
+
+    // Cerrar modal de bienvenida (si es necesario)
+    const closeWelcomeModal = document.querySelector('#welcomeModal .close-modal');
+    closeWelcomeModal.addEventListener('click', () => {
+    document.getElementById('welcomeModal').style.display = 'none';
+    });
   </script>
-
-<script>
-  // Mostrar el banner al cargar la página
-  document.addEventListener('DOMContentLoaded', () => {
-  const banner = document.getElementById('initialLoginBanner');
-  const dismissBtn = document.getElementById('dismissBannerBtn');
-
-  // Mostrar el banner solo si el usuario no está autenticado
-  if (!auth.currentUser) {
-    banner.style.display = 'block';
-  }
-
-  dismissBtn.addEventListener('click', () => {
-    banner.style.display = 'none';
-  });
-  });
-</script>
   
 </body>
 </html>
