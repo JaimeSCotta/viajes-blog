@@ -474,3 +474,39 @@ a {
 #signUpModal {
   display: none;
 }
+
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 600px) {
+  /* Ajuste del tamaño del contenido del modal */
+  .modal-content {
+    width: 90%; /* Reducir el ancho del modal al 90% de la pantalla */
+    padding: 20px; /* Reducir el padding para evitar que sea demasiado grande */
+  }
+
+  /* Ajustar el botón de cierre (X) para que siempre sea visible */
+  .close-modal {
+    font-size: 24px; /* Aumentar ligeramente el tamaño del botón para que sea más fácil de pulsar */
+    top: 5px;
+    right: 5px;
+  }
+
+  /* Ajuste de los inputs en el modal */
+  .modal-content input[type="email"],
+  .modal-content input[type="password"] {
+    width: 100%; /* Asegura que los inputs ocupen todo el ancho disponible */
+    padding: 10px;
+  }
+
+  /* Ajuste del botón de login */
+  .modal-content button {
+    padding: 10px; /* Reducir el padding del botón para que no sea demasiado grande */
+    font-size: 14px;
+  }
+
+  /* Ajuste del texto y enlace de "Forgot Password?" */
+  .modal-content .forgot-password,
+  .signup-link {
+    font-size: 12px; /* Hacer que el texto sea un poco más pequeño para ajustarse mejor en pantallas pequeñas */
+  }
+}
