@@ -3,7 +3,11 @@ import { auth, db } from './firebase.js'; // Importa auth y db desde firebase.js
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
 
 // Registrar a un nuevo usuario
-createUserWithEmailAndPassword(auth, newEmail, newPassword)
+document.getElementById('registerBtn').addEventListener('click', () => {
+  const newEmail = document.getElementById('newEmail').value;
+  const newPassword = document.getElementById('newPassword').value;
+
+  createUserWithEmailAndPassword(auth, newEmail, newPassword)
     .then(userCredential => {
       console.log('Usuario registrado:', userCredential.user);
       document.getElementById('signUpModal').style.display = 'none';
@@ -13,6 +17,8 @@ createUserWithEmailAndPassword(auth, newEmail, newPassword)
       console.error('Error al registrarse:', error.message);
       alert('Error al registrarse: ' + error.message);
     });
+});
+
 
 
 
