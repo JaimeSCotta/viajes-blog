@@ -20,8 +20,6 @@ document.getElementById('registerBtn').addEventListener('click', () => {
 });
 
 
-
-
 // Manejar el estado de autenticación
 onAuthStateChanged(auth, user => {
   if (user) {
@@ -30,7 +28,10 @@ onAuthStateChanged(auth, user => {
     actualizarUIParaUsuarioAutenticado();
   } else {
     console.log('Ningún usuario autenticado');
-    mostrarAuthModal();
+    const modalShown = sessionStorage.getItem('authModalShown'); // Verificar si ya se mostró el modal
+    if (!modalShown) {
+      mostrarAuthModal();
+    }
   }
 });
 
@@ -41,8 +42,6 @@ window.onload = function() {
   if (storedEmail) {
     console.log('Sesión recordada:', storedEmail);
     mostrarDialogoBienvenida(storedEmail, false); // No mostrar el modal repetidamente
-  } else {
-    mostrarAuthModal(); // Mostrar el modal de autenticación si no hay sesión
   }
 
   // Controlar la visibilidad del banner
@@ -108,6 +107,28 @@ function actualizarUIParaUsuarioAutenticado() {
   document.getElementById('login-banner').style.display = 'none'; // Ocultar banner si el usuario está autenticado
 }
 
+
+// Mostrar el modal de autenticación solo una vez por sesión
+function mostrarAuthModal() {
+  const authModal = document.getElementById('authModal');
+  const modalShown = sessionStorage.getItem('authModalShown'); // Verificar si ya se mostró el modal
+
+  if (!modalShown) {
+    authModal.style.display = 'block';
+    sessionStorage.setItem('authModalShown', 'true'); // Marcar como mostrado
+
+    const closeAuthModal = document.querySelector('#authModal .close-modal');
+    closeAuthModal.addEventListener('click', () => {
+      authModal.style.display = 'none';
+    });
+
+    window.onclick = function(event) {
+      if (event.target == authModal) {
+        authModal.style.display = 'none';
+      }
+    };
+  }
+}
 
 // Iniciar sesión
 document.getElementById('signInBtn').addEventListener('click', () => {
