@@ -2,6 +2,8 @@
 import { auth, db } from './firebase.js'; // Importa auth y db desde firebase.js
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
 
+const auth = getAuth();
+
 // Registrar a un nuevo usuario
 document.getElementById('registerBtn').addEventListener('click', () => {
   const newEmail = document.getElementById('newEmail').value;
@@ -26,14 +28,22 @@ onAuthStateChanged(auth, user => {
     console.log('Usuario autenticado:', user.email);
     mostrarDialogoBienvenida(user.email, false); // No mostrar el modal repetidamente
     actualizarUIParaUsuarioAutenticado();
+
+    // Aquí ejecuta la carga de favoritos ya que el usuario está autenticado
+    loadFavorites(); 
+
+    // Cerrar el modal de autenticación si el usuario ya está autenticado
+    const authModal = document.getElementById('authModal');
+    if (authModal) {
+      authModal.style.display = 'none';
+    }
+
   } else {
     console.log('Ningún usuario autenticado');
-    const modalShown = sessionStorage.getItem('authModalShown'); // Verificar si ya se mostró el modal
-    if (!modalShown) {
-      mostrarAuthModal();
-    }
+    mostrarAuthModal(); // Mostrar modal de login si no hay usuario autenticado
   }
 });
+
 
 // Unificar la lógica de autenticación y modales en window.onload
 window.onload = function() {
