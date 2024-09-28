@@ -18,47 +18,59 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Al cargar la página, puedes verificar si hay un usuario almacenado en localStorage
+// Manejar el estado de autenticación
+onAuthStateChanged(auth, user => {
+  if (user) {
+    console.log('Usuario autenticado:', user.email);
+    mostrarDialogoBienvenida(user.email, false); // No mostrar el modal repetidamente
+    actualizarUIParaUsuarioAutenticado();
+  } else {
+    console.log('Ningún usuario autenticado');
+    mostrarAuthModal();
+  }
+});
+
+// Unificar la lógica de autenticación y modales en window.onload
 window.onload = function() {
   const storedEmail = localStorage.getItem('userEmail') || sessionStorage.getItem('userEmail');
+
   if (storedEmail) {
     console.log('Sesión recordada:', storedEmail);
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        mostrarDialogoBienvenida(user.email, false); // Pasamos "false" para no mostrar modal repetidamente si ya lo hizo
-      }
-    });
+    mostrarDialogoBienvenida(storedEmail, false); // No mostrar el modal repetidamente
   } else {
-    mostrarAuthModal(); // Mostrar el modal de autenticación si no hay usuario autenticado
+    mostrarAuthModal(); // Mostrar el modal de autenticación si no hay sesión
+  }
+
+  // Controlar la visibilidad del banner
+  const loginBanner = document.getElementById('login-banner');
+  if (auth.currentUser) {
+    loginBanner.style.display = 'none';
+  } else {
+    loginBanner.style.display = 'block';
   }
 };
 
 // Función para mostrar el modal de bienvenida con el nombre de usuario
 function mostrarDialogoBienvenida(email, showModal = true) {
   const welcomeModal = document.getElementById('welcomeModal');
-  const userName = email.split('@')[0]; // Toma el nombre de usuario antes del "@" del correo
-  document.getElementById('userName').innerText = userName; // Colocar el nombre en el modal
+  const userName = email.split('@')[0]; // Toma el nombre de usuario antes del "@"
+  document.getElementById('userName').innerText = userName;
 
   const modalShown = sessionStorage.getItem('welcomeModalShown'); // Verificar si ya se mostró el modal
-
   if (showModal && !modalShown) {
     welcomeModal.style.display = 'block';
+    sessionStorage.setItem('welcomeModalShown', 'true'); // Marcar como mostrado
 
-    // Ocultar el modal al hacer clic en el botón de cerrar
     const closeWelcomeModal = document.querySelector('#welcomeModal .close-modal');
     closeWelcomeModal.addEventListener('click', () => {
       welcomeModal.style.display = 'none';
     });
 
-    // También cerrar el modal si se hace clic fuera del modal
     window.onclick = function(event) {
       if (event.target == welcomeModal) {
         welcomeModal.style.display = 'none';
       }
     };
-
-    // Marcar el modal como mostrado
-    sessionStorage.setItem('welcomeModalShown', 'true');
   }
 }
 
@@ -69,47 +81,27 @@ function mostrarAuthModal() {
 
   if (!modalShown) {
     authModal.style.display = 'block';
+    sessionStorage.setItem('authModalShown', 'true'); // Marcar como mostrado
 
-    // Ocultar el modal al hacer clic en el botón de cerrar
     const closeAuthModal = document.querySelector('#authModal .close-modal');
     closeAuthModal.addEventListener('click', () => {
       authModal.style.display = 'none';
     });
 
-    // También cerrar el modal si se hace clic fuera del modal
     window.onclick = function(event) {
       if (event.target == authModal) {
         authModal.style.display = 'none';
       }
     };
-
-    // Marcar el modal como mostrado
-    sessionStorage.setItem('authModalShown', 'true');
   }
 }
 
-// Manejar el estado de autenticación
-onAuthStateChanged(auth, user => {
-  const banner = document.getElementById('login-banner');
-  
-  if (user) {
-    // Usuario autenticado: Ocultar el banner y mostrar el modal si no se ha mostrado
-    document.getElementById('loginBtn').style.display = 'none';
-    document.getElementById('logoutBtn').style.display = 'block';
-    banner.style.display = 'none'; // Ocultar banner si el usuario está autenticado
-
-    // Mostrar el diálogo de bienvenida solo si aún no ha sido mostrado en la sesión actual
-    mostrarDialogoBienvenida(user.email);
-    console.log('Usuario autenticado:', user.email);
-  } else {
-    // No hay usuario autenticado: Mostrar el banner
-    document.getElementById('loginBtn').style.display = 'block';
-    document.getElementById('logoutBtn').style.display = 'none';
-    banner.style.display = 'block'; // Mostrar banner si no hay usuario autenticado
-    console.log('Ningún usuario autenticado');
-    mostrarAuthModal(); // Mostrar el modal de autenticación si no hay usuario autenticado
-  }
-});
+// Actualiza la UI cuando el usuario está autenticado
+function actualizarUIParaUsuarioAutenticado() {
+  document.getElementById('loginBtn').style.display = 'none';
+  document.getElementById('logoutBtn').style.display = 'block';
+  document.getElementById('login-banner').style.display = 'none'; // Ocultar banner si el usuario está autenticado
+}
 
 // Iniciar sesión
 document.getElementById('signInBtn').addEventListener('click', () => {
@@ -120,20 +112,17 @@ document.getElementById('signInBtn').addEventListener('click', () => {
   signInWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
       console.log('Sesión iniciada:', userCredential.user);
-      
-      // Si el usuario marca "Remember Me", almacena la sesión en localStorage
+
       if (rememberMe) {
-        auth.setPersistence(auth.Auth.Persistence.LOCAL);
-        localStorage.setItem('userEmail', email); // También puedes almacenar el token de sesión
+        localStorage.setItem('userEmail', email);
         console.log('Sesión guardada con "Remember me" activado.');
       } else {
-        sessionStorage.setItem('userEmail', email); // Solo para la sesión actual
+        sessionStorage.setItem('userEmail', email);
         console.log('Sesión iniciada sin recordar.');
       }
 
       document.getElementById('authModal').style.display = 'none'; // Cierra el modal
-      document.getElementById('login-banner').style.display = 'none'; // Ocultar banner
-      mostrarDialogoBienvenida(userCredential.user.email); // Mostrar mensaje bonito
+      mostrarDialogoBienvenida(userCredential.user.email);
       alert('Sesión iniciada correctamente');
     })
     .catch(error => {
@@ -142,72 +131,18 @@ document.getElementById('signInBtn').addEventListener('click', () => {
     });
 });
 
-// Registrarse
-document.getElementById('signUpBtn').addEventListener('click', () => {
-  document.getElementById('authModal').style.display = 'none';
-  document.getElementById('signUpModal').style.display = 'block';
-});
-
-// Cerrar el modal de Sign In (Registro)
-document.querySelector('#signUpModal .close-modal').addEventListener('click', () => {
-  document.getElementById('signUpModal').style.display = 'none';
-});
-
-// Cuando el usuario haga clic fuera del modal de Sign In, este se cierra
-window.onclick = function(event) {
-  const signUpModal = document.getElementById('signUpModal');
-  if (event.target == signUpModal) {
-    signUpModal.style.display = 'none';
-  }
-};
-
-// Botón para registrar un nuevo usuario
-document.getElementById('registerBtn').addEventListener('click', () => {
-  const newEmail = document.getElementById('newEmail').value;
-  const newPassword = document.getElementById('newPassword').value;
-
-  createUserWithEmailAndPassword(auth, newEmail, newPassword)
-    .then(userCredential => {
-      console.log('Usuario registrado:', userCredential.user);
-      document.getElementById('signUpModal').style.display = 'none';
-      alert('Usuario registrado correctamente');
-    })
-    .catch(error => {
-      console.error('Error al registrarse:', error.message);
-      alert('Error al registrarse: ' + error.message);
-    });
-});
-
 // Cerrar sesión
 document.getElementById('logoutBtn').addEventListener('click', () => {
   signOut(auth)
     .then(() => {
       console.log('Sesión cerrada');
+      localStorage.removeItem('userEmail');
+      sessionStorage.removeItem('userEmail');
       alert('Sesión cerrada correctamente');
+      location.reload(); // Recargar la página para volver al estado inicial
     })
     .catch(error => {
       console.error('Error al cerrar sesión:', error.message);
       alert('Error al cerrar sesión: ' + error.message);
     });
 });
-
-// Al cargar la página, mostrar el banner de notificación
-window.onload = () => {
-  const loginBanner = document.getElementById('login-banner');
-  
-  onAuthStateChanged(auth, user => {
-    if (!user) {
-      loginBanner.style.display = 'block';
-    } else {
-      loginBanner.style.display = 'none';
-    }
-  });
-};
-
-// Cuando se cierre el modal, ocultar el banner
-const closeModal = document.querySelector('.close-modal');
-if (closeModal) {
-  closeModal.addEventListener('click', () => {
-    document.getElementById('login-banner').style.display = 'none';
-  });
-}
