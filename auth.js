@@ -23,12 +23,13 @@ window.onload = function() {
   const storedEmail = localStorage.getItem('userEmail') || sessionStorage.getItem('userEmail');
   if (storedEmail) {
     console.log('Sesión recordada:', storedEmail);
-    // Puedes directamente hacer el login con las credenciales guardadas si así lo deseas
     onAuthStateChanged(auth, (user) => {
       if (user) {
         mostrarDialogoBienvenida(user.email, false); // Pasamos "false" para no mostrar modal repetidamente si ya lo hizo
       }
     });
+  } else {
+    mostrarAuthModal(); // Mostrar el modal de autenticación si no hay usuario autenticado
   }
 };
 
@@ -61,6 +62,32 @@ function mostrarDialogoBienvenida(email, showModal = true) {
   }
 }
 
+// Función para mostrar el modal de autenticación solo una vez por sesión
+function mostrarAuthModal() {
+  const authModal = document.getElementById('authModal');
+  const modalShown = sessionStorage.getItem('authModalShown'); // Verificar si ya se mostró el modal
+
+  if (!modalShown) {
+    authModal.style.display = 'block';
+
+    // Ocultar el modal al hacer clic en el botón de cerrar
+    const closeAuthModal = document.querySelector('#authModal .close-modal');
+    closeAuthModal.addEventListener('click', () => {
+      authModal.style.display = 'none';
+    });
+
+    // También cerrar el modal si se hace clic fuera del modal
+    window.onclick = function(event) {
+      if (event.target == authModal) {
+        authModal.style.display = 'none';
+      }
+    };
+
+    // Marcar el modal como mostrado
+    sessionStorage.setItem('authModalShown', 'true');
+  }
+}
+
 // Manejar el estado de autenticación
 onAuthStateChanged(auth, user => {
   const banner = document.getElementById('login-banner');
@@ -80,6 +107,7 @@ onAuthStateChanged(auth, user => {
     document.getElementById('logoutBtn').style.display = 'none';
     banner.style.display = 'block'; // Mostrar banner si no hay usuario autenticado
     console.log('Ningún usuario autenticado');
+    mostrarAuthModal(); // Mostrar el modal de autenticación si no hay usuario autenticado
   }
 });
 
@@ -115,12 +143,8 @@ document.getElementById('signInBtn').addEventListener('click', () => {
 });
 
 // Registrarse
-// Botón para abrir el modal de Sign Up
 document.getElementById('signUpBtn').addEventListener('click', () => {
-  // Ocultar el modal de Login
   document.getElementById('authModal').style.display = 'none';
-  
-  // Mostrar el modal de Sign In (Registro)
   document.getElementById('signUpModal').style.display = 'block';
 });
 
@@ -145,7 +169,7 @@ document.getElementById('registerBtn').addEventListener('click', () => {
   createUserWithEmailAndPassword(auth, newEmail, newPassword)
     .then(userCredential => {
       console.log('Usuario registrado:', userCredential.user);
-      document.getElementById('signUpModal').style.display = 'none'; // Cerrar el modal de Sign In
+      document.getElementById('signUpModal').style.display = 'none';
       alert('Usuario registrado correctamente');
     })
     .catch(error => {
@@ -171,12 +195,11 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
 window.onload = () => {
   const loginBanner = document.getElementById('login-banner');
   
-  // Mostrar el banner solo si no está autenticado
   onAuthStateChanged(auth, user => {
     if (!user) {
       loginBanner.style.display = 'block';
     } else {
-      loginBanner.style.display = 'none'; // Ocultar el banner si ya está autenticado
+      loginBanner.style.display = 'none';
     }
   });
 };
@@ -188,23 +211,3 @@ if (closeModal) {
     document.getElementById('login-banner').style.display = 'none';
   });
 }
-
-import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
-
-document.querySelector('.forgot-password').addEventListener('click', () => {
-  const email = document.getElementById('email').value;
-
-  if (!email) {
-    alert('Por favor, ingresa tu correo electrónico para restablecer la contraseña.');
-    return;
-  }
-
-  sendPasswordResetEmail(auth, email)
-    .then(() => {
-      alert('Correo de restablecimiento de contraseña enviado. Revisa tu bandeja de entrada.');
-    })
-    .catch(error => {
-      console.error('Error al enviar correo de restablecimiento:', error.message);
-      alert('Error al enviar correo de restablecimiento: ' + error.message);
-    });
-});
