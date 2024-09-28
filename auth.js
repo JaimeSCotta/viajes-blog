@@ -108,28 +108,6 @@ function actualizarUIParaUsuarioAutenticado() {
 }
 
 
-// Mostrar el modal de autenticación solo una vez por sesión
-function mostrarAuthModal() {
-  const authModal = document.getElementById('authModal');
-  const modalShown = sessionStorage.getItem('authModalShown'); // Verificar si ya se mostró el modal
-
-  if (!modalShown) {
-    authModal.style.display = 'block';
-    sessionStorage.setItem('authModalShown', 'true'); // Marcar como mostrado
-
-    const closeAuthModal = document.querySelector('#authModal .close-modal');
-    closeAuthModal.addEventListener('click', () => {
-      authModal.style.display = 'none';
-    });
-
-    window.onclick = function(event) {
-      if (event.target == authModal) {
-        authModal.style.display = 'none';
-      }
-    };
-  }
-}
-
 // Iniciar sesión
 document.getElementById('signInBtn').addEventListener('click', () => {
   const email = document.getElementById('email').value;
