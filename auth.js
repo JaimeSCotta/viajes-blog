@@ -1,22 +1,20 @@
-// Importar Firebase
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
+// auth.js
+import { auth, db } from './firebase.js'; // Importa auth y db desde firebase.js
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js";
 
-// Configuración de Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyBV-uF9QRdjQWDcSdVDY4H4N2IHaRk9sP0",
-  authDomain: "viajes-blog.firebaseapp.com",
-  projectId: "viajes-blog",
-  storageBucket: "viajes-blog.appspot.com",
-  messagingSenderId: "76235920794",
-  appId: "1:76235920794:web:9cfacb175910f38bba5623"
-};
+// Registrar a un nuevo usuario
+createUserWithEmailAndPassword(auth, newEmail, newPassword)
+    .then(userCredential => {
+      console.log('Usuario registrado:', userCredential.user);
+      document.getElementById('signUpModal').style.display = 'none';
+      alert('Usuario registrado correctamente');
+    })
+    .catch(error => {
+      console.error('Error al registrarse:', error.message);
+      alert('Error al registrarse: ' + error.message);
+    });
 
-// Inicializar Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+
 
 // Manejar el estado de autenticación
 onAuthStateChanged(auth, user => {
@@ -50,6 +48,7 @@ window.onload = function() {
   }
 };
 
+// Funciones para mostrar modales y manejar UI...
 // Función para mostrar el modal de bienvenida con el nombre de usuario
 function mostrarDialogoBienvenida(email, showModal = true) {
   const welcomeModal = document.getElementById('welcomeModal');
@@ -102,6 +101,7 @@ function actualizarUIParaUsuarioAutenticado() {
   document.getElementById('logoutBtn').style.display = 'block';
   document.getElementById('login-banner').style.display = 'none'; // Ocultar banner si el usuario está autenticado
 }
+
 
 // Iniciar sesión
 document.getElementById('signInBtn').addEventListener('click', () => {

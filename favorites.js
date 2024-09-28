@@ -1,8 +1,7 @@
-import { getFirestore, doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
-
-const db = getFirestore();
-const auth = getAuth();
+// favorites.js
+import { db, auth } from './firebase.js'; // Importa db y auth desde firebase.js
+import { doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
 
 // Función para guardar un favorito
 export function saveFavorite(tripId, tripName) {
@@ -94,24 +93,23 @@ function renderFavorites(favorites) {
 }
 
 function showNotification(message) {
-    const notification = document.createElement('div');
-    notification.className = 'notification';
-    notification.innerText = message;
-    
-    document.body.appendChild(notification);
+  const notification = document.createElement('div');
+  notification.className = 'notification';
+  notification.innerText = message;
   
-    setTimeout(() => {
-      notification.remove();
-    }, 3000); // Eliminar después de 3 segundos
-  }
-  
+  document.body.appendChild(notification);
+
+  setTimeout(() => {
+    notification.remove();
+  }, 3000); // Eliminar después de 3 segundos
+}
 
 const favoritesButton = document.getElementById('favoritesLink'); // Asegúrate de que este ID es correcto
 
 favoritesButton.addEventListener('click', (event) => {
   event.preventDefault(); // Evitar la navegación
 
-  const user = getAuth().currentUser; // Obtener el usuario actual
+  const user = auth.currentUser; // Obtener el usuario actual desde auth importado
 
   if (!user) {
     showNotification('Debes estar registrado para usar esta funcionalidad.');
