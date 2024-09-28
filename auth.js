@@ -1,8 +1,6 @@
 // auth.js
 import { auth, db } from './firebase.js'; // Importa auth y db desde firebase.js
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
-
-const auth = getAuth();
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
 
 // Registrar a un nuevo usuario
 document.getElementById('registerBtn').addEventListener('click', () => {
