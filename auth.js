@@ -18,15 +18,61 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+// Al cargar la página, puedes verificar si hay un usuario almacenado en localStorage
+window.onload = function() {
+  const storedEmail = localStorage.getItem('userEmail') || sessionStorage.getItem('userEmail');
+  if (storedEmail) {
+    console.log('Sesión recordada:', storedEmail);
+    // Puedes directamente hacer el login con las credenciales guardadas si así lo deseas
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        mostrarDialogoBienvenida(user.email, false); // Pasamos "false" para no mostrar modal repetidamente si ya lo hizo
+      }
+    });
+  }
+};
+
+// Función para mostrar el modal de bienvenida con el nombre de usuario
+function mostrarDialogoBienvenida(email, showModal = true) {
+  const welcomeModal = document.getElementById('welcomeModal');
+  const userName = email.split('@')[0]; // Toma el nombre de usuario antes del "@" del correo
+  document.getElementById('userName').innerText = userName; // Colocar el nombre en el modal
+
+  const modalShown = sessionStorage.getItem('welcomeModalShown'); // Verificar si ya se mostró el modal
+
+  if (showModal && !modalShown) {
+    welcomeModal.style.display = 'block';
+
+    // Ocultar el modal al hacer clic en el botón de cerrar
+    const closeWelcomeModal = document.querySelector('#welcomeModal .close-modal');
+    closeWelcomeModal.addEventListener('click', () => {
+      welcomeModal.style.display = 'none';
+    });
+
+    // También cerrar el modal si se hace clic fuera del modal
+    window.onclick = function(event) {
+      if (event.target == welcomeModal) {
+        welcomeModal.style.display = 'none';
+      }
+    };
+
+    // Marcar el modal como mostrado
+    sessionStorage.setItem('welcomeModalShown', 'true');
+  }
+}
+
 // Manejar el estado de autenticación
 onAuthStateChanged(auth, user => {
   const banner = document.getElementById('login-banner');
   
   if (user) {
-    // Usuario autenticado: Ocultar el banner
+    // Usuario autenticado: Ocultar el banner y mostrar el modal si no se ha mostrado
     document.getElementById('loginBtn').style.display = 'none';
     document.getElementById('logoutBtn').style.display = 'block';
     banner.style.display = 'none'; // Ocultar banner si el usuario está autenticado
+
+    // Mostrar el diálogo de bienvenida solo si aún no ha sido mostrado en la sesión actual
+    mostrarDialogoBienvenida(user.email);
     console.log('Usuario autenticado:', user.email);
   } else {
     // No hay usuario autenticado: Mostrar el banner
@@ -36,7 +82,6 @@ onAuthStateChanged(auth, user => {
     console.log('Ningún usuario autenticado');
   }
 });
-
 
 // Iniciar sesión
 document.getElementById('signInBtn').addEventListener('click', () => {
@@ -109,7 +154,6 @@ document.getElementById('registerBtn').addEventListener('click', () => {
     });
 });
 
-
 // Cerrar sesión
 document.getElementById('logoutBtn').addEventListener('click', () => {
   signOut(auth)
@@ -122,15 +166,6 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
       alert('Error al cerrar sesión: ' + error.message);
     });
 });
-
-// Al cargar la página, puedes verificar si hay un usuario almacenado en localStorage
-window.onload = function() {
-  const storedEmail = localStorage.getItem('userEmail') || sessionStorage.getItem('userEmail');
-  if (storedEmail) {
-    console.log('Sesión recordada:', storedEmail);
-    // Puedes directamente hacer el login con las credenciales guardadas si así lo deseas
-  }
-};
 
 // Al cargar la página, mostrar el banner de notificación
 window.onload = () => {
@@ -147,9 +182,12 @@ window.onload = () => {
 };
 
 // Cuando se cierre el modal, ocultar el banner
-closeModal.addEventListener('click', () => {
-  document.getElementById('login-banner').style.display = 'none';
-});
+const closeModal = document.querySelector('.close-modal');
+if (closeModal) {
+  closeModal.addEventListener('click', () => {
+    document.getElementById('login-banner').style.display = 'none';
+  });
+}
 
 import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
 
@@ -170,24 +208,3 @@ document.querySelector('.forgot-password').addEventListener('click', () => {
       alert('Error al enviar correo de restablecimiento: ' + error.message);
     });
 });
-
-// Función para mostrar el modal de bienvenida con el nombre de usuario
-function mostrarDialogoBienvenida(email) {
-  const welcomeModal = document.getElementById('welcomeModal');
-  const userName = email.split('@')[0]; // Toma el nombre de usuario antes del "@" del correo
-  document.getElementById('userName').innerText = userName; // Colocar el nombre en el modal
-  welcomeModal.style.display = 'block';
-
-  // Ocultar el modal al hacer clic en el botón de cerrar
-  const closeWelcomeModal = document.querySelector('#welcomeModal .close-modal');
-  closeWelcomeModal.addEventListener('click', () => {
-    welcomeModal.style.display = 'none';
-  });
-  
-  // También cerrar el modal si se hace clic fuera del modal
-  window.onclick = function(event) {
-    if (event.target == welcomeModal) {
-      welcomeModal.style.display = 'none';
-    }
-  };
-}
