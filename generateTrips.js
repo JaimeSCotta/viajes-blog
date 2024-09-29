@@ -1,6 +1,7 @@
 // generateTrips.js
 import { saveFavorite, removeFavorite, loadFavorites } from './favorites.js'; 
 import { auth, db } from './firebase.js';
+import { doc, getDoc, setDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js';
 
 document.addEventListener('DOMContentLoaded', function () {
   fetch('/viajes-blog/trips.json') // Ruta de tu archivo trips.json
