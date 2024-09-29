@@ -1,4 +1,5 @@
 // generateTrips.js
+import { auth } from './firebase.js'; // Importa db y auth desde firebase.js
 import { handleFavoriteToggle, loadFavorites } from './favorites.js'; // Importa la lógica de favoritos desde favorites.js
 
 document.addEventListener('DOMContentLoaded', function () {
