@@ -2,11 +2,19 @@
 import { handleFavoriteToggle, loadFavorites } from './favorites.js'; // Importa la lógica de favoritos desde favorites.js
 
 document.addEventListener('DOMContentLoaded', function () {
+  // Verificar si el usuario está autenticado antes de cargar los favoritos
+  const user = auth.currentUser;
+
+  // Cargar los viajes desde el JSON
   fetch('/viajes-blog/trips.json') // Ruta de tu archivo trips.json
     .then(response => response.json())
     .then(tripsData => {
       generateTrips(tripsData); // Llama a la función generateTrips pasando los datos del JSON
-      loadFavorites(); // Asegúrate de que loadFavorites esté correctamente importada
+
+      // Solo cargar favoritos si hay un usuario autenticado
+      if (user) {
+        loadFavorites(); // Cargar los favoritos después de generar los viajes
+      }
     })
     .catch(error => console.error('Error al cargar los viajes:', error));
 });
