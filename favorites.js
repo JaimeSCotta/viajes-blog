@@ -21,13 +21,16 @@ export async function handleFavoriteToggle(tripId, tripName, button) {
 
       if (isFavorite) {
         await removeFavorite(tripId); // Eliminar favorito
+        button.classList.remove('active');
         button.innerHTML = '<i class="fa-solid fa-heart"></i>'; // Cambiar texto del botón
       } else {
         await saveFavorite(tripId, tripName); // Agregar favorito
+        button.classList.add('active');
         button.innerHTML = '<i class="fa-solid fa-heart"></i>'; // Cambiar texto del botón
       }
     } else {
       await saveFavorite(tripId, tripName); // Si no hay favoritos, agregar directamente
+      button.classList.add('active');
       button.innerHTML = '<i class="fa-solid fa-heart"></i>';
     }
   } catch (error) {
@@ -85,7 +88,7 @@ export async function removeFavorite(tripId) {
 
 // Función para cargar los favoritos
 export async function loadFavorites() {
-  const user = auth.currentUser; // Obtener el usuario actual
+  const user = auth.currentUser;
   if (user) {
     const userId = user.uid;
     const favoritesRef = doc(db, "favorites", userId);
@@ -95,19 +98,21 @@ export async function loadFavorites() {
 
       if (docSnapshot.exists()) {
         const userFavorites = docSnapshot.data().viajes || [];
-
-        // Aquí, además de renderizar los favoritos, actualiza los botones en la lista de viajes
         const favButtons = document.querySelectorAll('.fav-button');
         favButtons.forEach(button => {
           const tripId = button.getAttribute('data-trip-id');
           const isFavorite = userFavorites.some(fav => fav.id === tripId);
 
           if (isFavorite) {
-            button.innerHTML = '<i class="fa-solid fa-heart"></i>';
+            button.classList.add('active'); // Añadir clase 'active'
+            button.innerHTML = '<i class="fa-solid fa-heart"></i>'; // Corazón lleno
+          } else {
+            button.classList.remove('active'); // Asegúrate de quitar la clase 'active'
+            button.innerHTML = '<i class="fa-solid fa-heart"></i>'; // Corazón vacío
           }
         });
 
-        renderFavorites(userFavorites); // Renderizar los favoritos en algún lugar de la UI
+        renderFavorites(userFavorites);
       } else {
         console.log("No se encontraron favoritos.");
       }
