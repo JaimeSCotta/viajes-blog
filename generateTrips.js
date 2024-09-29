@@ -1,5 +1,6 @@
 // generateTrips.js
-import { saveFavorite, removeFavorite, loadFavorites } from './favorites.js'; // Ajusta la ruta según la ubicación del archivo
+import { saveFavorite, removeFavorite, loadFavorites } from './favorites.js'; 
+import { auth, db } from './firebase.js';
 
 document.addEventListener('DOMContentLoaded', function () {
   fetch('/viajes-blog/trips.json') // Ruta de tu archivo trips.json
