@@ -119,11 +119,20 @@ export async function loadFavorites() {
   }
 }
 
-// Función para renderizar-mostrar los favoritos en la página
+// Función para renderizar los favoritos en la página
 function renderFavorites(favorites) {
   const favoritesContainer = document.querySelector(".favorites-container");
+
+  // Verificar si el contenedor existe en la página
+  if (!favoritesContainer) {
+    console.error("No se encontró el contenedor de favoritos (.favorites-container) en el DOM.");
+    return; // Si no existe, salimos de la función
+  }
+
+  // Limpiar el contenido anterior
   favoritesContainer.innerHTML = "";
 
+  // Añadir cada favorito al contenedor
   favorites.forEach((favorite) => {
     const tripElement = document.createElement("div");
     tripElement.classList.add("favorite-trip");
