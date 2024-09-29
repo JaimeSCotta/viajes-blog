@@ -112,7 +112,7 @@ export async function loadFavorites() {
           }
         });
 
-        renderFavorites(userFavorites);
+        //renderFavorites(userFavorites);
       } else {
         console.log("No se encontraron favoritos.");
       }
