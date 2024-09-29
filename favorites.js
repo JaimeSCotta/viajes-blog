@@ -62,6 +62,18 @@ export async function loadFavorites() {
 
       if (docSnapshot.exists()) {
         const userFavorites = docSnapshot.data().viajes || [];
+
+        // Aquí, además de renderizar los favoritos, actualiza los botones en la lista de viajes
+        const favButtons = document.querySelectorAll('.fav-button');
+        favButtons.forEach(button => {
+          const tripId = button.getAttribute('data-trip-id');
+          const isFavorite = userFavorites.some(fav => fav.id === tripId);
+
+          if (isFavorite) {
+            button.innerHTML = '<i class="fa-solid fa-heart-broken"></i> Eliminar Favorito';
+          }
+        });
+
         renderFavorites(userFavorites);
       } else {
         console.log("No se encontraron favoritos.");
