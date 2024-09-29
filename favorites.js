@@ -21,14 +21,14 @@ export async function handleFavoriteToggle(tripId, tripName, button) {
 
       if (isFavorite) {
         await removeFavorite(tripId); // Eliminar favorito
-        button.innerHTML = '<i class="fa-solid fa-heart"></i> Favorito'; // Cambiar texto del botón
+        button.innerHTML = '<i class="fa-solid fa-heart"></i>'; // Cambiar texto del botón
       } else {
         await saveFavorite(tripId, tripName); // Agregar favorito
-        button.innerHTML = '<i class="fa-solid fa-heart-broken"></i> Eliminar Favorito'; // Cambiar texto del botón
+        button.innerHTML = '<i class="fa-solid fa-heart-broken"></i>'; // Cambiar texto del botón
       }
     } else {
       await saveFavorite(tripId, tripName); // Si no hay favoritos, agregar directamente
-      button.innerHTML = '<i class="fa-solid fa-heart-broken"></i> Eliminar Favorito';
+      button.innerHTML = '<i class="fa-solid fa-heart-broken"></i>';
     }
   } catch (error) {
     console.error("Error al alternar favorito:", error);
@@ -103,7 +103,7 @@ export async function loadFavorites() {
           const isFavorite = userFavorites.some(fav => fav.id === tripId);
 
           if (isFavorite) {
-            button.innerHTML = '<i class="fa-solid fa-heart-broken"></i> Eliminar Favorito';
+            button.innerHTML = '<i class="fa-solid fa-heart-broken"></i>';
           }
         });
 

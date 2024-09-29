@@ -36,7 +36,7 @@ function generateTrips(trips) {
         <h2>${trip.name}</h2>
         <a href="${trip.url}" class="read-more">Read More</a>
         <button class="fav-button" data-trip-id="${trip.id}" data-trip-name="${trip.name}" aria-label="Añadir a favoritos ${trip.name}" type="button">
-          <i class="fa-solid fa-heart"></i> Favorito
+          <i class="fa-solid fa-heart"></i>
         </button>
       </article>`;
 
