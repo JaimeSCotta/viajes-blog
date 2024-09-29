@@ -160,3 +160,22 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
       alert('Error al cerrar sesión: ' + error.message);
     });
 });
+
+// Mostrar el modal de registro (Sign Up) cuando se hace clic en el enlace "Sign In!"
+document.getElementById('signUpBtn').addEventListener('click', (event) => {
+  event.preventDefault(); // Evitar comportamiento por defecto del enlace
+  document.getElementById('signUpModal').style.display = 'block'; // Mostrar el modal de registro
+});
+
+// Cerrar el modal de registro cuando se hace clic en el botón de cierre
+document.querySelector('#signUpModal .close-modal').addEventListener('click', () => {
+  document.getElementById('signUpModal').style.display = 'none';
+});
+
+// También cerrar el modal de registro si se hace clic fuera del contenido del modal
+window.onclick = function(event) {
+  const signUpModal = document.getElementById('signUpModal');
+  if (event.target == signUpModal) {
+    signUpModal.style.display = 'none';
+  }
+};
