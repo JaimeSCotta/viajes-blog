@@ -2,6 +2,39 @@
 import { db, auth } from './firebase.js'; // Importa db y auth desde firebase.js
 import { doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js";
 
+// Función para manejar el toggle de un favorito (agregar o eliminar)
+export async function handleFavoriteToggle(tripId, tripName, button) {
+  const user = auth.currentUser; // Obtener el usuario autenticado
+
+  if (!user) {
+    alert("Debes iniciar sesión para agregar favoritos.");
+    return;
+  }
+
+  try {
+    const favoritesRef = doc(db, "favorites", user.uid);
+    const docSnapshot = await getDoc(favoritesRef);
+
+    if (docSnapshot.exists()) {
+      const currentFavorites = docSnapshot.data().viajes || [];
+      const isFavorite = currentFavorites.some(fav => fav.id === tripId);
+
+      if (isFavorite) {
+        await removeFavorite(tripId); // Eliminar favorito
+        button.innerHTML = '<i class="fa-solid fa-heart"></i> Favorito'; // Cambiar texto del botón
+      } else {
+        await saveFavorite(tripId, tripName); // Agregar favorito
+        button.innerHTML = '<i class="fa-solid fa-heart-broken"></i> Eliminar Favorito'; // Cambiar texto del botón
+      }
+    } else {
+      await saveFavorite(tripId, tripName); // Si no hay favoritos, agregar directamente
+      button.innerHTML = '<i class="fa-solid fa-heart-broken"></i> Eliminar Favorito';
+    }
+  } catch (error) {
+    console.error("Error al alternar favorito:", error);
+  }
+}
+
 // Función para guardar un favorito
 export async function saveFavorite(tripId, tripName) {
   const user = auth.currentUser; // Obtener el usuario actual
@@ -74,7 +107,7 @@ export async function loadFavorites() {
           }
         });
 
-        renderFavorites(userFavorites);
+        renderFavorites(userFavorites); // Renderizar los favoritos en algún lugar de la UI
       } else {
         console.log("No se encontraron favoritos.");
       }
@@ -86,7 +119,7 @@ export async function loadFavorites() {
   }
 }
 
-// Función para mostrar los favoritos en la página
+// Función para renderizar-mostrar los favoritos en la página
 function renderFavorites(favorites) {
   const favoritesContainer = document.querySelector(".favorites-container");
   favoritesContainer.innerHTML = "";
@@ -98,32 +131,3 @@ function renderFavorites(favorites) {
     favoritesContainer.appendChild(tripElement);
   });
 }
-
-// Función para mostrar una notificación temporal
-function showNotification(message) {
-  const notification = document.createElement('div');
-  notification.className = 'notification';
-  notification.innerText = message;
-  
-  document.body.appendChild(notification);
-
-  setTimeout(() => {
-    notification.remove();
-  }, 3000); // Eliminar después de 3 segundos
-}
-
-// Verificar si el usuario está autenticado al presionar el botón de favoritos
-const favoritesButton = document.getElementById('favoritesLink'); // Asegúrate de que este ID es correcto
-
-favoritesButton.addEventListener('click', (event) => {
-  event.preventDefault(); // Evitar la navegación
-
-  const user = auth.currentUser; // Obtener el usuario actual desde auth importado
-
-  if (!user) {
-    showNotification('Debes estar registrado para usar esta funcionalidad.');
-  } else {
-    // Aquí puedes redirigir a la página de favoritos si el usuario está autenticado
-    window.location.href = 'favorites.html';
-  }
-});
