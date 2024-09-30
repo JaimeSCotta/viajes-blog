@@ -24,6 +24,8 @@ header {
   left: 0;
   width: 100%;
   z-index: 1000; /* Asegura que esté sobre el contenido */
+  display: flex; /* Para alinear elementos en fila */
+  flex-direction: column; /* Mantiene los elementos en columnas */
 }
 
 header h1 {
@@ -34,16 +36,19 @@ header h1 {
 }
 
 nav {
-  margin-bottom: 10px;
+  display: flex; /* Cambiado a flex */
+  justify-content: space-between; /* Espacio entre elementos */
+  align-items: center; /* Alineación vertical */
+  margin-bottom: 10px; /* Espacio entre el nav y el h1 */
+  width: 100%; /* Asegura que el nav ocupe todo el ancho */
+  padding: 0 20px; /* Agrega un poco de padding para el contenido */
 }
-
 
 nav ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
   display: flex;
-  justify-content: center;
 }
 
 nav ul li {
@@ -54,6 +59,14 @@ nav ul li a {
   color: white;
   text-decoration: none;
   padding: 10px;
+}
+
+.login-icon {
+  width: 40px; /* Ajusta el tamaño según lo necesites */
+  height: auto;
+  cursor: pointer;
+  border-radius: 50%;
+  margin-left: auto
 }
 
 .hamburger {
@@ -532,10 +545,4 @@ a {
 
 .dropdown-menu li:hover {
   background-color: #f0f0f0;
-}
-
-.login-icon {
-  width: 40px; /* Ajusta el tamaño según lo necesites */
-  cursor: pointer;
-  border-radius: 50%;
 }
