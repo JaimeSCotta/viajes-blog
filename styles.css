@@ -510,3 +510,32 @@ a {
     font-size: 14px; /* Hacer que el texto sea un poco más pequeño para ajustarse mejor en pantallas pequeñas */
   }
 }
+
+.dropdown-menu {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1000;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
+
+.login-icon {
+  width: 40px; /* Ajusta el tamaño según lo necesites */
+  cursor: pointer;
+  border-radius: 50%;
+}

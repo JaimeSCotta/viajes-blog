@@ -3,6 +3,10 @@ import { auth, db } from './firebase.js'; // Importa auth y db desde firebase.js
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
 import { loadFavoritesIndex } from './favorites.js'; // Importado de loadFavorites
 
+// Rutas de las imágenes
+const signInImage = "img/sign_in.png"; // Imagen cuando el usuario no está autenticado
+const loggedInImage = "img/logged.png"; // Imagen cuando el usuario está autenticado
+
 // Registrar a un nuevo usuario
 document.getElementById('registerBtn').addEventListener('click', () => {
   const newEmail = document.getElementById('newEmail').value;
@@ -39,6 +43,7 @@ onAuthStateChanged(auth, user => {
 
   } else {
     console.log('Ningún usuario autenticado');
+    actualizarUIParaUsuarioNoAutenticado();
     mostrarAuthModal(); // Mostrar modal de login si no hay usuario autenticado
   }
 });
@@ -111,11 +116,33 @@ function mostrarAuthModal() {
 
 // Actualiza la UI cuando el usuario está autenticado
 function actualizarUIParaUsuarioAutenticado() {
-  document.getElementById('loginBtn').style.display = 'none';
-  document.getElementById('logoutBtn').style.display = 'block';
-  document.getElementById('login-banner').style.display = 'none'; // Ocultar banner si el usuario está autenticado
+  const loginIcon = document.getElementById('loginIcon');
+  loginIcon.src = loggedInImage; // Cambia la imagen al icono de usuario autenticado
+  loginIcon.alt = "User Menu"; // Texto alternativo
+
+  // Cambiar comportamiento: mostrar menú desplegable
+  loginIcon.addEventListener('click', mostrarMenuDesplegable); // Mostrar menú de logout
+  document.getElementById('logoutBtn').style.display = 'block'; // Mostrar botón de logout
+  document.getElementById('login-banner').style.display = 'none'; // Ocultar banner
 }
 
+// Cuando el usuario no está autenticado
+function actualizarUIParaUsuarioNoAutenticado() {
+  const loginIcon = document.getElementById('loginIcon');
+  loginIcon.src = signInImage; // Cambia la imagen al icono de iniciar sesión
+  loginIcon.alt = "Login"; // Texto alternativo
+
+  // Mostrar modal de autenticación al hacer clic
+  loginIcon.addEventListener('click', () => {
+    document.getElementById('authModal').style.display = 'block';
+  });
+}
+
+// Mostrar el menú desplegable de logout
+function mostrarMenuDesplegable() {
+  const logoutBtn = document.getElementById('logoutBtn');
+  logoutBtn.style.display = logoutBtn.style.display === 'none' ? 'block' : 'none'; // Alternar visibilidad
+}
 
 // Iniciar sesión
 document.getElementById('signInBtn').addEventListener('click', () => {
