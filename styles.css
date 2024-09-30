@@ -18,7 +18,7 @@ header {
   background-color: #333;
   color: white;
   text-align: center;
-  padding: 5px 0;
+  padding: 0; /* Elimina el padding superior e inferior */
   position: fixed; /* Mantiene el header fijo en la parte superior */
   top: 0;
   left: 0;
@@ -26,34 +26,29 @@ header {
   z-index: 1000; /* Asegura que esté sobre el contenido */
 }
 
+nav {
+  display: flex;
+  align-items: center; /* Centra verticalmente los elementos */
+  justify-content: space-between; /* Espaciado entre el centro y la derecha */
+  padding: 5px 20px; /* Reduce el espaciado interno */
+  background-color: #333; /* Color de fondo de la barra de navegación */
+}
+
 header h1 {
-  font-size: 24px;
-  margin: 10px 0;
-  padding: 0; 
+  font-size: 20px; /* Ajusta el tamaño de fuente */
+  margin: 5px 0; /* Reduce el margen superior e inferior */
   line-height: 1.2;
 }
 
-nav {
-  display: flex;
-  margin-bottom: 10px;
-}
-
 .nav-center {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
+  list-style: none; /* Elimina los puntos de la lista */
+  display: flex; /* Alinea los elementos en fila */
+  justify-content: center; /* Centra los elementos en la lista */
+  flex: 1; /* Permite que esta lista ocupe todo el espacio disponible */
 }
 
 .nav-center li {
-  margin-right: 15px; 
-}
-
-.nav-center li a {
-  color: white;
-  text-decoration: none;
-  padding: 10px;
+  margin-right: 15px; /* Espaciado entre los elementos */
 }
 
 .nav-right {
