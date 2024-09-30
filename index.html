@@ -143,6 +143,12 @@
       }
     };
 
+    window.onclick = function(event) {
+      if (event.target == signUpModal) {
+        signUpModal.style.display = 'none';
+      }
+    };
+
     // Cerrar modal de bienvenida (si es necesario)
     const closeWelcomeModal = document.querySelector('#welcomeModal .close-modal');
     closeWelcomeModal.addEventListener('click', () => {
