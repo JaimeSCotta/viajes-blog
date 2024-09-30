@@ -93,8 +93,8 @@
         <a href="#" class="forgot-password">Forgot Password?</a>
       </div>
   
-      <button id="signInBtn">LOGIN</button>
-      <p class="signup-link">Not registered? <a href="#" id="signUpBtn">Sign In!</a></p> <!-- Añadido -->
+      <button id="signInBtn">SIGN IN</button>
+      <p class="signup-link">Not registered? <a href="#" id="signUpBtn">Sign Un!</a></p> <!-- Añadido -->
     </div>
   </div>
 
@@ -121,7 +121,7 @@
 
   <script>
     // Mostrar el modal de autenticación
-    const loginBtn = document.getElementById('loginBtn');
+    const signInBtn = document.getElementById('signInBtn');
     const authModal = document.getElementById('authModal');
     const closeAuthModal = document.querySelector('#authModal .close-modal');
   
@@ -129,7 +129,7 @@
     authModal.style.display = 'none';
     });
 
-    loginBtn.addEventListener('click', () => {
+    signInBtn.addEventListener('click', () => {
       authModal.style.display = 'block';
     });
 
