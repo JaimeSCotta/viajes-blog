@@ -34,27 +34,35 @@ header h1 {
 }
 
 nav {
-  margin-bottom: 10px;
-}
-
-
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
   display: flex;
-  justify-content: center;
+  align-items: center; /* Centra verticalmente los elementos */
+  justify-content: space-between; /* Espaciado entre el centro y la derecha */
+  padding: 10px 20px; /* Espaciado interno */
+  background-color: #333; /* Color de fondo de la barra de navegación */
 }
 
-nav ul li {
-  margin-right: 15px;
+.nav-center {
+  list-style: none; /* Elimina los puntos de la lista */
+  display: flex; /* Alinea los elementos en fila */
+  justify-content: center; /* Centra los elementos en la lista */
+  flex: 1; /* Permite que esta lista ocupe todo el espacio disponible */
 }
 
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  padding: 10px;
+.nav-center li {
+  margin-right: 15px; /* Espaciado entre los elementos */
 }
+
+.nav-right {
+  list-style: none; /* Elimina los puntos de la lista */
+  display: flex; /* Alinea los elementos en fila */
+}
+
+.login-icon {
+  width: 40px; /* Ajusta el tamaño según lo necesites */
+  cursor: pointer;
+  border-radius: 50%; /* Redondea el ícono */
+}
+
 
 .hamburger {
   font-size: 20px;
@@ -532,15 +540,4 @@ a {
 
 .dropdown-menu li:hover {
   background-color: #f0f0f0;
-}
-
-.login-icon {
-  width: 40px; /* Ajusta el tamaño según lo necesites */
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-.nav-right {
-  list-style: none; /* Elimina los puntos de la lista */
-  display: flex; /* Alinea los elementos en fila */
 }
