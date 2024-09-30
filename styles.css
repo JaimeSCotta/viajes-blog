@@ -35,10 +35,7 @@ header h1 {
 
 nav {
   display: flex;
-  align-items: center; /* Centra verticalmente los elementos */
-  justify-content: space-between; /* Espaciado entre el centro y la derecha */
-  padding: 10px 20px; /* Espaciado interno */
-  background-color: #333; /* Color de fondo de la barra de navegación */
+  margin-bottom: 10px;
 }
 
 .nav-center {
