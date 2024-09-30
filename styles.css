@@ -39,14 +39,21 @@ nav {
 }
 
 .nav-center {
-  list-style: none; /* Elimina los puntos de la lista */
-  display: flex; /* Alinea los elementos en fila */
-  justify-content: center; /* Centra los elementos en la lista */
-  flex: 1; /* Permite que esta lista ocupe todo el espacio disponible */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .nav-center li {
-  margin-right: 15px; /* Espaciado entre los elementos */
+  margin-right: 15px; 
+}
+
+.nav-center li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
 }
 
 .nav-right {
