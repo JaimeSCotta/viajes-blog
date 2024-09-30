@@ -539,3 +539,8 @@ a {
   cursor: pointer;
   border-radius: 50%;
 }
+
+.nav-right {
+  list-style: none; /* Elimina los puntos de la lista */
+  display: flex; /* Alinea los elementos en fila */
+}
