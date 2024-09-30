@@ -122,8 +122,14 @@ function actualizarUIParaUsuarioAutenticado() {
 
   // Cambiar comportamiento: mostrar menú desplegable
   loginIcon.addEventListener('click', mostrarMenuDesplegable); // Mostrar menú de logout
-  document.getElementById('logoutBtn').style.display = 'block'; // Mostrar botón de logout
+  document.getElementById('dropdownMenu').style.display = 'block'; // Mostrar botón de logout
   document.getElementById('login-banner').style.display = 'none'; // Ocultar banner
+}
+
+// Mostrar el menú desplegable de logout
+function mostrarMenuDesplegable() {
+  const dropdownMenu = document.getElementById('dropdownMenu');
+  dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'block' : 'none'; // Alternar visibilidad
 }
 
 // Cuando el usuario no está autenticado
@@ -136,12 +142,6 @@ function actualizarUIParaUsuarioNoAutenticado() {
   loginIcon.addEventListener('click', () => {
     document.getElementById('authModal').style.display = 'block';
   });
-}
-
-// Mostrar el menú desplegable de logout
-function mostrarMenuDesplegable() {
-  const logoutBtn = document.getElementById('logoutBtn');
-  logoutBtn.style.display = logoutBtn.style.display === 'none' ? 'block' : 'none'; // Alternar visibilidad
 }
 
 // Iniciar sesión

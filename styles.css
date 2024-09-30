@@ -519,25 +519,23 @@ a {
   }
 }
 
-.dropdown-menu {
-  background-color: #fff;
+.dropdown {
+  position: absolute;
+  right: 20px; /* Ajusta según tu diseño */
+  background-color: white;
   border: 1px solid #ccc;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Asegúrate de que esté encima de otros elementos */
+}
+
+#logoutBtn {
   padding: 10px;
-  z-index: 1000;
-}
-
-.dropdown-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.dropdown-menu li {
-  padding: 8px;
+  border: none;
+  background-color: #f44336; /* Rojo para el botón de logout */
+  color: white;
   cursor: pointer;
 }
 
-.dropdown-menu li:hover {
-  background-color: #f0f0f0;
+#logoutBtn:hover {
+  background-color: #d32f2f; /* Un poco más oscuro en hover */
 }

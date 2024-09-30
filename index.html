@@ -34,10 +34,6 @@
     <h1>JSC Trips</h1>
   </header>
 
-  <div id="auth-container">
-    <button id="logoutBtn" style="display:none;">Cerrar sesión</button>
-  </div>
-
   <button class="hamburger" id="openSidebar" aria-label="Abrir barra lateral" type="button">
     <i class="fas fa-bars"></i>
   </button>
@@ -46,6 +42,13 @@
     <button id="closeSidebar" class="close-btn" type="button">&times;</button>
     <ul>
     </ul>
+  </div>
+
+  <div id="auth-container">
+    <img id="loginIcon" src="img/sign_in.png" alt="Login" class="login-icon">
+    <div id="dropdownMenu" class="dropdown" style="display: none;">
+      <button id="logoutBtn">Cerrar sesión</button>
+    </div>
   </div>
 
   <main>
