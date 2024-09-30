@@ -50,6 +50,7 @@ nav {
 
 .nav-center li {
   margin-right: 15px; /* Espaciado entre los elementos */
+  margin: 0 15px;
 }
 
 .nav-right {
