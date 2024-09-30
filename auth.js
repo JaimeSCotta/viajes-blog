@@ -191,6 +191,7 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
 // Mostrar el modal de registro (Sign Up) cuando se hace clic en el enlace "Sign In!"
 document.getElementById('signUpBtn').addEventListener('click', (event) => {
   event.preventDefault(); // Evitar comportamiento por defecto del enlace
+  document.getElementById('authModal').style.display = 'none';
   document.getElementById('signUpModal').style.display = 'block'; // Mostrar el modal de registro
 });
 
