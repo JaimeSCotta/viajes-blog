@@ -25,16 +25,14 @@
 <body>
   <header>
     <nav>
-      <ul class="nav-center"> <!-- Cambiar esta clase para centrar -->
+      <ul>
         <li><a href="https://jaimescotta.github.io/viajes-blog/">Home</a></li>
         <li><a href="favorites.html" id="favoritesLink">Favorites</a></li>
-      </ul>
-      <ul class="nav-right">
         <li><img id="loginIcon" src="img/sign_in.png" alt="Login" class="login-icon"></li>
       </ul>
     </nav>
     <h1>JSC Trips</h1>
-  </header>  
+  </header>
 
   <div id="auth-container">
     <button id="logoutBtn" style="display:none;">Cerrar sesión</button>
@@ -123,7 +121,7 @@
 
   <script>
     // Mostrar el modal de autenticación
-    const loginIcon = document.getElementById('loginIcon');
+    const loginBtn = document.getElementById('loginBtn');
     const authModal = document.getElementById('authModal');
     const closeAuthModal = document.querySelector('#authModal .close-modal');
   
@@ -131,7 +129,7 @@
     authModal.style.display = 'none';
     });
 
-    loginIcon.addEventListener('click', () => {
+    loginBtn.addEventListener('click', () => {
       authModal.style.display = 'block';
     });
 
