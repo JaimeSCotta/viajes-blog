@@ -201,4 +201,16 @@ function renderFavorites(favorites) {
   });
 
   console.log(`Se renderizaron ${favorites.length} favoritos.`); // Depuración
+    // Agregar manejador de eventos a cada botón de eliminar
+    const buttons = document.querySelectorAll('.fav-button');
+    buttons.forEach(button => {
+      button.addEventListener('click', async (event) => {
+        const tripId = button.getAttribute('data-trip-id');
+        const tripName = button.getAttribute('data-trip-name');
+  
+        // Eliminar el favorito y volver a cargar la lista
+        await removeFavorite(tripId);
+        loadFavorites(); // Recargar la lista de favoritos
+      });
+    });
 }
