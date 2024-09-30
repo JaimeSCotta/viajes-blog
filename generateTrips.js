@@ -1,6 +1,6 @@
 // generateTrips.js
 import { auth } from './firebase.js'; // Importa db y auth desde firebase.js
-import { handleFavoriteToggle, loadFavorites } from './favorites.js'; // Importa la lógica de favoritos desde favorites.js
+import { handleFavoriteToggle, loadFavoritesIndex } from './favorites.js'; // Importa la lógica de favoritos desde favorites.js
 
 document.addEventListener('DOMContentLoaded', function () {
   // Verificar si el usuario está autenticado antes de cargar los favoritos
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Solo cargar favoritos si hay un usuario autenticado
       if (user) {
-        loadFavorites(); // Cargar los favoritos después de generar los viajes
+        loadFavoritesIndex(); // Cargar los favoritos después de generar los viajes
       }
     })
     .catch(error => console.error('Error al cargar los viajes:', error));

@@ -1,7 +1,7 @@
 // auth.js
 import { auth, db } from './firebase.js'; // Importa auth y db desde firebase.js
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
-import { loadFavorites } from './favorites.js'; // Importado de loadFavorites
+import { loadFavoritesIndex } from './favorites.js'; // Importado de loadFavorites
 
 // Registrar a un nuevo usuario
 document.getElementById('registerBtn').addEventListener('click', () => {
@@ -29,7 +29,7 @@ onAuthStateChanged(auth, user => {
     actualizarUIParaUsuarioAutenticado();
 
     // Aquí ejecuta la carga de favoritos ya que el usuario está autenticado
-    loadFavorites(); 
+    loadFavoritesIndex(); 
 
     // Cerrar el modal de autenticación si el usuario ya está autenticado
     const authModal = document.getElementById('authModal');

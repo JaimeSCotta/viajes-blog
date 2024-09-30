@@ -60,11 +60,13 @@
     // Verificar autenticación antes de cargar favoritos
     onAuthStateChanged(auth, user => {
       if (user) {
+        console.log('Usuario autenticado:', user.email); // Mensaje de depuración
         loadFavorites();  // Cargar favoritos si está autenticado
       } else {
-        window.location.href = "index.html"; // Redirigir a login si no está autenticado
+        console.log('No hay usuario autenticado, redirigiendo a login.'); // Mensaje de depuración
+        window.location.href = "https://jaimescotta.github.io/viajes-blog/"; // Redirigir a login si no está autenticado
       }
     });
-  </script>  
+  </script>
 </body>
 </html>

@@ -86,8 +86,8 @@ export async function removeFavorite(tripId) {
   }
 }
 
-// Función para cargar los favoritos
-export async function loadFavorites() {
+// Función para cargar los favoritos en index.html
+export async function loadFavoritesIndex() {
   const user = auth.currentUser;
   if (user) {
     const userId = user.uid;
@@ -124,11 +124,51 @@ export async function loadFavorites() {
   }
 }
 
+// Función para cargar los favoritos en favorites.html
+export async function loadFavorites() {
+  const user = auth.currentUser;
+  if (user) {
+    const userId = user.uid;
+    console.log(`Cargando favoritos para el usuario: ${user.email} (${userId})`); // Depuración
+    const favoritesRef = doc(db, "favorites", userId);
+
+    try {
+      const docSnapshot = await getDoc(favoritesRef);
+
+      if (docSnapshot.exists()) {
+        const userFavorites = docSnapshot.data().viajes || [];
+        console.log(`Se encontraron ${userFavorites.length} favoritos.`); // Depuración
+
+        const favButtons = document.querySelectorAll('.fav-button');
+        favButtons.forEach(button => {
+          const tripId = button.getAttribute('data-trip-id');
+          const isFavorite = userFavorites.some(fav => fav.id === tripId);
+
+          if (isFavorite) {
+            button.classList.add('active'); // Añadir clase 'active'
+            button.innerHTML = '<i class="fa-solid fa-heart"></i>'; // Corazón lleno
+          } else {
+            button.classList.remove('active'); // Asegúrate de quitar la clase 'active'
+            button.innerHTML = '<i class="fa-solid fa-heart"></i>'; // Corazón vacío
+          }
+        });
+
+        renderFavorites(userFavorites); // Renderizar los favoritos en la página
+      } else {
+        console.log("No se encontraron favoritos para este usuario."); // Depuración
+      }
+    } catch (error) {
+      console.error("Error al cargar los favoritos:", error);
+    }
+  } else {
+    console.log("No hay usuario autenticado."); // Depuración
+  }
+}
+
 // Función para renderizar los favoritos en la página
 function renderFavorites(favorites) {
   const favoritesContainer = document.querySelector(".favorites-container");
 
-  // Verificar si el contenedor existe en la página
   if (!favoritesContainer) {
     console.error("No se encontró el contenedor de favoritos (.favorites-container) en el DOM.");
     return;
@@ -137,11 +177,16 @@ function renderFavorites(favorites) {
   // Limpiar el contenido anterior
   favoritesContainer.innerHTML = "";
 
-  // Añadir cada favorito al contenedor usando la misma estructura que en generateTrips
+  if (favorites.length === 0) {
+    console.log("No hay favoritos que mostrar.");
+    favoritesContainer.innerHTML = "<p>No tienes viajes favoritos aún.</p>";
+    return;
+  }
+
+  // Añadir cada favorito al contenedor
   favorites.forEach((favorite) => {
     const imageUrl = `img/trips/${favorite.id}.jpg`;
 
-    // Estructura HTML de cada artículo
     const favoriteHtml = `
       <article>
         <img src="${imageUrl}" alt="${favorite.nombre}">
@@ -152,7 +197,8 @@ function renderFavorites(favorites) {
         </button>
       </article>`;
 
-    // Inserta el HTML generado en el contenedor
     favoritesContainer.innerHTML += favoriteHtml;
   });
+
+  console.log(`Se renderizaron ${favorites.length} favoritos.`); // Depuración
 }
