@@ -131,17 +131,28 @@ function renderFavorites(favorites) {
   // Verificar si el contenedor existe en la página
   if (!favoritesContainer) {
     console.error("No se encontró el contenedor de favoritos (.favorites-container) en el DOM.");
-    return; // Si no existe, salimos de la función
+    return;
   }
 
   // Limpiar el contenido anterior
   favoritesContainer.innerHTML = "";
 
-  // Añadir cada favorito al contenedor
+  // Añadir cada favorito al contenedor usando la misma estructura que en generateTrips
   favorites.forEach((favorite) => {
-    const tripElement = document.createElement("div");
-    tripElement.classList.add("favorite-trip");
-    tripElement.innerHTML = `<h3>${favorite.nombre}</h3> <p>ID: ${favorite.id}</p>`;
-    favoritesContainer.appendChild(tripElement);
+    const imageUrl = `img/trips/${favorite.id}.jpg`;
+
+    // Estructura HTML de cada artículo
+    const favoriteHtml = `
+      <article>
+        <img src="${imageUrl}" alt="${favorite.nombre}">
+        <h2>${favorite.nombre}</h2>
+        <a href="trip-details.html?tripId=${favorite.id}" class="read-more">Read More</a>
+        <button class="fav-button active" data-trip-id="${favorite.id}" data-trip-name="${favorite.nombre}" aria-label="Eliminar de favoritos ${favorite.nombre}" type="button">
+          <i class="fa-solid fa-heart"></i>
+        </button>
+      </article>`;
+
+    // Inserta el HTML generado en el contenedor
+    favoritesContainer.innerHTML += favoriteHtml;
   });
 }
