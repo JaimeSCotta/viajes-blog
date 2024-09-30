@@ -200,10 +200,25 @@ document.querySelector('#signUpModal .close-modal').addEventListener('click', ()
   document.getElementById('signUpModal').style.display = 'none';
 });
 
-// También cerrar el modal de registro si se hace clic fuera del contenido del modal
+
+
 window.onclick = function(event) {
   const signUpModal = document.getElementById('signUpModal');
+  const authModal = document.getElementById('authModal');
+  
+  // Cerrar el modal de registro
   if (event.target == signUpModal) {
     signUpModal.style.display = 'none';
+  }
+
+  // Cerrar el modal de autenticación (Login)
+  if (event.target == authModal) {
+    authModal.style.display = 'none';
+  }
+
+  // Cerrar el modal de bienvenida
+  const welcomeModal = document.getElementById('welcomeModal');
+  if (event.target == welcomeModal) {
+    welcomeModal.style.display = 'none';
   }
 };
