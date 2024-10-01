@@ -32,51 +32,58 @@ header h1 {
   line-height: 1.2;
 }
 
-/* Eliminar el estilo de lista */
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+/* Estilos para el contenedor del nav */
+nav {
   display: flex;
+  justify-content: space-between; /* Para colocar los elementos de Home/Favorites en el centro y Login a la derecha */
+  align-items: center; /* Alinea verticalmente */
+  width: 100%;
 }
 
 /* Centrar los elementos de navegación */
 .nav-center {
   display: flex;
   justify-content: center;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  right: 0;
+  list-style-type: none; /* Quita los puntos de la lista */
+  padding: 0;
+  margin: 0;
+}
+
+.nav-center li {
+  margin: 0 20px; /* Espaciado entre los elementos del centro */
 }
 
 /* El contenedor del ícono de usuario a la derecha */
 .nav-right {
-  float: right;
-  position: relative;
-  right: 0;
-  top: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-end; /* Coloca el icono del login a la derecha */
+  margin: 0;
+  padding: 0;
 }
 
-/* Estilo para el contenedor de navegación */
-nav {
-  position: relative;
+#auth-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: center; /* Centra verticalmente el ícono de login */
+}
+
+#loginIcon {
+  width: 40px;
+  cursor: pointer;
 }
 
 /* Estilo para el menú desplegable */
 #dropdownMenu {
   position: absolute;
   right: 0;
-  background-color: rgba(47, 123, 189, 0.8) !important; /* Azul con opacidad */
-  border: none; /* Eliminamos el borde */
+  background-color: rgba(47, 123, 189, 0.8);
+  border: none;
   padding: 10px;
   display: none;
   z-index: 1000;
-  border-radius: 8px; /* Bordes redondeados para darle un mejor aspecto */
+  border-radius: 8px;
 }
+
 
 #dropdownMenu p {
   margin: 0 0 10px;

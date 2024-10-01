@@ -119,6 +119,7 @@ function actualizarUIParaUsuarioAutenticado() {
   const loginIcon = document.getElementById('loginIcon');
   loginIcon.src = loggedInImage; // Cambiar a imagen de usuario autenticado
   loginIcon.alt = "User Menu"; // Cambiar el texto alternativo
+  document.getElementById('authModal').style.display = 'none'; // Cierra el modal
   
   // Mostrar el nombre de usuario
   const user = auth.currentUser;
@@ -132,19 +133,10 @@ function actualizarUIParaUsuarioAutenticado() {
     dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block'; // Alterna el menú
   });
 
-  // Ocultar el modal de login si está abierto
-  document.getElementById('authModal').style.display = 'none';
-
   // Configurar el botón de cerrar sesión
   document.getElementById('logoutBtn').addEventListener('click', cerrarSesion);
 }
 
-
-// Mostrar el menú desplegable de logout
-function mostrarMenuDesplegable() {
-  const dropdownMenu = document.getElementById('dropdownMenu');
-  dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'block' : 'none'; // Alternar visibilidad
-}
 
 // Cuando el usuario no está autenticado
 function actualizarUIParaUsuarioNoAutenticado() {
