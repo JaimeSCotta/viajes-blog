@@ -117,14 +117,28 @@ function mostrarAuthModal() {
 // Actualiza la UI cuando el usuario está autenticado
 function actualizarUIParaUsuarioAutenticado() {
   const loginIcon = document.getElementById('loginIcon');
-  loginIcon.src = loggedInImage; // Cambia la imagen al icono de usuario autenticado
-  loginIcon.alt = "User Menu"; // Texto alternativo
+  loginIcon.src = loggedInImage; // Cambiar a imagen de usuario autenticado
+  loginIcon.alt = "User Menu"; // Cambiar el texto alternativo
+  
+  // Mostrar el nombre de usuario
+  const user = auth.currentUser;
+  if (user) {
+    document.getElementById('userNameDropdown').textContent = user.email.split('@')[0]; // Solo nombre
+  }
 
-  // Cambiar comportamiento: mostrar menú desplegable
-  loginIcon.addEventListener('click', mostrarMenuDesplegable); // Mostrar menú de logout
-  document.getElementById('dropdownMenu').style.display = 'block'; // Mostrar botón de logout
-  document.getElementById('login-banner').style.display = 'none'; // Ocultar banner
+  // Mostrar el menú desplegable al hacer clic en la imagen
+  loginIcon.addEventListener('click', () => {
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block'; // Alterna el menú
+  });
+
+  // Ocultar el modal de login si está abierto
+  document.getElementById('authModal').style.display = 'none';
+
+  // Configurar el botón de cerrar sesión
+  document.getElementById('logoutBtn').addEventListener('click', cerrarSesion);
 }
+
 
 // Mostrar el menú desplegable de logout
 function mostrarMenuDesplegable() {
@@ -142,6 +156,7 @@ function actualizarUIParaUsuarioNoAutenticado() {
   loginIcon.addEventListener('click', () => {
     document.getElementById('authModal').style.display = 'block';
   });
+  document.getElementById('dropdownMenu').style.display = 'none';
 }
 
 // Iniciar sesión

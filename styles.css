@@ -32,28 +32,86 @@ header h1 {
   line-height: 1.2;
 }
 
-nav {
-  margin-bottom: 10px;
-}
-
-
+/* Eliminar el estilo de lista */
 nav ul {
   list-style-type: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+/* Centrar los elementos de navegación */
+.nav-center {
   display: flex;
   justify-content: center;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
 }
 
-nav ul li {
-  margin-right: 15px;
+/* El contenedor del ícono de usuario a la derecha */
+.nav-right {
+  float: right;
+  position: relative;
+  right: 0;
+  top: 0;
 }
 
-nav ul li a {
-  color: white;
-  text-decoration: none;
+/* Estilo para el contenedor de navegación */
+nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Estilo para el menú desplegable */
+#dropdownMenu {
+  position: absolute;
+  right: 0;
+  background-color: rgba(47, 123, 189, 0.8) !important; /* Azul con opacidad */
+  border: none; /* Eliminamos el borde */
   padding: 10px;
+  display: none;
+  z-index: 1000;
+  border-radius: 8px; /* Bordes redondeados para darle un mejor aspecto */
 }
+
+#dropdownMenu p {
+  margin: 0 0 10px;
+}
+
+/* Cambiamos el icono de cerrar sesión */
+#logoutBtn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  padding: 0; /* Elimina el padding para evitar recuadros adicionales */
+  outline: none; /* Elimina el borde de enfoque */
+}
+
+#logoutBtn img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+#logoutBtn i {
+  font-size: 18px;
+  margin-right: 8px;
+  color: white; /* Aseguramos que el ícono sea blanco */
+}
+
+/* Cuando pasamos el cursor por el botón */
+#logoutBtn:hover {
+  color: #dcebf7;
+}
+
 
 .login-icon {
   width: 40px; /* Ajusta el tamaño según lo necesites */
@@ -269,16 +327,6 @@ a {
   color: inherit;
 }
 
-.notification {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: #f44336; /* Color de fondo rojo */
-  color: white;
-  padding: 15px;
-  border-radius: 5px;
-  z-index: 1000;
-}
 
 /* Estilos del Modal */
 .modal {
@@ -517,25 +565,4 @@ a {
   .signup-link {
     font-size: 14px; /* Hacer que el texto sea un poco más pequeño para ajustarse mejor en pantallas pequeñas */
   }
-}
-
-.dropdown {
-  position: absolute;
-  right: 20px; /* Ajusta según tu diseño */
-  background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Asegúrate de que esté encima de otros elementos */
-}
-
-#logoutBtn {
-  padding: 10px;
-  border: none;
-  background-color: #f44336; /* Rojo para el botón de logout */
-  color: white;
-  cursor: pointer;
-}
-
-#logoutBtn:hover {
-  background-color: #d32f2f; /* Un poco más oscuro en hover */
 }
