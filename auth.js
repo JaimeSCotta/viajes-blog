@@ -119,7 +119,6 @@ function actualizarUIParaUsuarioAutenticado() {
   const loginIcon = document.getElementById('loginIcon');
   loginIcon.src = loggedInImage; // Cambiar a imagen de usuario autenticado
   loginIcon.alt = "User Menu"; // Cambiar el texto alternativo
-  document.getElementById('authModal').style.display = 'none'; // Cierra el modal
   
   // Mostrar el nombre de usuario
   const user = auth.currentUser;
@@ -129,6 +128,7 @@ function actualizarUIParaUsuarioAutenticado() {
 
   // Mostrar el menú desplegable al hacer clic en la imagen
   loginIcon.addEventListener('click', () => {
+    document.getElementById('authModal').style.display = 'none'; // Cierra el modal
     const dropdownMenu = document.getElementById('dropdownMenu');
     dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block'; // Alterna el menú
   });
