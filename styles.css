@@ -20,6 +20,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   background-color: #333;
   color: white;
   text-align: center;
@@ -37,6 +38,8 @@ header h1 {
   padding: 0; 
   line-height: 1.2;
 }
+/* -- --------------------------------------- -- */
+
 
 #auth-container {
   display: flex;
@@ -47,10 +50,9 @@ header h1 {
   width: 40px;
   cursor: pointer;
 }
-/* -- --------------------------------------- -- */
 
-
-/* -- Estilos del menú desplegable de usuario -- */
+/* --------------- */
+/* Estilo para el menú desplegable */
 #dropdownMenu {
   position: absolute;
   right: 0;
@@ -62,10 +64,13 @@ header h1 {
   border-radius: 8px;
 }
 
+
 #dropdownMenu p {
   margin: 0 0 10px;
 }
 
+/* --------------- */
+/* Icono de cerrar sesión */
 #logoutBtn {
   background: none;
   border: none;
@@ -90,9 +95,11 @@ header h1 {
   color: white;
 }
 
+/* Cuando pasamos el cursor por el botón */
 #logoutBtn:hover {
   color: #dcebf7;
 }
+
 
 .login-icon {
   width: 40px;
@@ -100,10 +107,9 @@ header h1 {
   cursor: pointer;
   border-radius: 50%;
 }
-/* -- ------------------------------- -- */
+/* --------------- */
 
 
-/* -- Estilos de la barra lateral -- */
 .hamburger {
   font-size: 20px;
   background: none;
@@ -165,10 +171,7 @@ header h1 {
   color: white;
   cursor: pointer;
 }
-/* -- ---------------------------- -- */
 
-
-/* -- Estilos de la sección principal "main" -- */
 main {
   flex: 1;
   display: flex;
@@ -177,11 +180,11 @@ main {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  margin-top: 80px; /* Evita superposición con el header */
-  margin-bottom: 70px; /* Espacio antes del footer */
-  padding-bottom: 10px; /* Espacio adicional */
+  margin-top: 80px; /* Ajuste para evitar que el contenido se superponga al header */
+  margin-bottom: 70px; /* Asegura que haya espacio suficiente antes del footer */
+  padding-bottom: 10px; /* Espacio adicional para evitar que el contenido se corte antes del footer */
   min-height: calc(10vh - 80px);
-  overflow-y: auto; /* Scroll solo en main */
+  overflow-y: auto; /* Mantén el scroll dentro del main */
 }
 
 .main_trips {
@@ -190,10 +193,7 @@ main {
   gap: 20px;
   padding: 20px 0;
 }
-/* -- --------------------------------------- -- */
 
-
-/* -- Estilos del pie de página "footer" -- */
 footer {
   background-color: #333;
   color: white;
@@ -205,12 +205,12 @@ footer {
   width: 100%;
   z-index: 1000;
 }
-/* -- ------------------------------------- -- */
 
 
-/* -- Estilos responsivos para diferentes pantallas -- */
+/* -- Organizar para varios dispositivos-tipos de pantalla -- */
 
-/* Para pantallas grandes */
+  /* -- Como se muestran los Viajes -- */
+    /* -- Para pantallas grandes -- */
 @media (min-width: 1200px) {
   article {
     padding: 20px;
@@ -223,7 +223,7 @@ footer {
   }
 }
 
-/* Para pantallas medianas */
+    /* Para pantallas medianas */
 @media (max-width: 900px) {
   .main_trips {
     grid-template-columns: repeat(3, 1fr);
@@ -233,7 +233,7 @@ footer {
   }
 }
 
-/* Para pantallas pequeñas (móviles) */
+    /* Para pantallas pequeñas (móviles) */
 @media (max-width: 600px) {
   .main_trips {
     grid-template-columns: repeat(1, 1fr);
@@ -241,38 +241,46 @@ footer {
   article img {
     height: 150px;
   }
+}
+  /* -- Como se muestran los Viajes -- */
 
+    /* Para pantallas pequeñas (móviles) */
+@media (max-width: 600px) {
   .modal-content {
-    width: 80%; /* Reducir el ancho del modal */
+    width: 80%; /* Reducir el ancho del modal al 90% de la pantalla */
     padding: 20px; 
   }
 
+  /* Ajustar el botón de cierre (X) para que siempre sea visible */
   .close-modal {
-    font-size: 24px;
+    font-size: 24px; /* Aumentar ligeramente el tamaño del botón para que sea más fácil de pulsar */
     top: 5px;
     right: 5px;
   }
 
+  /* Ajuste de los inputs en el modal */
   .modal-content input[type="email"],
   .modal-content input[type="password"] {
-    width: 80%;
+    width: 80%; /* Asegura que los inputs ocupen todo el ancho disponible */
     padding: 15px;
   }
 
+  /* Ajuste del botón de login */
   .modal-content button {
-    padding: 15px;
+    padding: 15px; /* Reducir el padding del botón para que no sea demasiado grande */
     font-size: 14px;
   }
 
+  /* Ajuste del texto y enlace de "Forgot Password?" */
   .modal-content .forgot-password,
   .signup-link {
-    font-size: 14px;
+    font-size: 14px; /* Hacer que el texto sea un poco más pequeño para ajustarse mejor en pantallas pequeñas */
   }
 }
-/* -- ------------------------------------------- -- */
+/* -- ---------------------------------------------------- -- */
 
 
-/* -- Estilos para artículos -- */
+/* Estilos globales para todos los elementos <article> */
 article {
   position: relative;
   background-color: white;
@@ -284,7 +292,7 @@ article {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   max-height: 426px;
-  margin-bottom: 20px; /* Espacio entre artículos */
+  margin-bottom: 20px; /* Añadido para dar espacio entre artículos */
 }
 
 article img {
@@ -332,18 +340,24 @@ a.read-more:hover {
   color: red;
 }
 
+.fav-button:focus,
+.fav-button:hover {
+  outline: none;
+  box-shadow: none;
+}
+
 .fav-button:hover {
   color: #555;
 }
+
 
 a {
   text-decoration: none;
   color: inherit;
 }
-/* -- -------------------------------------------- -- */
 
 
-/* -- Estilos del Modal -- */
+/* Estilos del Modal */
 .modal {
   display: flex;
   justify-content: center;
@@ -357,6 +371,7 @@ a {
   background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
 }
 
+/* Estilos del contenido del modal */
 .modal-content {
   background: linear-gradient(135deg, #004d80, #2f7bbd); /* Degradado similar a la imagen */
   padding: 30px;
@@ -370,17 +385,17 @@ a {
   margin: auto;
 }
 
-.modal-content label {
-  font-size: 14px;
-  color: #c0c0c0;
-}
-
-.modal-content h2 {
-  margin-bottom: 20px;
+/* Botón para cerrar */
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
   color: white;
-  font-size: 24px;
+  cursor: pointer;
 }
 
+/* Estilos de los inputs */
 .modal-content input[type="email"],
 .modal-content input[type="password"] {
   width: 80%;
@@ -404,6 +419,39 @@ a {
   border-bottom: 2px solid #00d4ff;
 }
 
+/* Contenedor de input con icono */
+.input-icon {
+  position: relative;
+}
+
+.input-icon input {
+  padding-left: 40px; /* Añade espacio para el icono */
+}
+
+/* Estilos del icono */
+.input-icon i {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 18px;
+}
+
+/* Estilos del checkbox */
+.modal-content .checkbox-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.modal-content label {
+  font-size: 14px;
+  color: #c0c0c0;
+}
+
+/* Estilos del botón de login */
 .modal-content button {
   width: 100%;
   padding: 15px;
@@ -421,6 +469,7 @@ a {
   background-color: #004080; /* Color de hover */
 }
 
+/* Estilos del enlace "Forgot Password?" */
 .modal-content .forgot-password {
   color: #c0c0c0;
   font-size: 14px;
@@ -431,47 +480,29 @@ a {
   color: white;
 }
 
-.close-modal {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 30px;
+/* Ajustes finales */
+.modal-content h2 {
+  margin-bottom: 20px;
   color: white;
-  cursor: pointer;
-}
-/* -- ------------------------------------- -- */
-
-
-/* -- Contenedor de los iconos que se muestran -- */
-.input-icon {
-  position: relative;
+  font-size: 24px;
 }
 
-.input-icon input {
-  padding-left: 40px;
+.signup-link {
+  margin-top: 15px;
+  color: #c0c0c0;
+  font-size: 14px;
 }
 
-.input-icon i {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: white;
-  font-size: 18px;
+.signup-link a {
+  color: #00d4ff; /* Color del enlace */
+  text-decoration: none;
 }
-/* -- ------------------------------------- -- */
 
-
-/* -- Estilos del checkbox del registro de sesion -- */
-.modal-content .checkbox-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
+.signup-link a:hover {
+  color: white; /* Cambiar color al pasar el cursor */
 }
-/* -- ------------------------------------- -- */
 
-/* -- Estilos del modal de bienvenida -- */
+/* Estilos del banner */
 .banner-message {
   background-color: #004080;
   color: white;
@@ -479,15 +510,17 @@ a {
   text-align: center;
   font-size: 14px;
   border-radius: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 15px; /* Espacio debajo del banner para separar del formulario */
 }
 
 .banner-message p {
   margin: 0;
 }
 
+
+/* Estilos del modal de bienvenida */
 #welcomeModal {
-  display: none; 
+  display: none; /* Oculto por defecto */
   position: fixed;
   z-index: 1001;
   left: 0;
@@ -522,26 +555,9 @@ a {
   font-size: 18px;
   color: white;
 }
-/* -- ------------------------------------- -- */
-
-
-/* -- Pagina de registro de nuevo usuario "SIGN UP" -- */
-.signup-link {
-  margin-top: 15px;
-  color: #c0c0c0;
-  font-size: 14px;
-}
-
-.signup-link a {
-  color: #00d4ff;
-  text-decoration: none;
-}
-
-.signup-link a:hover {
-  color: white; 
-}
 
 #signUpModal {
   display: none;
 }
-/* -- ------------------------------------- -- */
+
+
