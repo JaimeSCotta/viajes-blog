@@ -358,18 +358,16 @@ a {
 }
 
 .modal-content {
-  background: linear-gradient(135deg, #004d80, #2f7bbd);
+  background: linear-gradient(135deg, #004d80, #2f7bbd); /* Degradado similar a la imagen */
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  width: 50%;
-  max-width: 500px;
-  text-align: center;
-  /* width: 400px; 
-  color: white; 
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  width: 400px; /* Ajusta según lo que prefieras */
+  color: white; /* Color de texto blanco */
   position: relative;
+  text-align: center; /* Centra el contenido */
   max-width: 90%;
-  margin: auto; */
+  margin: auto;
 }
 
 .modal-content label {
@@ -385,17 +383,15 @@ a {
 
 .modal-content input[type="email"],
 .modal-content input[type="password"] {
-  width: 90%;
+  width: 80%;
   padding: 15px;
+  padding-left: 40px;
   margin: 10px 0;
   border: none;
-  border-radius: 5px;
-  /* width: 80%;
-  padding-left: 40px;
   border-bottom: 2px solid white;
   background: transparent;
   color: white;
-  font-size: 16px; */
+  font-size: 16px;
 }
 
 /* Cambia el placeholder a un color gris claro */
@@ -409,19 +405,16 @@ a {
 }
 
 .modal-content button {
-  background-color: white;
-  color: #004d80;
-  padding: 10px 20px;
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  background-color: #00264d; /* Color del botón similar al adjunto */
+  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
   transition: background-color 0.3s ease;
-  /* width: 100%;
-  padding: 15px;
-  margin-top: 20px;
-  background-color: #00264d; 
-  color: white;
-  font-size: 16px; */
 }
 
 .modal-content button:hover {
