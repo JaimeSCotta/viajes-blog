@@ -63,6 +63,7 @@ html, body {
 .nav-center ul {
   display: flex;
   gap: 20px;
+  list-style: none;
 }
 
 .nav-center a {
