@@ -24,7 +24,7 @@ html, body {
   background-color: #333;
   color: white;
   padding: 5px 10px;
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -36,8 +36,11 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 99%;
+  width: 100%; /* Asegura que ocupe todo el ancho */
+  padding: 0 20px; /* Añade un poco de padding */
+  position: relative; /* Esto permitirá controlar mejor el layout */
 }
+
 
 /* Botón de hamburguesa a la izquierda */
 .nav-left {
@@ -51,19 +54,17 @@ html, body {
   border: none;
   color: white;
   cursor: pointer;
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1001;
+  position: relative; /* Cambia de fixed a relative para que no rompa el layout */
+  margin-right: auto; /* Para que quede alineado a la izquierda */
 }
+
 
 /* Navegación centrada */
 .nav-center {
   display: flex;
+  justify-content: center; /* Para asegurar que los elementos hijos estén centrados */
+  flex-grow: 1; /* Esto permitirá que el nav ocupe el espacio necesario para estar centrado */
   gap: 20px;
-  text-align: center;
-  flex: 1;
-  order: -1;
 }
 
 .nav-center a {
