@@ -40,6 +40,11 @@ html, body {
 }
 
 /* Botón de hamburguesa a la izquierda */
+.nav-left {
+  display: flex;
+  gap: 5px;
+}
+
 .hamburger {
   font-size: 20px;
   background: none;

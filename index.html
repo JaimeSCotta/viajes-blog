@@ -25,10 +25,15 @@
 <body>
   <header class="site-header">
     <div class="wrapper site-header__wrapper">
+
       <!-- Botón de hamburguesa -->
-      <button class="hamburger" id="openSidebar" aria-label="Abrir barra lateral" type="button">
-        <i class="fas fa-bars"></i>
-      </button>
+      <nav class="nav">
+        <ul class="nav-left">
+          <button class="hamburger" id="openSidebar" aria-label="Abrir barra lateral" type="button">
+            <i class="fas fa-bars"></i>
+          </button>
+        </ul>
+      </nav>
   
       <!-- Navegación principal -->
       <nav class="nav">
@@ -52,8 +57,6 @@
   </header>
 
   <!-- Barra lateral izquierda con todos los viajes -->
-  <button class="hamburger" id="openSidebar" aria-label="Abrir barra lateral" type="button">
-    <i class="fas fa-bars"></i>
   <div id="sidebar" class="sidebar">
     <button id="closeSidebar" class="close-btn" type="button">&times;</button>
     <ul>
