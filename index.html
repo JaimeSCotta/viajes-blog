@@ -23,45 +23,39 @@
 
 </head>
 <body>
-  <header>
-    <nav>
-      <ul class="nav-center">
-        <li><a href="https://jaimescotta.github.io/viajes-blog/">Home</a></li>
-        <li><a href="favorites.html" id="favoritesLink">Favorites</a></li>
-      </ul>
-      <ul class="nav-right">
-        <li id="auth-container">
-          <img id="loginIcon" src="img/sign_in.png" alt="Login" class="login-icon">
-          <div id="dropdownMenu" class="dropdown" style="display: none;">
-            <p id="userNameDropdown">Nombre Usuario</p>
-            <button id="logoutBtn">
-              <i class="fas fa-sign-out-alt"></i> Sign out
-            </button>
-          </div>
-        </li>
-      </ul>
-    </nav>
-    <h1>JSC Trips</h1>
-  </header>
+  <header class="site-header">
+    <div class="wrapper site-header__wrapper">
+      <!-- Botón de hamburguesa -->
+      <button class="hamburger" id="openSidebar" aria-label="Abrir barra lateral" type="button">
+        <i class="fas fa-bars"></i>
+      </button>
   
-
-  <button class="hamburger" id="openSidebar" aria-label="Abrir barra lateral" type="button">
-    <i class="fas fa-bars"></i>
-  </button>
+      <!-- Navegación principal -->
+      <nav class="nav">
+        <ul class="nav-center">
+          <li><a href="https://jaimescotta.github.io/viajes-blog/">Home</a></li>
+          <li><a href="favorites.html" id="favoritesLink">Favorites</a></li>
+        </ul>
+      </nav>
+  
+      <!-- Imagen de "Sign In" -->
+      <div class="auth-container">
+        <img id="loginIcon" src="img/sign_in.png" alt="Login" class="login-icon">
+        <div id="dropdownMenu" class="dropdown" style="display: none;">
+          <p id="userNameDropdown">Nombre Usuario</p>
+          <button id="logoutBtn">
+            <i class="fas fa-sign-out-alt"></i> Sign out
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
 
   <div id="sidebar" class="sidebar">
     <button id="closeSidebar" class="close-btn" type="button">&times;</button>
     <ul>
     </ul>
   </div>
-
-  <div id="auth-container">
-    <img id="loginIcon" src="img/sign_in.png" alt="Login" class="login-icon">
-    <div id="dropdownMenu" class="dropdown" style="display: none;">
-      <button id="logoutBtn">Cerrar sesión</button>
-    </div>
-  </div>
-
 
   <main>
     <section class="main_trips"></section>

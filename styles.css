@@ -16,11 +16,117 @@ html, body {
 
 
 /* -- Estilos para la parte superior "header" -- */
+/* Estilos para el header */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Envolver los elementos para distribuir el espacio */
+.site-header__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Botón de hamburguesa a la izquierda */
+.hamburger {
+  font-size: 24px;
+  color: white;
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-right: auto;
+}
+
+/* .hamburger {
+  font-size: 20px;
+
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1001;
+} */
+
+/* Navegación centrada */
+.nav-center {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-center a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* Imagen de inicio de sesión a la derecha */
+.auth-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.login-icon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+/* Para el menú desplegable (si lo usas) */
+/* .dropdown {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  background-color: #444;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+} */
+
+/* Ajustar la barra lateral (opcional) */
+/* .sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  color: white;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+} */
+
+/* Botón cerrar barra lateral */
+/* .close-btn {
+  font-size: 24px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: block;
+  text-align: right;
+  padding: 10px;
+} */
+
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   background-color: #333;
   color: white;
   text-align: center;
@@ -41,10 +147,10 @@ header h1 {
 /* -- --------------------------------------- -- */
 
 
-#auth-container {
+/* #auth-container {
   display: flex;
-  align-items: center; /* Centra verticalmente el ícono de login */
-}
+  align-items: center;
+} */
 
 #loginIcon {
   width: 40px;
@@ -101,12 +207,12 @@ header h1 {
 }
 
 
-.login-icon {
+/* .login-icon {
   width: 40px;
   height: auto;
   cursor: pointer;
   border-radius: 50%;
-}
+} */
 /* --------------- */
 
 
