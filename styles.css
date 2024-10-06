@@ -27,7 +27,7 @@ html, body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 90%;
   z-index: 1000;
 }
 
@@ -60,7 +60,7 @@ html, body {
 /* Navegación centrada */
 .nav-center {
   display: flex;
-  gap: 20px;
+  gap: 120px;
   text-align: center;
 }
 
