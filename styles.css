@@ -78,6 +78,12 @@ html, body {
   cursor: pointer;
 }
 
+.hamburger,
+.nav-center,
+.auth-container {
+  flex: 1;
+}
+
 /* Para el menú desplegable (si lo usas) */
 /* .dropdown {
   position: absolute;
