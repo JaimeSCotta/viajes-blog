@@ -41,12 +41,11 @@ html, body {
 
 /* Botón de hamburguesa a la izquierda */
 .hamburger {
-  font-size: 24px;
-  color: white;
-  border: none;
+  font-size: 20px;
   background: none;
+  border: none;
+  color: white;
   cursor: pointer;
-  margin-right: auto;
   position: fixed;
   top: 20px;
   left: 20px;
@@ -54,14 +53,10 @@ html, body {
 }
 
 /* Navegación centrada */
-
-.nav {
-  order: -1;
-}
-
 .nav-center {
   display: flex;
   gap: 20px;
+  order: -1;
 }
 
 .nav-center a {
