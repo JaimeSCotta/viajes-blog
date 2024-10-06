@@ -25,19 +25,17 @@
 <body>
   <header class="site-header">
     <div class="wrapper site-header__wrapper">
-
+      
       <!-- Botón de hamburguesa -->
-      <nav class="nav">
-        <ul class="nav-left">
-          <button class="hamburger" id="openSidebar" aria-label="Abrir barra lateral" type="button">
-            <i class="fas fa-bars"></i>
-          </button>
-        </ul>
-      </nav>
+      <div class="nav-left">
+        <button class="hamburger" id="openSidebar" aria-label="Abrir barra lateral" type="button">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
   
-      <!-- Navegación principal -->
-      <nav class="nav">
-        <ul class="nav-center">
+      <!-- Navegación principal (centrada) -->
+      <nav class="nav nav-center">
+        <ul>
           <li><a href="https://jaimescotta.github.io/viajes-blog/">Home</a></li>
           <li><a href="favorites.html" id="favoritesLink">Favorites</a></li>
         </ul>
@@ -53,8 +51,10 @@
           </button>
         </div>
       </div>
+      
     </div>
   </header>
+  
 
   <!-- Barra lateral izquierda con todos los viajes -->
   <div id="sidebar" class="sidebar">

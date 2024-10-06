@@ -16,7 +16,7 @@ html, body {
 
 
 /* -- Estilos para la parte superior "header" -- */
-/* Estilos para el header */
+/* Estilos generales del header */
 .site-header {
   display: flex;
   justify-content: space-between;
@@ -24,46 +24,44 @@ html, body {
   background-color: #333;
   color: white;
   padding: 5px 10px;
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
 }
 
-/* Envolver los elementos para distribuir el espacio */
 .site-header__wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%; /* Asegura que ocupe todo el ancho */
-  padding: 0 20px; /* Añade un poco de padding */
-  position: relative; /* Esto permitirá controlar mejor el layout */
+  width: 100%; /* Usar el 100% para que los elementos ocupen todo el espacio horizontal */
 }
-
 
 /* Botón de hamburguesa a la izquierda */
 .nav-left {
   display: flex;
-  gap: 5px;
+  align-items: center;
 }
 
+/* Botón de hamburguesa con su estilo */
 .hamburger {
   font-size: 20px;
   background: none;
   border: none;
   color: white;
   cursor: pointer;
-  position: relative; /* Cambia de fixed a relative para que no rompa el layout */
-  margin-right: auto; /* Para que quede alineado a la izquierda */
 }
-
 
 /* Navegación centrada */
 .nav-center {
   display: flex;
-  justify-content: center; /* Para asegurar que los elementos hijos estén centrados */
-  flex-grow: 1; /* Esto permitirá que el nav ocupe el espacio necesario para estar centrado */
+  justify-content: center;
+  flex: 1; /* Esto permitirá que el nav ocupe el espacio central */
+}
+
+.nav-center ul {
+  display: flex;
   gap: 20px;
 }
 
@@ -71,14 +69,14 @@ html, body {
   color: white;
   text-decoration: none;
   font-size: 18px;
+  text-align: center;
 }
 
-/* Imagen de inicio de sesión a la derecha */
+/* Imagen de login a la derecha */
 .auth-container {
   display: flex;
   align-items: center;
-  margin-left: auto;
-  text-align: end;
+  justify-content: flex-end;
 }
 
 .login-icon {
@@ -86,6 +84,7 @@ html, body {
   height: 40px;
   cursor: pointer;
 }
+
 
 /* Para el menú desplegable (si lo usas) */
 /* .dropdown {
