@@ -47,18 +47,18 @@ html, body {
   background: none;
   cursor: pointer;
   margin-right: auto;
-}
-
-/* .hamburger {
-  font-size: 20px;
-
   position: fixed;
   top: 20px;
   left: 20px;
   z-index: 1001;
-} */
+}
 
 /* Navegación centrada */
+
+.nav {
+  order: -1;
+}
+
 .nav-center {
   display: flex;
   gap: 20px;
