@@ -11,6 +11,7 @@ openBtn.addEventListener("click", function() {
 // Cerrar la barra lateral al hacer clic en la "X"
 closeBtn.addEventListener("click", function() {
     sidebar.classList.remove("open");
+    openBtn.style.display = "block";
 });
 
   
