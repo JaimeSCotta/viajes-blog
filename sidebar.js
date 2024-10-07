@@ -9,7 +9,6 @@ openBtn.addEventListener("click", function() {
     
     // Siempre mostrar ambos botones cuando la barra lateral esté abierta
     openBtn.style.display = "block"; // Asegúrate de que el botón hamburguesa siga visible
-    closeBtn.style.display = "block"; // Asegúrate de que el botón cerrar (X) también esté visible
 });
 
 // Cerrar la barra lateral al hacer clic en la "X"
