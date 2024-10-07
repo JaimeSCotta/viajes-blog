@@ -229,7 +229,7 @@ header h1 {
   position: fixed;
   top: 20px;
   left: 20px;
-  z-index: 1001;
+  z-index: 1100;
 }
 
 .sidebar {
@@ -269,7 +269,6 @@ header h1 {
 
 .sidebar.open {
   width: 250px;
-  transform: translateX(0);
 }
 
 .close-btn {
