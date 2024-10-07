@@ -35,7 +35,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 90%; /* Usar el 100% para que los elementos ocupen todo el espacio horizontal */
+  width: 93%; /* Usar el 100% para que los elementos ocupen todo el espacio horizontal */
 }
 
 /* Botón de hamburguesa a la izquierda */
