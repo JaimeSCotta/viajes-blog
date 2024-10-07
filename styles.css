@@ -35,7 +35,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 95%; /* Usar el 100% para que los elementos ocupen todo el espacio horizontal */
+  width: 98%; /* Usar el 100% para que los elementos ocupen todo el espacio horizontal */
 }
 
 /* Botón de hamburguesa a la izquierda */
@@ -350,6 +350,12 @@ footer {
   }
   article img {
     height: 150px;
+  }
+  .site-header__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%; /* Usar el 100% para que los elementos ocupen todo el espacio horizontal */
   }
 }
   /* -- Como se muestran los Viajes -- */
