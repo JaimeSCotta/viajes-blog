@@ -269,7 +269,7 @@ header h1 {
 
 .sidebar.open {
   width: 250px;
-  /* transform: translateX(0); */
+  transform: translateX(0);
 }
 
 .close-btn {
