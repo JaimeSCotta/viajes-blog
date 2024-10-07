@@ -114,6 +114,13 @@ header h1 {
   top: 20px;
   left: 20px;
   z-index: 1001;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Estilo cuando la barra lateral está abierta */
+.hamburger.active {
+  color: #00d4ff; /* Cambia el color del icono */
+  transform: rotate(90deg); /* Rotación para efecto visual */
 }
 
 .sidebar {
