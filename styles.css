@@ -589,7 +589,7 @@ a {
 
 /* Estilo para enlaces (términos de uso y política de privacidad) */
 .modal-content .checkbox-policy-container label.custom-checkbox a {
-  color: blue; /* Cambia el color del enlace a azul */
+  color: #00d4ff; /* Cambia el color del enlace a azul */
   text-decoration: underline; /* Agrega subrayado opcional */
 }
 
