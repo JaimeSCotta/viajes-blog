@@ -165,7 +165,7 @@ header h1 {
 /* Estilo para el menú desplegable */
 #dropdownMenu {
   position: absolute;
-  top: 20;
+  margin-top: 20px;
   right: 20;
   background-color: rgba(47, 123, 189, 0.8);
   border: none;
@@ -584,7 +584,7 @@ a {
   position: relative;
   padding-left: 25px; /* Espacio para el checkbox */
   cursor: pointer;
-  white-space: nowrap; /* Evita que el texto se divida en líneas */
+  white-space: pre-wrap; /* Mantener saltos de línea y espacios */
 }
 
 /* Estilo para enlaces (términos de uso y política de privacidad) */
