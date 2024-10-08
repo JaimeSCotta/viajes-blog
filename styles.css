@@ -165,7 +165,7 @@ header h1 {
 /* Estilo para el menú desplegable */
 #dropdownMenu {
   position: absolute;
-  margin-top: 20px;
+  margin-top: 60px;
   right: 20;
   background-color: rgba(47, 123, 189, 0.8);
   border: none;
@@ -577,14 +577,13 @@ a {
 
 /* Estilos específicos para el checkbox de la política */
 .modal-content label.custom-checkbox {
-  display: flex;
-  align-items: center;
+  display: inline-block;
   font-size: 14px;
   color: #c0c0c0;
   position: relative;
   padding-left: 25px; /* Espacio para el checkbox */
   cursor: pointer;
-  white-space: pre-wrap; /* Mantener saltos de línea y espacios */
+  white-space: normal; /* Evitar saltos de línea innecesarios */
 }
 
 /* Estilo para enlaces (términos de uso y política de privacidad) */
