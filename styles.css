@@ -554,27 +554,27 @@ a {
   font-size: 18px;
 }
 
-/* Estilos del checkbox */
-.modal-content .checkbox-container {
+/* Estilos del primer checkbox (Remember me) */
+.modal-content .checkbox-container.remember-checkbox {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
 }
 
-.modal-content label {
+.modal-content .checkbox-container.remember-checkbox label {
   font-size: 14px;
   color: #c0c0c0;
 }
 
-/* Estilos del contenedor */
+/* Estilos del segundo checkbox (Policy) */
 .modal-content .checkbox-policy-container {
   display: flex;
   align-items: center;
   margin-top: 20px;
 }
 
-/* Estilos del label */
+/* Estilos específicos para el checkbox de la política */
 .modal-content label.custom-checkbox {
   display: flex;
   align-items: center;
@@ -585,15 +585,15 @@ a {
   cursor: pointer;
 }
 
-/* Ocultar el checkbox real */
-.modal-content input[type="checkbox"] {
+/* Ocultar solo el checkbox de la política */
+.modal-content .checkbox-policy-container input[type="checkbox"] {
   position: absolute;
   opacity: 0;
   cursor: pointer;
 }
 
-/* Crear el aspecto personalizado del checkbox */
-.modal-content .checkmark {
+/* Crear el aspecto personalizado del checkbox (Policy) */
+.modal-content .checkbox-policy-container .checkmark {
   position: absolute;
   top: 0;
   left: 0;
@@ -605,31 +605,31 @@ a {
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-/* Efecto hover */
-.modal-content label.custom-checkbox:hover input ~ .checkmark {
+/* Efecto hover solo para el checkbox de la política */
+.modal-content .checkbox-policy-container label.custom-checkbox:hover input ~ .checkmark {
   background-color: #e0e0e0;
 }
 
-/* Checkbox marcado */
-.modal-content input:checked ~ .checkmark {
+/* Checkbox de la política marcado */
+.modal-content .checkbox-policy-container input:checked ~ .checkmark {
   background-color: #009688; /* Color del fondo cuando está seleccionado */
   border-color: #009688;
 }
 
-/* Añadir una marca de verificación */
-.modal-content .checkmark::after {
+/* Añadir la marca de verificación solo para el checkbox de la política */
+.modal-content .checkbox-policy-container .checkmark::after {
   content: "";
   position: absolute;
   display: none;
 }
 
 /* Mostrar la marca de verificación cuando está seleccionado */
-.modal-content input:checked ~ .checkmark::after {
+.modal-content .checkbox-policy-container input:checked ~ .checkmark::after {
   display: block;
 }
 
 /* Estilos de la marca de verificación */
-.modal-content .checkmark::after {
+.modal-content .checkbox-policy-container .checkmark::after {
   left: 5px;
   top: 2px;
   width: 5px;
