@@ -567,6 +567,79 @@ a {
   color: #c0c0c0;
 }
 
+/* Estilos del contenedor */
+.modal-content .checkbox-policy-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Estilos del label */
+.modal-content label.custom-checkbox {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #c0c0c0;
+  position: relative;
+  padding-left: 25px; /* Espacio para el checkbox */
+  cursor: pointer;
+}
+
+/* Ocultar el checkbox real */
+.modal-content input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Crear el aspecto personalizado del checkbox */
+.modal-content .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: #f0f0f0;
+  border: 2px solid #c0c0c0;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Efecto hover */
+.modal-content label.custom-checkbox:hover input ~ .checkmark {
+  background-color: #e0e0e0;
+}
+
+/* Checkbox marcado */
+.modal-content input:checked ~ .checkmark {
+  background-color: #009688; /* Color del fondo cuando está seleccionado */
+  border-color: #009688;
+}
+
+/* Añadir una marca de verificación */
+.modal-content .checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Mostrar la marca de verificación cuando está seleccionado */
+.modal-content input:checked ~ .checkmark::after {
+  display: block;
+}
+
+/* Estilos de la marca de verificación */
+.modal-content .checkmark::after {
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+
 /* Estilos del botón de login */
 .modal-content button {
   width: 100%;
