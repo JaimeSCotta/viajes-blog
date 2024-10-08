@@ -19,11 +19,11 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 // Eliminar cuenta de usuario en Firebase
-firebase.auth().currentUser.delete().then(function() {
-  console.log('Usuario eliminado');
-}).catch(function(error) {
-  console.error('Error al eliminar el usuario:', error);
-});
+// app.auth().currentUser.delete().then(function() {
+//     console.log('Usuario eliminado');
+//   }).catch(function(error) {
+//     console.error('Error al eliminar el usuario:', error);
+//   });
 
 
 export { auth, db}; // Exporta las instancias para usarlas en otros archivos
