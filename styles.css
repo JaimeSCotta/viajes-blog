@@ -165,6 +165,7 @@ header h1 {
 /* Estilo para el menú desplegable */
 #dropdownMenu {
   position: absolute;
+  top: 20;
   right: 20;
   background-color: rgba(47, 123, 189, 0.8);
   border: none;
@@ -583,6 +584,13 @@ a {
   position: relative;
   padding-left: 25px; /* Espacio para el checkbox */
   cursor: pointer;
+  white-space: nowrap; /* Evita que el texto se divida en líneas */
+}
+
+/* Estilo para enlaces (términos de uso y política de privacidad) */
+.modal-content .checkbox-policy-container label.custom-checkbox a {
+  color: blue; /* Cambia el color del enlace a azul */
+  text-decoration: underline; /* Agrega subrayado opcional */
 }
 
 /* Ocultar solo el checkbox de la política */
@@ -597,8 +605,8 @@ a {
   position: absolute;
   top: 0;
   left: 0;
-  height: 18px;
-  width: 18px;
+  height: 14px; /* Tamaño más pequeño del checkbox */
+  width: 14px;  /* Tamaño más pequeño del checkbox */
   background-color: #f0f0f0;
   border: 2px solid #c0c0c0;
   border-radius: 4px;
@@ -630,14 +638,15 @@ a {
 
 /* Estilos de la marca de verificación */
 .modal-content .checkbox-policy-container .checkmark::after {
-  left: 5px;
+  left: 4px;
   top: 2px;
-  width: 5px;
-  height: 10px;
+  width: 4px;
+  height: 8px;
   border: solid white;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
+
 
 
 /* Estilos del botón de login */
