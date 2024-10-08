@@ -165,7 +165,7 @@ header h1 {
 /* Estilo para el menú desplegable */
 #dropdownMenu {
   position: absolute;
-  right: 0;
+  right: 20;
   background-color: rgba(47, 123, 189, 0.8);
   border: none;
   padding: 10px;
