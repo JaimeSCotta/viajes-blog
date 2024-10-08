@@ -95,9 +95,8 @@ function mostrarDialogoBienvenida(email, showModal = true) {
 // Función para mostrar el modal de autenticación solo una vez por sesión
 function mostrarAuthModal() {
   const authModal = document.getElementById('authModal');
-  const modalShown = sessionStorage.getItem('authModalShown'); // Verificar si ya se mostró el modal
 
-  if (!modalShown) {
+  if (!authModal) {
     authModal.style.display = 'block';
     sessionStorage.setItem('authModalShown', 'true'); // Marcar como mostrado
 
@@ -132,9 +131,6 @@ function actualizarUIParaUsuarioAutenticado() {
     const dropdownMenu = document.getElementById('dropdownMenu');
     dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block'; // Alterna el menú
   });
-
-  // Configurar el botón de cerrar sesión
-  document.getElementById('logoutBtn').addEventListener('click', cerrarSesion);
 }
 
 
