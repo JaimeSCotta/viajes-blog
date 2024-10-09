@@ -252,7 +252,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Agrega el listener al botón "Forgot Password"
   const forgotPasswordBtn = document.getElementById('forgot-password');
   if (forgotPasswordBtn) {
-    forgotPasswordBtn.addEventListener('click', enviarCorreoResetPassword);
+    forgotPasswordBtn.addEventListener('click', (event) => {
+      event.preventDefault(); // Evitar el comportamiento por defecto del enlace
+      enviarCorreoResetPassword();
+    });
   } else {
     console.error('El botón de "Olvidé mi contraseña" no se encontró.');
   }
