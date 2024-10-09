@@ -230,23 +230,30 @@ window.onclick = function(event) {
 };
 
 // Función para enviar el correo de reseteo de contraseña
-function enviarCorreoResetPassword() {
-  const email = document.getElementById('email').value; // Obtén el correo del input
-
-  if (!email) {
-    alert('Por favor, introduce tu dirección de correo electrónico.');
-    return;
+document.addEventListener('DOMContentLoaded', () => {
+  function enviarCorreoResetPassword() {
+    const email = document.getElementById('email').value; // Obtén el correo del input
+  
+    if (!email) {
+      alert('Por favor, introduce tu dirección de correo electrónico.');
+      return;
+    }
+  
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        alert('Se ha enviado un correo para restablecer tu contraseña. Revisa tu bandeja de entrada.');
+      })
+      .catch((error) => {
+        console.error('Error al enviar el correo de reseteo:', error.message);
+        alert('Error al enviar el correo de restablecimiento: ' + error.message);
+      });
   }
-
-  sendPasswordResetEmail(auth, email)
-    .then(() => {
-      alert('Se ha enviado un correo para restablecer tu contraseña. Revisa tu bandeja de entrada.');
-    })
-    .catch((error) => {
-      console.error('Error al enviar el correo de reseteo:', error.message);
-      alert('Error al enviar el correo de restablecimiento: ' + error.message);
-    });
-}
-
-// Agrega un listener al botón "Forgot Password"
-document.getElementById('forgot-password').addEventListener('click', enviarCorreoResetPassword);
+  
+  // Agrega el listener al botón "Forgot Password"
+  const forgotPasswordBtn = document.getElementById('forgot-password');
+  if (forgotPasswordBtn) {
+    forgotPasswordBtn.addEventListener('click', enviarCorreoResetPassword);
+  } else {
+    console.error('El botón de "Olvidé mi contraseña" no se encontró.');
+  }
+});
