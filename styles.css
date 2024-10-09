@@ -364,7 +364,7 @@ footer {
     /* Para pantallas pequeñas (móviles) */
 @media (max-width: 600px) {
   .modal-content {
-    width: 80%; /* Reducir el ancho del modal al 90% de la pantalla */
+    width: 60%; /* Reducir el ancho del modal al 90% de la pantalla */
     padding: 20px; 
   }
 

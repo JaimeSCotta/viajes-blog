@@ -24,6 +24,7 @@ document.getElementById('registerBtn').addEventListener('click', () => {
     });
 });
 
+
 // Manejar el estado de autenticación
 onAuthStateChanged(auth, user => {
   if (user) {
@@ -31,7 +32,7 @@ onAuthStateChanged(auth, user => {
     mostrarDialogoBienvenida(user.email, false); // No mostrar el modal repetidamente
     actualizarUIParaUsuarioAutenticado();
 
-    // Ejecuta la carga de favoritos si el usuario está autenticado
+    // Aquí ejecuta la carga de favoritos ya que el usuario está autenticado
     loadFavoritesIndex(); 
 
     // Cerrar el modal de autenticación si el usuario ya está autenticado
@@ -39,28 +40,34 @@ onAuthStateChanged(auth, user => {
     if (authModal) {
       authModal.style.display = 'none';
     }
+
   } else {
     console.log('Ningún usuario autenticado');
     actualizarUIParaUsuarioNoAutenticado();
-    mostrarAuthModal(); // Mostrar modal de login si no hay usuario autenticado
+    // mostrarAuthModal(); // Mostrar modal de login si no hay usuario autenticado
   }
 });
 
-// Verifica el estado de autenticación cada vez que se carga la página
+
+// Unificar la lógica de autenticación y modales en window.onload
 window.onload = function() {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      console.log('Usuario autenticado:', user.email);
-      mostrarDialogoBienvenida(user.email, false); // Mostrar solo una vez
-      actualizarUIParaUsuarioAutenticado();
-      loadFavoritesIndex(); // Cargar favoritos
-    } else {
-      console.log('Ningún usuario autenticado, mostrando modal de login');
-      mostrarAuthModal(); // Mostrar modal de autenticación
-    }
-  });
+  const storedEmail = localStorage.getItem('userEmail') || sessionStorage.getItem('userEmail');
+
+  if (storedEmail) {
+    console.log('Sesión recordada:', storedEmail);
+    mostrarDialogoBienvenida(storedEmail, false); // No mostrar el modal repetidamente
+  }
+
+  // Controlar la visibilidad del banner
+  const loginBanner = document.getElementById('login-banner');
+  if (auth.currentUser) {
+    loginBanner.style.display = 'none';
+  } else {
+    loginBanner.style.display = 'block';
+  }
 };
 
+// Funciones para mostrar modales y manejar UI...
 // Función para mostrar el modal de bienvenida con el nombre de usuario
 function mostrarDialogoBienvenida(email, showModal = true) {
   const welcomeModal = document.getElementById('welcomeModal');
@@ -89,25 +96,23 @@ function mostrarDialogoBienvenida(email, showModal = true) {
 function mostrarAuthModal() {
   const authModal = document.getElementById('authModal');
   
-  // Solo mostrar si el usuario no está autenticado
-  if (!auth.currentUser) {
-    const modalShown = sessionStorage.getItem('authModalShown');
+  // Revisar si el modal ya fue mostrado en esta sesión
+  const modalShown = sessionStorage.getItem('authModalShown');
 
-    if (!modalShown) {
-      authModal.style.display = 'block';
-      sessionStorage.setItem('authModalShown', 'true'); // Marcar como mostrado
+  if (!modalShown) {
+    authModal.style.display = 'block';
+    sessionStorage.setItem('authModalShown', 'true'); // Marcar como mostrado
 
-      const closeAuthModal = document.querySelector('#authModal .close-modal');
-      closeAuthModal.addEventListener('click', () => {
+    const closeAuthModal = document.querySelector('#authModal .close-modal');
+    closeAuthModal.addEventListener('click', () => {
+      authModal.style.display = 'none';
+    });
+
+    window.onclick = function(event) {
+      if (event.target == authModal) {
         authModal.style.display = 'none';
-      });
-
-      window.onclick = function(event) {
-        if (event.target == authModal) {
-          authModal.style.display = 'none';
-        }
-      };
-    }
+      }
+    };
   }
 }
 
@@ -123,23 +128,25 @@ function actualizarUIParaUsuarioAutenticado() {
     document.getElementById('userNameDropdown').textContent = user.email.split('@')[0]; // Solo nombre
   }
 
-  // Mostrar el menú desplegable al hacer clic en la imagen (un solo evento)
-  loginIcon.onclick = () => {
+  // Mostrar el menú desplegable al hacer clic en la imagen
+  loginIcon.addEventListener('click', () => {
+    document.getElementById('authModal').style.display = 'none'; // Cierra el modal
     const dropdownMenu = document.getElementById('dropdownMenu');
     dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block'; // Alterna el menú
-  };
+  });
 }
 
-// Actualiza la UI cuando no hay un usuario autenticado
+
+// Cuando el usuario no está autenticado
 function actualizarUIParaUsuarioNoAutenticado() {
   const loginIcon = document.getElementById('loginIcon');
   loginIcon.src = signInImage; // Cambia la imagen al icono de iniciar sesión
   loginIcon.alt = "Login"; // Texto alternativo
 
   // Mostrar modal de autenticación al hacer clic
-  loginIcon.onclick = () => {
-    mostrarAuthModal();
-  };
+  loginIcon.addEventListener('click', () => {
+    document.getElementById('authModal').style.display = 'block';
+  });
   document.getElementById('dropdownMenu').style.display = 'none';
 }
 
@@ -178,7 +185,6 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
       console.log('Sesión cerrada');
       localStorage.removeItem('userEmail');
       sessionStorage.removeItem('userEmail');
-      sessionStorage.removeItem('authModalShown'); // Reiniciar el estado del modal
       alert('Sesión cerrada correctamente');
       location.reload(); // Recargar la página para volver al estado inicial
     })
@@ -200,19 +206,23 @@ document.querySelector('#signUpModal .close-modal').addEventListener('click', ()
   document.getElementById('signUpModal').style.display = 'none';
 });
 
-// Control para cerrar modales al hacer clic fuera de ellos
+
+
 window.onclick = function(event) {
   const signUpModal = document.getElementById('signUpModal');
   const authModal = document.getElementById('authModal');
   
+  // Cerrar el modal de registro
   if (event.target == signUpModal) {
     signUpModal.style.display = 'none';
   }
 
+  // Cerrar el modal de autenticación (Login)
   if (event.target == authModal) {
     authModal.style.display = 'none';
   }
 
+  // Cerrar el modal de bienvenida
   const welcomeModal = document.getElementById('welcomeModal');
   if (event.target == welcomeModal) {
     welcomeModal.style.display = 'none';
