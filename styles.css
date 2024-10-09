@@ -757,20 +757,22 @@ a {
   display: none;
 }
 
-/* Mantener el autocompletar pero ajustar los estilos lo elimina tmbn*/
+/* Estilos para eliminar el fondo blanco del autocompletar de Chrome eelimina autocompletar*/
 input:-webkit-autofill {
-  background-color: transparent !important; /* Fondo transparente */
-  color: white !important; /* Color del texto */
-  -webkit-text-fill-color: white !important; /* Ajuste para el color del texto del autocompletar */
-  border-bottom: 2px solid #00d4ff; /* Mantén el borde personalizado */
+  background-color: transparent !important;
+  color: white !important; /* Ajustar el color del texto */
+  border-bottom: 2px solid #00d4ff; /* Mantener el borde inferior personalizado */
 }
 
+input:-webkit-autofill::first-line {
+  color: white !important; /* Asegúrate de que el color del texto sea blanco */
+}
+
+input:-webkit-autofill,
 input:-webkit-autofill:hover,
-input:-webkit-autofill:focus {
-  background-color: transparent !important; /* Asegura que el fondo siga transparente */
-  -webkit-text-fill-color: white !important; /* Asegura el color del texto correcto */
-}
-
-input:-webkit-autofill:focus {
-  box-shadow: 0 0 0px 1000px transparent inset !important; /* Asegura que no haya fondo */
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0px 1000px transparent inset !important; /* Elimina el fondo */
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important; /* Elimina el fondo en webkit */
+  transition: background-color 5000s ease-in-out 0s; /* Para prevenir cambios rápidos de color */
 }

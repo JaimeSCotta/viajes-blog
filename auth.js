@@ -44,7 +44,7 @@ onAuthStateChanged(auth, user => {
   } else {
     console.log('Ningún usuario autenticado');
     actualizarUIParaUsuarioNoAutenticado();
-    mostrarAuthModal(); // Mostrar modal de login si no hay usuario autenticado
+    // mostrarAuthModal(); // Mostrar modal de login si no hay usuario autenticado
   }
 });
 
