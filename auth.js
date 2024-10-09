@@ -1,6 +1,6 @@
 // auth.js
 import { auth, db } from './firebase.js'; // Importa auth y db desde firebase.js
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
 import { loadFavoritesIndex } from './favorites.js'; // Importado de loadFavorites
 
 // Rutas de las imágenes
