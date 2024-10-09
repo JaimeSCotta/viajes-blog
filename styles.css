@@ -359,7 +359,7 @@ footer {
     width: 95%; /* Usar el 100% para que los elementos ocupen todo el espacio horizontal */
   }
   .modal-content {
-    width: 10%; /* Reducir el ancho del modal al 90% de la pantalla */
+    width: 80% !important; /* Reducir el ancho del modal al 90% de la pantalla */
     padding: 20px; 
   }
 
