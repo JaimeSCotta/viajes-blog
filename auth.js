@@ -95,8 +95,11 @@ function mostrarDialogoBienvenida(email, showModal = true) {
 // Función para mostrar el modal de autenticación solo una vez por sesión
 function mostrarAuthModal() {
   const authModal = document.getElementById('authModal');
+  
+  // Revisar si el modal ya fue mostrado en esta sesión
+  const modalShown = sessionStorage.getItem('authModalShown');
 
-  if (!authModal) {
+  if (!modalShown) {
     authModal.style.display = 'block';
     sessionStorage.setItem('authModalShown', 'true'); // Marcar como mostrado
 
