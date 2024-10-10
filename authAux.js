@@ -101,31 +101,31 @@ document.getElementById('registerBtn').addEventListener('click', () => {
     });
 });
 
-// Eliminar usuario autenticado
-document.getElementById('deleteUserBtn').addEventListener('click', () => {
-  const user = auth.currentUser;
+// // Eliminar usuario autenticado
+// document.getElementById('deleteUserBtn').addEventListener('click', () => {
+//   const user = auth.currentUser;
 
-  if (user) {
-    // Confirmar si el usuario realmente quiere eliminar la cuenta
-    const confirmDelete = confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.');
+//   if (user) {
+//     // Confirmar si el usuario realmente quiere eliminar la cuenta
+//     const confirmDelete = confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.');
     
-    if (confirmDelete) {
-      deleteUser(user)
-        .then(() => {
-          console.log('Usuario eliminado');
-          alert('Tu cuenta ha sido eliminada correctamente.');
-          // Redirigir a la página de inicio
-          window.location.href = 'index.html'; 
-        })
-        .catch(error => {
-          console.error('Error al eliminar el usuario:', error.message);
-          alert('Error al eliminar la cuenta: ' + error.message);
-        });
-    }
-  } else {
-    alert('No hay un usuario autenticado.');
-  }
-});
+//     if (confirmDelete) {
+//       deleteUser(user)
+//         .then(() => {
+//           console.log('Usuario eliminado');
+//           alert('Tu cuenta ha sido eliminada correctamente.');
+//           // Redirigir a la página de inicio
+//           window.location.href = 'index.html'; 
+//         })
+//         .catch(error => {
+//           console.error('Error al eliminar el usuario:', error.message);
+//           alert('Error al eliminar la cuenta: ' + error.message);
+//         });
+//     }
+//   } else {
+//     alert('No hay un usuario autenticado.');
+//   }
+// });
 
 /* -- -------------------------------------------------------- -- */
 
@@ -255,17 +255,6 @@ function mostrarDialogoBienvenida(email, showModal = true) {
   if (showModal && !modalShown) {
     welcomeModal.style.display = 'block';
     sessionStorage.setItem('welcomeModalShown', 'true'); // Marcar como mostrado
-
-    const closeWelcomeModal = document.querySelector('#welcomeModal .close-modal');
-    closeWelcomeModal.addEventListener('click', () => {
-      welcomeModal.style.display = 'none';
-    });
-
-    window.onclick = function(event) {
-      if (event.target == welcomeModal) {
-        welcomeModal.style.display = 'none';
-      }
-    };
   }
 }
 
@@ -279,11 +268,6 @@ function mostrarAuthModal() {
   if (!modalShown) {
     authModal.style.display = 'block';
     sessionStorage.setItem('authModalShown', 'true'); 
-
-    const closeAuthModal = document.querySelector('#authModal .close-modal');
-    closeAuthModal.addEventListener('click', () => {
-      authModal.style.display = 'none';
-    });
   }
 }
 
@@ -293,12 +277,6 @@ document.getElementById('signUpBtn').addEventListener('click', (event) => {
   document.getElementById('authModal').style.display = 'none';
   document.getElementById('signUpModal').style.display = 'block';
 });
-
-// Cerrar el modal de registro cuando se hace clic en el botón de cierre
-document.querySelector('#signUpModal .close-modal').addEventListener('click', () => {
-  document.getElementById('signUpModal').style.display = 'none';
-});
-
 
 // Seleccionar todos los botones de cierre con la clase "close-modal"
 const closeButtons = document.querySelectorAll('.close-modal');
@@ -313,26 +291,14 @@ closeButtons.forEach(button => {
   });
 });
 
-// Cerrar todos los modales abiertos pulsando cualquier elemento
+// Cerrar los modales si se hace clic fuera de ellos
 window.onclick = function(event) {
-  const signUpModal = document.getElementById('signUpModal');
-  const authModal = document.getElementById('authModal');
-  const welcomeModal = document.getElementById('welcomeModal');
-  
-  // Cerrar el modal de registro
-  if (event.target == signUpModal) {
-    signUpModal.style.display = 'none';
-  }
-
-  // Cerrar el modal de autenticación (Login)
-  if (event.target == authModal) {
-    authModal.style.display = 'none';
-  }
-
-  // Cerrar el modal de bienvenida
-  if (event.target == welcomeModal) {
-    welcomeModal.style.display = 'none';
-  }
+  const modals = document.querySelectorAll('.modal');
+  modals.forEach(modal => {
+    if (event.target == modal) {
+      modal.style.display = 'none'; // Cerrar el modal si se hace clic fuera
+    }
+  });
 };
 
 /* -- -------------------------------------------------------- -- */
