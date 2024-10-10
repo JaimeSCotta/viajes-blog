@@ -260,3 +260,23 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('El botón de "Olvidé mi contraseña" no se encontró.');
   }
 });
+
+
+// Obtener el botón de "Sign In" y la casilla de verificación de términos
+const signInBtn = document.getElementById('signInBtn');
+const termsCheckbox = document.getElementById('terms');
+
+// Función para habilitar/deshabilitar el botón de Sign In
+function toggleSignInButton() {
+  if (termsCheckbox.checked) {
+    signInBtn.disabled = false; // Habilitar el botón si los términos están aceptados
+  } else {
+    signInBtn.disabled = true;  // Deshabilitar el botón si no están aceptados
+  }
+}
+
+// Escuchar el cambio en la casilla de verificación
+termsCheckbox.addEventListener('change', toggleSignInButton);
+
+// Llamar a la función inicialmente para asegurar que el estado del botón sea correcto
+toggleSignInButton();
