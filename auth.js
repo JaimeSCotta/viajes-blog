@@ -150,33 +150,7 @@ function actualizarUIParaUsuarioNoAutenticado() {
   document.getElementById('dropdownMenu').style.display = 'none';
 }
 
-// Iniciar sesión
-document.getElementById('signInBtn').addEventListener('click', () => {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  const rememberMe = document.querySelector('input[type="checkbox"]').checked;
 
-  signInWithEmailAndPassword(auth, email, password)
-    .then(userCredential => {
-      console.log('Sesión iniciada:', userCredential.user);
-
-      if (rememberMe) {
-        localStorage.setItem('userEmail', email);
-        console.log('Sesión guardada con "Remember me" activado.');
-      } else {
-        sessionStorage.setItem('userEmail', email);
-        console.log('Sesión iniciada sin recordar.');
-      }
-
-      document.getElementById('authModal').style.display = 'none'; // Cierra el modal
-      mostrarDialogoBienvenida(userCredential.user.email);
-      alert('Sesión iniciada correctamente');
-    })
-    .catch(error => {
-      console.error('Error al iniciar sesión:', error.message);
-      alert('Error al iniciar sesión: ' + error.message);
-    });
-});
 
 // Cerrar sesión
 document.getElementById('logoutBtn').addEventListener('click', () => {
@@ -262,35 +236,37 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Obtener el botón de "Sign In" y la casilla de verificación de términos
-const signInBtn = document.getElementById('signInBtn');
-const termsCheckbox = document.getElementById('terms');
 
-// Función para mostrar la notificación de aceptación de términos
-function mostrarNotificacionTerminos() {
-  alert('Debes aceptar los términos de uso y la política de privacidad para continuar.');
-}
-
-// Modificar el evento de clic del botón Sign In
-signInBtn.addEventListener('click', (event) => {
+// Iniciar sesión
+document.getElementById('signInBtn').addEventListener('click', () => {
+  const termsCheckbox = document.getElementById('terms');
   if (!termsCheckbox.checked) {
     // Evitar que el botón realice la acción de iniciar sesión si no se han aceptado los términos
-    event.preventDefault(); // Evita que el clic realice cualquier otra acción
-    mostrarNotificacionTerminos(); // Muestra la notificación
-  } else {
-    // Aquí va el código para manejar el inicio de sesión si los términos están aceptados
+    event.preventDefault();
+    alert('Debes aceptar los términos de uso y la política de privacidad para continuar.');
+  } 
+  else {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    
+    const rememberMe = document.querySelector('input[type="checkbox"]').checked;
+
     signInWithEmailAndPassword(auth, email, password)
       .then(userCredential => {
-        // Inicio de sesión exitoso
         console.log('Sesión iniciada:', userCredential.user);
+
+        if (rememberMe) {
+          localStorage.setItem('userEmail', email);
+          console.log('Sesión guardada con "Remember me" activado.');
+        } else {
+          sessionStorage.setItem('userEmail', email);
+          console.log('Sesión iniciada sin recordar.');
+        }
+
         document.getElementById('authModal').style.display = 'none'; // Cierra el modal
+        mostrarDialogoBienvenida(userCredential.user.email);
         alert('Sesión iniciada correctamente');
       })
       .catch(error => {
-        // Error al iniciar sesión
         console.error('Error al iniciar sesión:', error.message);
         alert('Error al iniciar sesión: ' + error.message);
       });
