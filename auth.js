@@ -186,13 +186,18 @@ window.onload = function() {
 // Inicio a la Web - Manejar el estado de autenticación
 onAuthStateChanged(auth, user => {
 
-  mostrarAuthModal()  // Modal aparezca 1 vez
+  // Aqui tengo que gestionar el que el modal aparezca 1 vez
 
   if (user) {
     console.log('Usuario autenticado:', user.email);
     mostrarDialogoBienvenida(user.email, false); // No mostrar el modal repetidamente
     actualizarUIParaUsuarioAutenticado();
     loadFavoritesIndex(); 
+
+    const authModal = document.getElementById('authModal');  // estas cuatro lineas se pueden eliminar 
+    if (authModal) {                                        // cuando se gestione bien el modal
+      authModal.style.display = 'none';
+    }
 
   } else {
     console.log('Ningún usuario autenticado');
@@ -278,12 +283,18 @@ function mostrarAuthModal() {
 
   if (!modalShown) {
     authModal.style.display = 'block';
-    sessionStorage.setItem('authModalShown', 'true'); 
+    sessionStorage.setItem('authModalShown', 'true'); // Marcar como mostrado
 
     const closeAuthModal = document.querySelector('#authModal .close-modal');
     closeAuthModal.addEventListener('click', () => {
       authModal.style.display = 'none';
     });
+
+    window.onclick = function(event) {
+      if (event.target == authModal) {
+        authModal.style.display = 'none';
+      }
+    };
   }
 }
 
@@ -294,23 +305,9 @@ document.getElementById('signUpBtn').addEventListener('click', (event) => {
   document.getElementById('signUpModal').style.display = 'block';
 });
 
-// Cerrar el modal de registro cuando se hace clic en el botón de cierre
+// Cerrar el modal de registro cuando se hace clic en el botón de cierre  ------ Revisar si lo puedo eliminar -------
 document.querySelector('#signUpModal .close-modal').addEventListener('click', () => {
   document.getElementById('signUpModal').style.display = 'none';
-});
-
-
-// Seleccionar todos los botones de cierre con la clase "close-modal"
-const closeButtons = document.querySelectorAll('.close-modal');
-
-// Añadir un evento de clic a cada botón de cierre
-closeButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const modal = button.closest('.modal');
-    if (modal) {
-      modal.style.display = 'none'; // Cerrar el modal
-    }
-  });
 });
 
 // Cerrar todos los modales abiertos pulsando cualquier elemento
