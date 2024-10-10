@@ -266,17 +266,33 @@ document.addEventListener('DOMContentLoaded', () => {
 const signInBtn = document.getElementById('signInBtn');
 const termsCheckbox = document.getElementById('terms');
 
-// Función para habilitar/deshabilitar el botón de Sign In
-function toggleSignInButton() {
-  if (termsCheckbox.checked) {
-    signInBtn.disabled = false; // Habilitar el botón si los términos están aceptados
-  } else {
-    signInBtn.disabled = true;  // Deshabilitar el botón si no están aceptados
-  }
+// Función para mostrar la notificación de aceptación de términos
+function mostrarNotificacionTerminos() {
+  alert('Debes aceptar los términos de uso y la política de privacidad para continuar.');
 }
 
-// Escuchar el cambio en la casilla de verificación
-termsCheckbox.addEventListener('change', toggleSignInButton);
-
-// Llamar a la función inicialmente para asegurar que el estado del botón sea correcto
-toggleSignInButton();
+// Modificar el evento de clic del botón Sign In
+signInBtn.addEventListener('click', (event) => {
+  if (!termsCheckbox.checked) {
+    // Evitar que el botón realice la acción de iniciar sesión si no se han aceptado los términos
+    event.preventDefault(); // Evita que el clic realice cualquier otra acción
+    mostrarNotificacionTerminos(); // Muestra la notificación
+  } else {
+    // Aquí va el código para manejar el inicio de sesión si los términos están aceptados
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    
+    signInWithEmailAndPassword(auth, email, password)
+      .then(userCredential => {
+        // Inicio de sesión exitoso
+        console.log('Sesión iniciada:', userCredential.user);
+        document.getElementById('authModal').style.display = 'none'; // Cierra el modal
+        alert('Sesión iniciada correctamente');
+      })
+      .catch(error => {
+        // Error al iniciar sesión
+        console.error('Error al iniciar sesión:', error.message);
+        alert('Error al iniciar sesión: ' + error.message);
+      });
+  }
+});
