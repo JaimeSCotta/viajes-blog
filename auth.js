@@ -234,37 +234,40 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Iniciar sesión
-document.getElementById('signInBtn').addEventListener('click', () => {
+document.getElementById('signInBtn').addEventListener('click', (event) => {
   const termsCheckbox = document.getElementById('terms');
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const rememberMe = document.querySelector('input[type="checkbox"]').checked;
+  // Verificar si los términos están aceptados
   if (!termsCheckbox.checked) {
-    // Evitar que el botón realice la acción de iniciar sesión si no se han aceptado los términos
     event.preventDefault();
     alert('Debes aceptar los términos de uso y la política de privacidad para continuar.');
-  } 
-  else {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    
-    const rememberMe = document.querySelector('input[type="checkbox"]').checked;
-    signInWithEmailAndPassword(auth, email, password)
-      .then(userCredential => {
-        // Inicio de sesión exitoso
-        console.log('Sesión iniciada:', userCredential.user);
-        if (rememberMe) {
-          localStorage.setItem('userEmail', email);
-          console.log('Sesión guardada con "Remember me" activado.');
-        } else {
-          sessionStorage.setItem('userEmail', email);
-          console.log('Sesión iniciada sin recordar.');
-        }
-        document.getElementById('authModal').style.display = 'none'; // Cierra el modal
-        mostrarDialogoBienvenida(userCredential.user.email);
-        alert('Sesión iniciada correctamente');
-      })
-      .catch(error => {
-        // Error al iniciar sesión
-        console.error('Error al iniciar sesión:', error.message);
-        alert('Error al iniciar sesión: ' + error.message);
-      });
+    return; // Salir de la función
   }
+  // Verificar si los campos de correo y contraseña están completos
+  if (!email || !password) {
+    event.preventDefault();
+    alert('Por favor, completa tanto el correo electrónico como la contraseña.');
+    return; // Salir de la función
+  }
+  // Si los términos están aceptados y los campos están completos, continuar con el inicio de sesión
+  signInWithEmailAndPassword(auth, email, password)
+    .then(userCredential => {
+      console.log('Sesión iniciada:', userCredential.user);
+      if (rememberMe) {
+        localStorage.setItem('userEmail', email);
+        console.log('Sesión guardada con "Remember me" activado.');
+      } else {
+        sessionStorage.setItem('userEmail', email);
+        console.log('Sesión iniciada sin recordar.');
+      }
+      document.getElementById('authModal').style.display = 'none'; // Cierra el modal
+      mostrarDialogoBienvenida(userCredential.user.email);
+      alert('Sesión iniciada correctamente');
+    })
+    .catch(error => {
+      console.error('Error al iniciar sesión:', error.message);
+      alert('Error al iniciar sesión: ' + error.message);
+    });
 });
