@@ -63,6 +63,8 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
       sessionStorage.removeItem('userEmail');
       localStorage.removeItem('authModalShown');
       sessionStorage.removeItem('authModalShown');
+      localStorage.removeItem('bienvenidaShown');
+      sessionStorage.removeItem('bienvenidaShown');
       alert('Sesión cerrada correctamente');
       location.reload(); // Recargar la página para volver al estado inicial
     })
@@ -253,12 +255,14 @@ function actualizarUIParaUsuarioNoAutenticado() {
 function mostrarDialogoBienvenida(email) {
   const welcomeModal = document.getElementById('welcomeModal');
   const userName = email.split('@')[0]; // Toma el nombre de usuario antes del "@"
-  const bienvenidaShown = localStorage.getItem('welcomeModal') || sessionStorage.getItem('welcomeModal');
-
-  if (!bienvenidaShown) {
+  const bienvenidaSessionShown = sessionStorage.getItem('bienvenidaShown');
+  const bienvenidaLocalShown = localStorage.getItem('bienvenidaShown');
+  
+  if (!bienvenidaSessionShown && !bienvenidaLocalShown) {
     document.getElementById('userName').innerText = userName;
     welcomeModal.style.display = 'block';
-    sessionStorage.setItem('bienvenidaShown', 'true'); 
+    sessionStorage.setItem('bienvenidaShown', 'true');
+    localStorage.setItem('bienvenidaShown', 'true');
   }
 }
 
