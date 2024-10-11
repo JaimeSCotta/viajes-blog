@@ -178,7 +178,7 @@ window.onload = function() {
 
   if (storedEmail) {
     console.log('Sesión recordada:', storedEmail);
-    mostrarDialogoBienvenida(storedEmail, false);
+    mostrarDialogoBienvenida(storedEmail);
   }
 
   const loginBanner = document.getElementById('login-banner');
@@ -263,7 +263,7 @@ function mostrarDialogoBienvenida(email) {
     return;
   }
 
-  if (!bienvenidaLocalShown) {
+  if (bienvenidaLocalShown) {
     console.log('Dar la bienvenida al usuario.');
     document.getElementById('userName').innerText = userName;
     welcomeModal.style.display = 'block';
