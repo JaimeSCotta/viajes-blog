@@ -185,7 +185,7 @@ window.onload = function() {
 // Inicio a la Web - Manejar el estado de autenticación
 onAuthStateChanged(auth, user => {
 
-  // mostrarAuthModal()  // Modal aparezca 1 vez
+  mostrarAuthModal()
 
   if (user) {
     console.log('Usuario autenticado:', user.email);
@@ -245,7 +245,7 @@ function actualizarUIParaUsuarioNoAutenticado() {
 /* -- Gestionar modales: modal bienvenida, sign in, sign up, cerrar modales -- */
 
 // Función para mostrar el modal de bienvenida con el nombre de usuario
-function mostrarDialogoBienvenida(email, showModal = true) {
+function mostrarDialogoBienvenida(email) {
   const welcomeModal = document.getElementById('welcomeModal');
   const userName = email.split('@')[0]; // Toma el nombre de usuario antes del "@"
   document.getElementById('userName').innerText = userName;
@@ -255,14 +255,14 @@ function mostrarDialogoBienvenida(email, showModal = true) {
 // Función para mostrar el modal de autenticación solo una vez por sesión
 function mostrarAuthModal() {
   const authModal = document.getElementById('authModal');
-  
-  // Revisar si el modal ya fue mostrado en esta sesión
   const modalShown = sessionStorage.getItem('authModalShown');
 
   if (!modalShown) {
+    console.log('Ningún modal mostrado');
     authModal.style.display = 'block';
     sessionStorage.setItem('authModalShown', 'true'); 
   }
+  console.log('El modal ya se mostró');
 }
 
 // Mostrar el modal de registro (Sign Up) cuando se hace clic en el enlace "Sign In!"
