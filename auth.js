@@ -196,7 +196,7 @@ onAuthStateChanged(auth, user => {
 
   if (user) {
     console.log('Usuario autenticado:', user.email);
-    mostrarDialogoBienvenida(user.email, false); // No mostrar el modal repetidamente
+    mostrarDialogoBienvenida(user.email);
     actualizarUIParaUsuarioAutenticado();
     loadFavoritesIndex(); 
 
@@ -258,7 +258,12 @@ function mostrarDialogoBienvenida(email) {
   const bienvenidaSessionShown = sessionStorage.getItem('bienvenidaShown');
   const bienvenidaLocalShown = localStorage.getItem('bienvenidaShown');
   
-  if (!bienvenidaSessionShown && !bienvenidaLocalShown) {
+  if (bienvenidaSessionShown) {
+    console.log('Ya se le dio la bienvenida al usuario.');
+    return;
+  }
+
+  if (!bienvenidaLocalShown) {
     document.getElementById('userName').innerText = userName;
     welcomeModal.style.display = 'block';
     sessionStorage.setItem('bienvenidaShown', 'true');
