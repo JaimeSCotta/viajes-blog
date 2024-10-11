@@ -294,6 +294,11 @@ document.querySelector('#signUpModal .close-modal').addEventListener('click', ()
   document.getElementById('signUpModal').style.display = 'none';
 });
 
+// Cerrar el modal de registro cuando se hace clic en el botón de cierre
+document.querySelector('#authModal .close-modal').addEventListener('click', () => {
+  document.getElementById('authModal').style.display = 'none';
+});
+
 // Cerrar los modales si se hace clic fuera de ellos
 window.onclick = function(event) {
   const signUpModal = document.getElementById('signUpModal');
