@@ -258,17 +258,22 @@ function mostrarDialogoBienvenida(email) {
   const bienvenidaSessionShown = sessionStorage.getItem('bienvenidaShown');
   const bienvenidaLocalShown = localStorage.getItem('bienvenidaShown');
   
-  if (bienvenidaSessionShown) {
-    console.log('Ya se le dio la bienvenida al usuario.');
-    return;
+  if (bienvenidaLocalShown) {
+    console.log('Dar la bienvenida al usuario por volver.');
+    document.getElementById('userName').innerText = userName;
+    welcomeModal.style.display = 'block';
   }
 
-  if (bienvenidaLocalShown) {
+  if (!bienvenidaSessionShown) {
     console.log('Dar la bienvenida al usuario.');
     document.getElementById('userName').innerText = userName;
     welcomeModal.style.display = 'block';
     sessionStorage.setItem('bienvenidaShown', 'true');
     localStorage.setItem('bienvenidaShown', 'true');
+  }
+  else {
+    console.log('Ya se le dio la bienvenida al usuario.');
+    return
   }
 }
 
