@@ -267,6 +267,12 @@ function mostrarAuthModal() {
   const authModal = document.getElementById('authModal');
   const modalShown = localStorage.getItem('authModalShown') || sessionStorage.getItem('authModalShown');
 
+  // Verificar si hay un usuario autenticado
+  if (auth.currentUser) {
+    console.log('El usuario ya está autenticado, no mostrar el modal.');
+    return;
+  }
+
   if (!modalShown) {
     authModal.style.display = 'block';
     sessionStorage.setItem('authModalShown', 'true'); 
