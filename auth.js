@@ -264,6 +264,7 @@ function mostrarDialogoBienvenida(email) {
   }
 
   if (!bienvenidaLocalShown) {
+    console.log('Dar la bienvenida al usuario.');
     document.getElementById('userName').innerText = userName;
     welcomeModal.style.display = 'block';
     sessionStorage.setItem('bienvenidaShown', 'true');
