@@ -250,12 +250,7 @@ function mostrarDialogoBienvenida(email, showModal = true) {
   const welcomeModal = document.getElementById('welcomeModal');
   const userName = email.split('@')[0]; // Toma el nombre de usuario antes del "@"
   document.getElementById('userName').innerText = userName;
-
-  const modalShown = sessionStorage.getItem('welcomeModalShown'); // Verificar si ya se mostró el modal
-  if (showModal && !modalShown) {
-    welcomeModal.style.display = 'block';
-    sessionStorage.setItem('welcomeModalShown', 'true'); // Marcar como mostrado
-  }
+  welcomeModal.style.display = 'block';
 }
 
 // Función para mostrar el modal de autenticación solo una vez por sesión
