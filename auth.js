@@ -255,17 +255,6 @@ function mostrarDialogoBienvenida(email, showModal = true) {
   if (showModal && !modalShown) {
     welcomeModal.style.display = 'block';
     sessionStorage.setItem('welcomeModalShown', 'true'); // Marcar como mostrado
-
-    const closeWelcomeModal = document.querySelector('#welcomeModal .close-modal');
-    closeWelcomeModal.addEventListener('click', () => {
-      welcomeModal.style.display = 'none';
-    });
-
-    window.onclick = function(event) {
-      if (event.target == welcomeModal) {
-        welcomeModal.style.display = 'none';
-      }
-    };
   }
 }
 
@@ -289,14 +278,20 @@ document.getElementById('signUpBtn').addEventListener('click', (event) => {
   document.getElementById('signUpModal').style.display = 'block';
 });
 
-// Cerrar el modal de registro cuando se hace clic en el botón de cierre
+// Cerrar los modales al hacer clic en el botón de cierre
+// Modal Sign UP
 document.querySelector('#signUpModal .close-modal').addEventListener('click', () => {
   document.getElementById('signUpModal').style.display = 'none';
 });
 
-// Cerrar el modal de registro cuando se hace clic en el botón de cierre
+// Modal Sign IN
 document.querySelector('#authModal .close-modal').addEventListener('click', () => {
   document.getElementById('authModal').style.display = 'none';
+});
+
+// Modal Welcome
+document.querySelector('#welcomeModal .close-modal').addEventListener('click', () => {
+  document.getElementById('welcomeModal').style.display = 'none';
 });
 
 // Cerrar los modales si se hace clic fuera de ellos
