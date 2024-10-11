@@ -134,7 +134,7 @@ document.getElementById('registerBtn').addEventListener('click', () => {
 
 
 
-/* -- Gestión otros: olvido de contraseña, usuario activo, inicio web -- */
+/* -- Gestión otros: olvido de contraseña, inicio web -- */
 
 // Función para enviar el correo de reseteo de contraseña
 document.addEventListener('DOMContentLoaded', () => {
@@ -172,19 +172,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Mantener el usuario activo en caso de que se cierre la pestaña y se haya seleccionado ser recordado
-window.onload = function() {
-  const storedEmail = localStorage.getItem('userEmail') || sessionStorage.getItem('userEmail');
-
-  if (storedEmail) {
-    console.log('Sesión recordada:', storedEmail);
-    mostrarDialogoBienvenida(storedEmail);
-  }
-};
-
 // Inicio a la Web - Manejar el estado de autenticación
 onAuthStateChanged(auth, user => {
   mostrarAuthModal()
+
+  const storedEmail = localStorage.getItem('userEmail');
+  if (storedEmail) {
+    console.log('Sesión recordada:', storedEmail);
+    mostrarDialogoBienvenida(storedEmail);
+    actualizarUIParaUsuarioAutenticado();
+    loadFavoritesIndex();
+    return;
+  }
 
   if (user) {
     console.log('Usuario autenticado:', user.email);
