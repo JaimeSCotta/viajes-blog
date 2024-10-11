@@ -180,18 +180,10 @@ window.onload = function() {
     console.log('Sesión recordada:', storedEmail);
     mostrarDialogoBienvenida(storedEmail);
   }
-
-  // const loginBanner = document.getElementById('login-banner');
-  // if (auth.currentUser) {
-  //   loginBanner.style.display = 'none';
-  // } else {
-  //   loginBanner.style.display = 'block';
-  // }
 };
 
 // Inicio a la Web - Manejar el estado de autenticación
 onAuthStateChanged(auth, user => {
-
   mostrarAuthModal()
 
   if (user) {
