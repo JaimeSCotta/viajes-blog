@@ -748,7 +748,7 @@ a {
   cursor: pointer;
 }
 
-#signUpModal {
+#signUpModal, #authModal {
   display: none;
 }
 
