@@ -47,7 +47,6 @@ document.getElementById('signInBtn').addEventListener('click', (event) => {
 
       document.getElementById('authModal').style.display = 'none'; // Cierra el modal
       mostrarDialogoBienvenida(userCredential.user.email);
-      alert('Sesión iniciada correctamente');
     })
     .catch(error => {
       console.error('Error al iniciar sesión:', error.message);
