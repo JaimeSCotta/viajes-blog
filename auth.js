@@ -181,12 +181,12 @@ window.onload = function() {
     mostrarDialogoBienvenida(storedEmail);
   }
 
-  const loginBanner = document.getElementById('login-banner');
-  if (auth.currentUser) {
-    loginBanner.style.display = 'none';
-  } else {
-    loginBanner.style.display = 'block';
-  }
+  // const loginBanner = document.getElementById('login-banner');
+  // if (auth.currentUser) {
+  //   loginBanner.style.display = 'none';
+  // } else {
+  //   loginBanner.style.display = 'block';
+  // }
 };
 
 // Inicio a la Web - Manejar el estado de autenticación
