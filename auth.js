@@ -12,6 +12,13 @@ document.getElementById('registerBtn').addEventListener('click', () => {
   const newEmail = document.getElementById('newEmail').value;
   const newPassword = document.getElementById('newPassword').value;
 
+  // Verificar si los campos de correo y contraseña están completos
+  if (!newEmail || !newPassword) {
+    event.preventDefault();
+    alert('Por favor, completa tanto el correo electrónico como la contraseña.');
+    return;
+  }
+
   createUserWithEmailAndPassword(auth, newEmail, newPassword)
     .then(userCredential => {
       console.log('Usuario registrado:', userCredential.user);
