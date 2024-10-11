@@ -186,7 +186,7 @@ window.onload = function() {
 // Inicio a la Web - Manejar el estado de autenticación
 onAuthStateChanged(auth, user => {
 
-  mostrarAuthModal()  // Modal aparezca 1 vez
+  // mostrarAuthModal()  // Modal aparezca 1 vez
 
   if (user) {
     console.log('Usuario autenticado:', user.email);
@@ -230,7 +230,7 @@ function actualizarUIParaUsuarioAutenticado() {
 function actualizarUIParaUsuarioNoAutenticado() {
   const loginIcon = document.getElementById('loginIcon');
   loginIcon.src = signInImage; // Cambia la imagen al icono de iniciar sesión
-  loginIcon.alt = "Sign in"; // Texto alternativo
+  loginIcon.alt = "Login"; // Texto alternativo
 
   // Mostrar modal de autenticación al hacer clic
   loginIcon.addEventListener('click', () => {
@@ -255,6 +255,17 @@ function mostrarDialogoBienvenida(email, showModal = true) {
   if (showModal && !modalShown) {
     welcomeModal.style.display = 'block';
     sessionStorage.setItem('welcomeModalShown', 'true'); // Marcar como mostrado
+
+    const closeWelcomeModal = document.querySelector('#welcomeModal .close-modal');
+    closeWelcomeModal.addEventListener('click', () => {
+      welcomeModal.style.display = 'none';
+    });
+
+    window.onclick = function(event) {
+      if (event.target == welcomeModal) {
+        welcomeModal.style.display = 'none';
+      }
+    };
   }
 }
 
@@ -278,27 +289,28 @@ document.getElementById('signUpBtn').addEventListener('click', (event) => {
   document.getElementById('signUpModal').style.display = 'block';
 });
 
-// Seleccionar todos los botones de cierre con la clase "close-modal"
-const closeButtons = document.querySelectorAll('.close-modal');
-
-// Añadir un evento de clic a cada botón de cierre
-closeButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const modal = button.closest('.modal');
-    if (modal) {
-      modal.style.display = 'none'; // Cerrar el modal
-    }
-  });
+// Cerrar el modal de registro cuando se hace clic en el botón de cierre
+document.querySelector('#signUpModal .close-modal').addEventListener('click', () => {
+  document.getElementById('signUpModal').style.display = 'none';
 });
 
 // Cerrar los modales si se hace clic fuera de ellos
 window.onclick = function(event) {
-  const modals = document.querySelectorAll('.modal');
-  modals.forEach(modal => {
-    if (event.target == modal) {
-      modal.style.display = 'none'; // Cerrar el modal si se hace clic fuera
-    }
-  });
+  const signUpModal = document.getElementById('signUpModal');
+  const authModal = document.getElementById('authModal');
+  const welcomeModal = document.getElementById('welcomeModal');
+
+  if (event.target == signUpModal) {
+    signUpModal.style.display = 'none';
+  }
+
+  if (event.target == authModal) {
+    authModal.style.display = 'none';
+  }
+
+  if (event.target == welcomeModal) {
+    welcomeModal.style.display = 'none';
+  }
 };
 
 /* -- -------------------------------------------------------- -- */
