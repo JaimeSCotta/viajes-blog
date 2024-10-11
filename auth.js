@@ -253,14 +253,19 @@ function actualizarUIParaUsuarioNoAutenticado() {
 function mostrarDialogoBienvenida(email) {
   const welcomeModal = document.getElementById('welcomeModal');
   const userName = email.split('@')[0]; // Toma el nombre de usuario antes del "@"
-  document.getElementById('userName').innerText = userName;
-  welcomeModal.style.display = 'block';
+  const bienvenidaShown = localStorage.getItem('welcomeModal') || sessionStorage.getItem('welcomeModal');
+
+  if (!bienvenidaShown) {
+    document.getElementById('userName').innerText = userName;
+    welcomeModal.style.display = 'block';
+    sessionStorage.setItem('bienvenidaShown', 'true'); 
+  }
 }
 
 // Función para mostrar el modal de autenticación solo una vez por sesión
 function mostrarAuthModal() {
   const authModal = document.getElementById('authModal');
-  const modalShown = sessionStorage.getItem('authModalShown');
+  const modalShown = localStorage.getItem('authModalShown') || sessionStorage.getItem('authModalShown');
 
   if (!modalShown) {
     authModal.style.display = 'block';
