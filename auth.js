@@ -61,6 +61,8 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
       console.log('Sesión cerrada');
       localStorage.removeItem('userEmail');
       sessionStorage.removeItem('userEmail');
+      localStorage.removeItem('authModalShown');
+      sessionStorage.removeItem('authModalShown');
       alert('Sesión cerrada correctamente');
       location.reload(); // Recargar la página para volver al estado inicial
     })
@@ -143,14 +145,17 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
   
-    sendPasswordResetEmail(auth, email)
-      .then(() => {
-        alert('Se ha enviado un correo para restablecer tu contraseña. Revisa tu bandeja de entrada.');
-      })
-      .catch((error) => {
-        console.error('Error al enviar el correo de reseteo:', error.message);
-        alert('Error al enviar el correo de restablecimiento: ' + error.message);
-      });
+    const confirmRecoverEmail = confirm('¿Estás seguro de que deseas recumerar tu cuenta?');
+    if (confirmRecoverEmail) {
+      sendPasswordResetEmail(auth, email)
+        .then(() => {
+          alert('Se ha enviado un correo para restablecer tu contraseña. Revisa tu bandeja de entrada.');
+        })
+        .catch((error) => {
+          console.error('Error al enviar el correo de reseteo:', error.message);
+          alert('Error al enviar el correo de restablecimiento: ' + error.message);
+        });
+    }
   }
   
   // Agrega el listener al botón "Forgot Password"
@@ -258,11 +263,9 @@ function mostrarAuthModal() {
   const modalShown = sessionStorage.getItem('authModalShown');
 
   if (!modalShown) {
-    console.log('Ningún modal mostrado');
     authModal.style.display = 'block';
     sessionStorage.setItem('authModalShown', 'true'); 
   }
-  console.log('El modal ya se mostró');
 }
 
 // Mostrar el modal de registro (Sign Up) cuando se hace clic en el enlace "Sign In!"
