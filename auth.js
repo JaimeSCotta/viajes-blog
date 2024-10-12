@@ -178,10 +178,14 @@ onAuthStateChanged(auth, user => {
 
   const storedEmail = localStorage.getItem('userEmail');
   if (storedEmail) {
-    console.log('Sesión recordada:', storedEmail);
+    console.log('Usuario autenticado:', storedEmail);
     mostrarDialogoBienvenida(storedEmail);
     actualizarUIParaUsuarioAutenticado();
     loadFavoritesIndex();
+    return;
+  } else {
+    console.log('Ningún usuario autenticado');
+    actualizarUIParaUsuarioNoAutenticado();
     return;
   }
 
