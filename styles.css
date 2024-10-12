@@ -388,6 +388,10 @@ footer {
   .signup-link {
     font-size: 14px; /* Hacer que el texto sea un poco más pequeño para ajustarse mejor en pantallas pequeñas */
   }
+
+  .sidebar.open {
+    width: 150px;
+  }
 }
 /* -- ---------------------------------------------------- -- */
 

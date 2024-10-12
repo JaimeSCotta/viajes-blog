@@ -176,18 +176,18 @@ document.addEventListener('DOMContentLoaded', () => {
 onAuthStateChanged(auth, user => {
   mostrarAuthModal()
 
-  const storedEmail = localStorage.getItem('userEmail');
-  if (storedEmail) {
-    console.log('Usuario autenticado:', storedEmail);
-    mostrarDialogoBienvenida(storedEmail);
-    actualizarUIParaUsuarioAutenticado();
-    loadFavoritesIndex();
-    return;
-  } else {
-    console.log('Ningún usuario autenticado');
-    actualizarUIParaUsuarioNoAutenticado();
-    return;
-  }
+  // const storedEmail = localStorage.getItem('userEmail');
+  // if (storedEmail) {
+  //   console.log('Usuario autenticado:', storedEmail);
+  //   mostrarDialogoBienvenida(storedEmail);
+  //   actualizarUIParaUsuarioAutenticado();
+  //   loadFavoritesIndex();
+  //   return;
+  // } else {
+  //   console.log('Ningún usuario autenticado');
+  //   actualizarUIParaUsuarioNoAutenticado();
+  //   return;
+  // }
 
   if (user) {
     console.log('Usuario autenticado:', user.email);
