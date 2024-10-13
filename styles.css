@@ -183,22 +183,6 @@ header h1 {
   text-align: left;
 }
 
-/* Estilos para el botón de eliminar cuenta */
-.delete-account-btn {
-  background-color: rgba(47, 123, 189, 0.8); /* Igual que el fondo del dropdown */
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  cursor: pointer;
-  border-radius: 8px;
-  display: block;
-  margin-top: 10px;
-  width: 100%;
-  text-align: left;
-  font-size: 14px;
-  transition: background-color 0.3s ease;
-}
-
 /* --------------- */
 /* Icono de cerrar sesión */
 #logoutBtn {
