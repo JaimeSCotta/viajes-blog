@@ -157,36 +157,6 @@ header h1 {
   color: white;
 }
 
-/* Estilos comunes para los botones de acción como 'Sign out' y 'Delete account' */
-.action-btn {
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  padding: 10px;
-  outline: none;
-  transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-.action-btn i {
-  font-size: 18px;
-  margin-right: 8px;
-}
-
-.action-btn:hover {
-  color: #dcebf7; /* Cambia el color del texto al pasar el mouse */
-}
-
-/* Si deseas un efecto cuando está en foco o activo */
-.action-btn:focus, .action-btn:active {
-  outline: none;
-  box-shadow: none;
-}
-
-
 /* Estilos para el botón de eliminar cuenta */
 /* .delete-account-btn {
   background: none;
@@ -221,6 +191,43 @@ header h1 {
 
 /* --------------- */
 /* Icono de cerrar sesión */
+
+/* Estilos comunes para los botones de acción como 'Sign out' y 'Delete account' */
+.action-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  padding: 0px;
+  outline: none;
+}
+
+.action-btn img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.action-btn i {
+  font-size: 18px;
+  margin-right: 8px;
+  color: white;
+}
+
+.action-btn:hover {
+  color: #dcebf7; /* Cambia el color del texto al pasar el mouse */
+}
+
+/* Estilos para el foco o estado activo */
+.action-btn:focus, .action-btn:active {
+  outline: none;
+  box-shadow: none;
+}
+
+
 /* #logoutBtn {
   background: none;
   border: none;
@@ -249,13 +256,6 @@ header h1 {
   color: #dcebf7;
 } */
 
-
-/* .login-icon {
-  width: 40px;
-  height: auto;
-  cursor: pointer;
-  border-radius: 50%;
-} */
 /* --------------- */
 
 
