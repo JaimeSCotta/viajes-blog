@@ -110,11 +110,6 @@ header h1 {
 /* -- --------------------------------------- -- */
 
 
-/* #auth-container {
-  display: flex;
-  align-items: center;
-} */
-
 #loginIcon {
   width: 40px;
   cursor: pointer;
@@ -134,22 +129,6 @@ header h1 {
   z-index: 1000;
   border-radius: 8px;
 }
-
-/* Estilo para el menú desplegable */
-/* #dropdownMenu {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  position: absolute;
-  margin-top: 160px;
-  width: 6%;
-  background-color: rgba(47, 123, 189, 0.8);
-  border: none;
-  padding: 10px;
-  display: none;
-  z-index: 1000;
-  border-radius: 8px;
-} */
 
 #dropdownMenu p {
   margin: 0 0 10px;
@@ -187,6 +166,10 @@ header h1 {
 
 #deleteUserBtn {
   margin-top: 10px; 
+}
+
+#deleteUserBtn:hover {
+  color: #dcebf7;
 }
 
 /* --------------- */
