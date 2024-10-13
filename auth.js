@@ -332,3 +332,22 @@ window.onclick = function(event) {
 };
 
 /* -- -------------------------------------------------------- -- */
+
+
+/* -- Gestionar Favorites: verificar si se esta autenticado antes de redirigir a la pestaña de favorites -- */
+
+// Verificar autenticación al hacer clic en "Favorites"
+document.getElementById('favoritesLink').addEventListener('click', (event) => {
+  event.preventDefault();
+
+  // Verificar si el usuario está autenticado
+  if (auth.currentUser) {
+    // Si el usuario está autenticado, redirigir a favoritos
+    window.location.href = 'favorites.html';
+  } else {
+    // Si el usuario no está autenticado, mostrar el modal de autenticación
+    document.getElementById('authModal').style.display = 'block';
+  }
+});
+
+/* -- -------------------------------------------------------- -- */
