@@ -139,10 +139,10 @@ header h1 {
 /* Estilos para el botón de eliminar cuenta */
 .delete-account-btn {
   background: none;
-  color: white;
   border: none;
-  padding: 0px;
+  color: white;
   cursor: pointer;
+  padding: 0px;
   border-radius: 8px;
   display: block;
   width: 100%;
