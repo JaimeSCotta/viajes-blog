@@ -149,13 +149,13 @@ header h1 {
   display: none;
   z-index: 1000;
   border-radius: 8px;
-}
+} */
 
 #dropdownMenu p {
   margin: 0 0 10px;
   text-align: left;
   color: white;
-} */
+}
 
 /* Estilos para el botón de eliminar cuenta */
 .delete-account-btn {
