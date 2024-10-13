@@ -169,7 +169,7 @@ header h1 {
   align-items: flex-end;
   position: absolute;
   margin-top: 150px;
-  width: 8%;
+  width: 5%;
   background-color: rgba(47, 123, 189, 0.8);
   border: none;
   padding: 10px;
@@ -194,7 +194,6 @@ header h1 {
   border-radius: 8px;
   display: block;
   width: 100%;
-  padding: 10px;
   text-align: left;
   font-size: 16px;
   transition: background-color 0.3s ease;
@@ -211,6 +210,10 @@ header h1 {
 
 .delete-account-btn:hover {
   background: none;
+}
+
+#deleteUserBtn {
+  margin-top: 10px; /* Separar el botón de eliminar cuenta de "Sign out" */
 }
 
 /* --------------- */
