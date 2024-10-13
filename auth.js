@@ -1,6 +1,7 @@
 // auth.js
 import { auth, db } from './firebase.js'; // Importa auth y db desde firebase.js
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail, deleteUser, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail, deleteUser } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
+import { deleteDoc, doc } from 'https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js'; // Importar deleteDoc correctamente desde Firestore
 import { loadFavoritesIndex } from './favorites.js'; // Importado de loadFavorites
 
 // Rutas de las imágenes de usuario
