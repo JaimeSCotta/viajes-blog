@@ -86,47 +86,6 @@ html, body {
   cursor: pointer;
 }
 
-
-/* Para el menú desplegable (si lo usas) */
-/* .dropdown {
-  position: absolute;
-  top: 50px;
-  right: 10px;
-  background-color: #444;
-  color: white;
-  border-radius: 5px;
-  padding: 10px;
-} */
-
-/* Ajustar la barra lateral (opcional) */
-/* .sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 250px;
-  height: 100%;
-  background-color: #333;
-  color: white;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-}
-
-.sidebar.open {
-  transform: translateX(0);
-} */
-
-/* Botón cerrar barra lateral */
-/* .close-btn {
-  font-size: 24px;
-  color: white;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: block;
-  text-align: right;
-  padding: 10px;
-} */
-
 header {
   display: flex;
   justify-content: space-between;
@@ -198,8 +157,38 @@ header h1 {
   color: white;
 }
 
+/* Estilos comunes para los botones de acción como 'Sign out' y 'Delete account' */
+.action-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  padding: 10px;
+  outline: none;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.action-btn i {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.action-btn:hover {
+  color: #dcebf7; /* Cambia el color del texto al pasar el mouse */
+}
+
+/* Si deseas un efecto cuando está en foco o activo */
+.action-btn:focus, .action-btn:active {
+  outline: none;
+  box-shadow: none;
+}
+
+
 /* Estilos para el botón de eliminar cuenta */
-.delete-account-btn {
+/* .delete-account-btn {
   background: none;
   color: white;
   border: none;
@@ -211,15 +200,15 @@ header h1 {
   text-align: left;
   font-size: 16px;
   transition: background-color 0.3s ease;
-  text-decoration: none; /* Evita subrayado */
-}
+  text-decoration: none; 
+} */
 
 /* Eliminar borde y fondo predeterminado de los botones */
-.delete-account-btn:focus,
+/* .delete-account-btn:focus,
 .delete-account-btn:active {
   outline: none;
   box-shadow: none;
-  border: none; /* Eliminar borde por defecto */
+  border: none; 
 }
 
 .delete-account-btn:hover {
@@ -227,12 +216,12 @@ header h1 {
 }
 
 #deleteUserBtn {
-  margin-top: 10px; /* Separar el botón de eliminar cuenta de "Sign out" */
-}
+  margin-top: 10px; 
+} */
 
 /* --------------- */
 /* Icono de cerrar sesión */
-#logoutBtn {
+/* #logoutBtn {
   background: none;
   border: none;
   color: white;
@@ -240,8 +229,8 @@ header h1 {
   display: flex;
   align-items: center;
   font-size: 16px;
-  padding: 0; /* Elimina el padding para evitar recuadros adicionales */
-  outline: none; /* Elimina el borde de enfoque */
+  padding: 0; 
+  outline: none; 
 }
 
 #logoutBtn img {
@@ -256,10 +245,9 @@ header h1 {
   color: white;
 }
 
-/* Cuando pasamos el cursor por el botón */
 #logoutBtn:hover {
   color: #dcebf7;
-}
+} */
 
 
 /* .login-icon {
