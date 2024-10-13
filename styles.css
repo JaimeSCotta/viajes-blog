@@ -189,14 +189,13 @@ header h1 {
   background: none;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 0px;
   cursor: pointer;
   border-radius: 8px;
   display: block;
-  margin-top: 10px;
   width: 100%;
   text-align: left;
-  font-size: 14px;
+  font-size: 16px;
   transition: background-color 0.3s ease;
   text-decoration: none; /* Evita subrayado */
 }
