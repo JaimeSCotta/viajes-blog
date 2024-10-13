@@ -778,16 +778,18 @@ input:-webkit-autofill:active {
 
 /* Estilos para el botón de eliminar cuenta */
 .delete-account-btn {
-  background-color: red;
+  background-color: rgba(47, 123, 189, 0.8); /* Igual que el fondo del dropdown */
   color: white;
   border: none;
   padding: 8px 15px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 8px; /* Coincide con el border-radius del dropdown */
   display: block;
   margin-top: 10px;
   width: 100%;
   text-align: left;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
 .delete-account-btn i {
@@ -795,5 +797,5 @@ input:-webkit-autofill:active {
 }
 
 .delete-account-btn:hover {
-  background-color: darkred;
+  background-color: rgba(36, 93, 151, 0.9); /* Un tono más oscuro para el hover */
 }
