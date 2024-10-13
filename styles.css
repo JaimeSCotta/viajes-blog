@@ -169,7 +169,7 @@ header h1 {
   align-items: flex-end;
   position: absolute;
   margin-top: 150px;
-  width: 12%;
+  width: 10%;
   background-color: rgba(47, 123, 189, 0.8);
   border: none;
   padding: 10px;
@@ -186,7 +186,7 @@ header h1 {
 
 /* Estilos para el botón de eliminar cuenta */
 .delete-account-btn {
-  background-color: rgba(47, 123, 189, 0.8); /* Igual que el fondo del dropdown */
+  background: none;
   color: white;
   border: none;
   padding: 8px 15px;
@@ -210,7 +210,7 @@ header h1 {
 }
 
 .delete-account-btn:hover {
-  background-color: rgba(47, 123, 189, 0.8); /* O el color que prefieras */
+  background: none;
 }
 
 /* --------------- */
