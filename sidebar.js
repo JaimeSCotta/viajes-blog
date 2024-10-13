@@ -1,16 +1,22 @@
 // sidebar.js
-const sidebar = document.getElementById("sidebar");
-const openBtn = document.getElementById("openSidebar");
-const closeBtn = document.getElementById("closeSidebar");
 
-// Alternar la barra lateral al hacer clic en la hamburguesa
-openBtn.addEventListener("click", function() {
-    sidebar.classList.toggle("open");
+// Abrir y cerrar el sidebar con el botón de hamburguesa en el header
+const openSidebarBtn = document.getElementById('openSidebar');
+const closeSidebarBtn = document.getElementById('closeSidebar');
+const sidebar = document.getElementById('sidebar');
+
+openSidebarBtn.addEventListener('click', function() {
+  sidebar.classList.add('active');
 });
 
-// Cerrar la barra lateral al hacer clic en la "X"
-closeBtn.addEventListener("click", function() {
-    sidebar.classList.remove("open");
+closeSidebarBtn.addEventListener('click', function() {
+  sidebar.classList.remove('active');
+});
+
+// Abrir y cerrar el sidebar con el botón de hamburguesa dentro del sidebar
+const sidebarHamburgerBtn = document.getElementById('sidebarHamburger');
+sidebarHamburgerBtn.addEventListener('click', function() {
+  sidebar.classList.toggle('active');
 });
 
   
