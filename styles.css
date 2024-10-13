@@ -783,7 +783,7 @@ input:-webkit-autofill:active {
   border: none;
   padding: 8px 15px;
   cursor: pointer;
-  border-radius: 8px; /* Coincide con el border-radius del dropdown */
+  border-radius: 8px;
   display: block;
   margin-top: 10px;
   width: 100%;
@@ -797,5 +797,27 @@ input:-webkit-autofill:active {
 }
 
 .delete-account-btn:hover {
+  background-color: rgba(36, 93, 151, 0.9); /* Un tono más oscuro para el hover */
+}
+
+/* Estilos para el botón de Sign out */
+.sign-out-btn {
+  background-color: rgba(47, 123, 189, 0.8); /* Igual que el fondo del dropdown */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 8px; 
+  width: 100%;
+  text-align: left;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.sign-out-btn i {
+  margin-right: 8px;
+}
+
+.sign-out-btn:hover {
   background-color: rgba(36, 93, 151, 0.9); /* Un tono más oscuro para el hover */
 }
