@@ -104,7 +104,7 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
 /* -- Gestionar usuarios: nuevo usuario - eliminar usuario -- */
 
 // Registrar a un nuevo usuario
-document.getElementById('registerBtn').addEventListener('click', () => {
+document.getElementById('registerBtn').addEventListener('click', (event) => {
   const newEmail = document.getElementById('newEmail').value;
   const newPassword = document.getElementById('newPassword').value;
 
@@ -122,10 +122,29 @@ document.getElementById('registerBtn').addEventListener('click', () => {
       alert('Usuario registrado correctamente');
     })
     .catch(error => {
+      const errorCode = error.code;
+      let errorMessage = '';
+
+      // Manejo de errores específicos basados en el código de error
+      switch (errorCode) {
+        case 'auth/email-already-in-use':
+          errorMessage = 'Este correo electrónico ya está registrado. Por favor, usa otro.';
+          break;
+        case 'auth/invalid-email':
+          errorMessage = 'El correo electrónico no tiene un formato válido.';
+          break;
+        case 'auth/weak-password':
+          errorMessage = 'La contraseña es demasiado débil. Debe tener al menos 6 caracteres.';
+          break;
+        default:
+          errorMessage = 'Ocurrió un error al registrarse. Inténtalo de nuevo más tarde.';
+      }
+
       console.error('Error al registrarse:', error.message);
-      alert('Error al registrarse: ' + error.message);
+      alert(errorMessage);
     });
 });
+
 
 // // Eliminar usuario autenticado
 document.getElementById('deleteUserBtn').addEventListener('click', () => {
@@ -154,7 +173,7 @@ document.getElementById('deleteUserBtn').addEventListener('click', () => {
   }
 });
 
-// Eliminar usuario autenticado y sus datos de la base de datos  ---------- Revisar -----------------
+// Eliminar usuario autenticado y sus datos de la base de datos
 document.getElementById('deleteUserBtn').addEventListener('click', async () => {
   const user = auth.currentUser;
 
@@ -196,26 +215,41 @@ document.getElementById('deleteUserBtn').addEventListener('click', async () => {
 document.addEventListener('DOMContentLoaded', () => {
   function enviarCorreoResetPassword() {
     const email = document.getElementById('email').value; // Obtén el correo del input
-  
+
     if (!email) {
       event.preventDefault();
       alert('Por favor, introduce tu dirección de correo electrónico.');
       return;
     }
-  
-    const confirmRecoverEmail = confirm('¿Estás seguro de que deseas recumerar tu cuenta?');
+
+    const confirmRecoverEmail = confirm('¿Estás seguro de que deseas recuperar tu cuenta?');
     if (confirmRecoverEmail) {
       sendPasswordResetEmail(auth, email)
         .then(() => {
           alert('Se ha enviado un correo para restablecer tu contraseña. Revisa tu bandeja de entrada.');
         })
         .catch((error) => {
+          const errorCode = error.code;
+          let errorMessage = '';
+
+          // Manejo de errores específicos basados en el código de error
+          switch (errorCode) {
+            case 'auth/invalid-email':
+              errorMessage = 'El correo electrónico no tiene un formato válido.';
+              break;
+            case 'auth/user-not-found':
+              errorMessage = 'No se encontró ningún usuario con ese correo electrónico.';
+              break;
+            default:
+              errorMessage = 'Ocurrió un error al enviar el correo de restablecimiento. Inténtalo de nuevo más tarde.';
+          }
+
           console.error('Error al enviar el correo de reseteo:', error.message);
-          alert('Error al enviar el correo de restablecimiento: ' + error.message);
+          alert(errorMessage);
         });
     }
   }
-  
+
   // Agrega el listener al botón "Forgot Password"
   const forgotPasswordBtn = document.getElementById('forgot-password');
   if (forgotPasswordBtn) {
