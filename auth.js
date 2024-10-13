@@ -1,6 +1,6 @@
 // auth.js
 import { auth, db } from './firebase.js'; // Importa auth y db desde firebase.js
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail, deleteUser } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail, deleteUser, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
 import { loadFavoritesIndex } from './favorites.js'; // Importado de loadFavorites
 
 // Rutas de las imágenes de usuario
@@ -125,6 +125,38 @@ document.getElementById('deleteUserBtn').addEventListener('click', () => {
           alert("Ocurrió un error al intentar eliminar la cuenta. Por favor, inténtalo de nuevo.");
 
         });
+    }
+  } else {
+    alert('No hay un usuario autenticado.');
+  }
+});
+
+// Eliminar usuario autenticado y sus datos de la base de datos  ---------- Revisar -----------------
+document.getElementById('deleteUserBtn').addEventListener('click', async () => {
+  const user = auth.currentUser;
+
+  if (user) {
+    // Confirmar si el usuario realmente quiere eliminar la cuenta
+    const confirmDelete = confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.');
+    
+    if (confirmDelete) {
+      try {
+        // 1. Eliminar los datos del usuario de la base de datos
+        const favoritesRef = doc(db, 'favorites', user.uid); // Asume que los datos del usuario están en 'users' collection con el uid como documento.
+        await deleteDoc(favoritesRef);
+        console.log('Datos del usuario eliminados de la base de datos.');
+
+        // 2. Eliminar la cuenta del usuario de la autenticación
+        await deleteUser(user);
+        console.log('Usuario eliminado de la autenticación.');
+
+        alert('Tu cuenta y tus datos han sido eliminados correctamente.');
+        // Redirigir a la página de inicio
+        window.location.href = 'index.html'; 
+      } catch (error) {
+        console.error("Error al eliminar la cuenta o los datos del usuario:", error);
+        alert("Ocurrió un error al intentar eliminar la cuenta. Por favor, inténtalo de nuevo.");
+      }
     }
   } else {
     alert('No hay un usuario autenticado.');
