@@ -50,10 +50,32 @@ document.getElementById('signInBtn').addEventListener('click', (event) => {
       mostrarDialogoBienvenida(userCredential.user.email);
     })
     .catch(error => {
+      const errorCode = error.code;
+      let errorMessage = '';
+
+      // Manejo específico de errores basados en el código de error devuelto por Firebase
+      switch (errorCode) {
+        case 'auth/invalid-email':
+          errorMessage = 'El correo electrónico no tiene un formato válido.';
+          break;
+        case 'auth/user-disabled':
+          errorMessage = 'La cuenta de este usuario ha sido deshabilitada.';
+          break;
+        case 'auth/user-not-found':
+          errorMessage = 'No se encontró ningún usuario con ese correo electrónico.';
+          break;
+        case 'auth/wrong-password':
+          errorMessage = 'La contraseña es incorrecta. Inténtalo de nuevo.';
+          break;
+        default:
+          errorMessage = 'Ocurrió un error al iniciar sesión. Por favor, revisa tus credenciales.';
+      }
+
       console.error('Error al iniciar sesión:', error.message);
-      alert('Error al iniciar sesión: ' + error.message);
+      alert(errorMessage);
     });
 });
+
 
 // Cerrar sesión
 document.getElementById('logoutBtn').addEventListener('click', () => {
