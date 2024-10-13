@@ -821,3 +821,10 @@ input:-webkit-autofill:active {
 .sign-out-btn:hover {
   background-color: rgba(36, 93, 151, 0.9); /* Un tono más oscuro para el hover */
 }
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinea todos los botones a la izquierda */
+  width: 100%; /* Se asegura de que ocupen el ancho completo */
+}
