@@ -169,7 +169,7 @@ header h1 {
   align-items: flex-end;
   position: absolute;
   margin-top: 150px;
-  width: 15%;
+  width: 12%;
   background-color: rgba(47, 123, 189, 0.8);
   border: none;
   padding: 10px;
@@ -180,6 +180,7 @@ header h1 {
 
 #dropdownMenu p {
   margin: 0 0 10px;
+  text-align: left;
 }
 
 /* --------------- */
