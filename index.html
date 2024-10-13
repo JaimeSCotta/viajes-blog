@@ -64,6 +64,26 @@
     <ul>
       <!-- Contenido de la barra lateral -->
     </ul>
+    
+    <!-- Rueda de ajustes al final del sidebar -->
+    <div class="sidebar-settings">
+      <button id="settingsBtn" class="settings-btn">
+        <i class="fas fa-cog"></i> Ajustes
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal para ajustes de perfil -->
+  <div id="settingsModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Perfil del Usuario</h2>
+      <p>Nombre: <span id="userProfileName"></span></p>
+      <p>Email: <span id="userProfileEmail"></span></p>
+
+      <!-- Botón para eliminar la cuenta -->
+      <button id="deleteUserBtn" class="delete-account-btn">Eliminar cuenta</button>
+    </div>
   </div>
 
   <main>

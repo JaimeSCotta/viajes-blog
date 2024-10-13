@@ -105,30 +105,31 @@ document.getElementById('registerBtn').addEventListener('click', () => {
 });
 
 // // Eliminar usuario autenticado
-// document.getElementById('deleteUserBtn').addEventListener('click', () => {
-//   const user = auth.currentUser;
+document.getElementById('deleteUserBtn').addEventListener('click', () => {
+  const user = auth.currentUser;
 
-//   if (user) {
-//     // Confirmar si el usuario realmente quiere eliminar la cuenta
-//     const confirmDelete = confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.');
+  if (user) {
+    // Confirmar si el usuario realmente quiere eliminar la cuenta
+    const confirmDelete = confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.');
     
-//     if (confirmDelete) {
-//       deleteUser(user)
-//         .then(() => {
-//           console.log('Usuario eliminado');
-//           alert('Tu cuenta ha sido eliminada correctamente.');
-//           // Redirigir a la página de inicio
-//           window.location.href = 'index.html'; 
-//         })
-//         .catch(error => {
-//           console.error('Error al eliminar el usuario:', error.message);
-//           alert('Error al eliminar la cuenta: ' + error.message);
-//         });
-//     }
-//   } else {
-//     alert('No hay un usuario autenticado.');
-//   }
-// });
+    if (confirmDelete) {
+      deleteUser(user)
+        .then(() => {
+          console.log('Usuario eliminado');
+          alert('Tu cuenta ha sido eliminada correctamente.');
+          // Redirigir a la página de inicio
+          window.location.href = 'index.html'; 
+        })
+        .catch(error => {
+          console.error("Error al eliminar la cuenta:", error);
+          alert("Ocurrió un error al intentar eliminar la cuenta. Por favor, inténtalo de nuevo.");
+
+        });
+    }
+  } else {
+    alert('No hay un usuario autenticado.');
+  }
+});
 
 /* -- -------------------------------------------------------- -- */
 
