@@ -21,24 +21,50 @@
 
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="https://jaimescotta.github.io/viajes-blog/">Home</a></li>
-        <li><a href="favorites.html">Favorites</a></li>
-        <li><button id="loginBtn">Login</button></li>
-      </ul>
-    </nav>
-    <h1>Your favorite trips</h1>
+  <header class="site-header">
+    <div class="wrapper site-header__wrapper">
+      
+      <!-- Botón de hamburguesa -->
+      <div class="nav-left">
+        <button class="hamburger" id="openSidebar" aria-label="Abrir barra lateral" type="button">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+  
+      <!-- Navegación principal (centrada) -->
+      <nav class="nav nav-center">
+        <ul>
+          <li><a href="https://jaimescotta.github.io/viajes-blog/">Home</a></li>
+          <li><a href="#" id="favoritesLink">Favorites</a></li>
+        </ul>
+      </nav>
+  
+      <!-- Imagen de "Sign In" -->
+      <div class="auth-container">
+        <img id="loginIcon" src="img/sign_in.png" alt="Login" class="login-icon">
+        <div id="dropdownMenu" class="dropdown" style="display: none;">
+          <p id="userNameDropdown">Nombre Usuario</p>
+          <button id="logoutBtn">
+            <i class="fas fa-sign-out-alt"></i> Sign out
+          </button>
+          <!-- Botón para eliminar la cuenta -->
+          <button id="deleteUserBtn" class="delete-account-btn">
+            <i class="fas fa-user-times"></i> Delete account
+          </button>
+        </div>
+      </div>
+      
+    </div>
   </header>
-
-  <button class="hamburger" id="openSidebar">
-    <i class="fas fa-bars"></i>
-  </button>
-
+  
+  <!-- Barra lateral izquierda con todos los viajes -->
   <div id="sidebar" class="sidebar">
-    <button id="closeSidebar" class="close-btn">&times;</button>
+    <button class="hamburger" id="sidebarHamburger" aria-label="Abrir barra lateral" type="button">
+      <i class="fas fa-bars"></i>
+    </button>
+    <button id="closeSidebar" class="close-btn" type="button">&times;</button>
     <ul>
+      <!-- Contenido de la barra lateral -->
     </ul>
   </div>
 
