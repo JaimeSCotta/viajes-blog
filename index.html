@@ -7,7 +7,7 @@
   <base href="https://jaimescotta.github.io/viajes-blog/">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 
   <!-- Firebase SDK -->
   <script type="module" defer src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js"></script>
@@ -15,11 +15,7 @@
   <script type="module" defer src="https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js"></script>
 
   <!-- Scripts para la funcionalidad de la página -->
-  <script type="module" src="favorites.js" defer></script>
-  <script src="sidebar.js" defer></script>
-  <script src="menu.js" defer></script>
-  <script type="module" src="generateTrips.js" defer></script>
-  <script type="module" src="auth.js" defer></script> <!-- Autenticación de Firebase -->
+  <script type="module" src="main.js"></script>  
 
 </head>
 <body>
@@ -122,7 +118,7 @@
         <label class="custom-checkbox">
           <input type="checkbox" id="terms" name="terms" required>
           <span class="checkmark"></span>
-          Acepto los <a href="terminos_uso.html" id="terminosLink">términos de uso</a> y la <a href="politica_privacidad.html" id="privacidadLink">política de privacidad</a>
+          Acepto los <a href="terms_and_privacy/terminos_uso.html" id="terminosLink">términos de uso</a> y la <a href="terms_and_privacy/politica_privacidad.html" id="privacidadLink">política de privacidad</a>
         </label>
       </div>
     </div>
