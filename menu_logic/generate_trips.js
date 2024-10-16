@@ -1,6 +1,6 @@
 // generate_trips.js
-import { auth } from '/firebase_logic/firebase.js'; // Importa auth desde firebase.js
-import { handleFavoriteToggle, loadFavoritesIndex } from '/favorites_logic/favorites_main.js'; // Importa la lógica de favoritos desde favorites.js
+import { auth } from '../firebase_logic/firebase.js'; // Importa auth desde firebase.js
+import { handleFavoriteToggle, loadFavoritesIndex } from '../favorites_logic/favorites_main.js'; // Importa la lógica de favoritos desde favorites.js
 
 export function generateTrips() {
   document.addEventListener('DOMContentLoaded', function () {

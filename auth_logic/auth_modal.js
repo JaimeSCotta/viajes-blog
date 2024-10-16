@@ -1,5 +1,5 @@
 // auth_modal.js
-import { auth } from 'firebase_logic/firebase.js';
+import { auth } from '../firebase_logic/firebase.js';
 
 /* -- Gestionar modales: BIENVENIDA -- */
 export function showWelcomeModal(email) {

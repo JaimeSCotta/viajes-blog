@@ -1,5 +1,5 @@
 // favorites_handlers.js
-import { db } from 'firebase_logic/firebase.js';
+import { db } from '../firebase_logic/firebase.js';
 import { doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js";
 
 // Obtener referencia al documento de favoritos

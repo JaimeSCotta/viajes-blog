@@ -1,5 +1,5 @@
 // favorites.js
-import { isUserAuthenticated } from 'auth_logic/auth_utils.js';
+import { isUserAuthenticated } from '../auth_logic/auth_utils.js';
 import { getFavorites, saveFavorite, removeFavorite } from './favorites_handlers.js';
 import { updateFavoriteButton, renderFavorites } from './favorites_utils.js';
 

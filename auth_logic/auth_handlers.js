@@ -1,5 +1,5 @@
 // auth_handlers.js
-import { auth, db } from 'firebase_logic/firebase.js';
+import { auth, db } from '../firebase_logic/firebase.js';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, deleteUser } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
 import { deleteDoc, doc } from 'https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js';
 

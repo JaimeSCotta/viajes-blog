@@ -1,5 +1,5 @@
 // auth_utils.js
-import { auth } from 'firebase_logic/firebase.js';
+import { auth } from '../firebase_logic/firebase.js';
 import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
 
 // Rutas de las imágenes de usuario

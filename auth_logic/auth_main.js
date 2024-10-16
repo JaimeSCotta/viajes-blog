@@ -1,6 +1,6 @@
 // auth_main.js
-import { loadFavoritesIndex } from 'favorites_logic/favorites_main.js';
-import { auth } from 'firebase_logic/firebase.js';
+import { loadFavoritesIndex } from '../favorites_logic/favorites_main.js';
+import { auth } from '../firebase_logic/firebase.js';
 import { handleSignIn, handleSignUp, handleSignOut, handleDeleteUser } from './auth_handlers.js';
 import { showWelcomeModal, showSingInhModal, showSignUpModal, closeModals } from './auth_modal.js';
 import { updateUIForAuthenticatedUser, updateUIForUnauthenticatedUser, utilVerifyAuth } from './auth_utils.js';
