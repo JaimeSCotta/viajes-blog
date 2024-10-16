@@ -1,5 +1,6 @@
 // auth_handlers.js
 import { auth, db } from '../firebase_logic/firebase.js';
+import { showWelcomeModal } from './auth_modal.js';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, deleteUser } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
 import { deleteDoc, doc } from 'https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js';
 
@@ -56,7 +57,7 @@ export function handleSignIn(event) {
         console.log('Sesión iniciada sin recordar.');
       }
       document.getElementById('authModal').style.display = 'none';
-      mostrarDialogoBienvenida(userCredential.user.email);
+      showWelcomeModal(userCredential.user.email);
     })
     .catch(error => {
       const errorCode = error.code;
