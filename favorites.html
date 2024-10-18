@@ -77,7 +77,7 @@
 
   <script type="module">
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
-    import { loadFavorites } from ':/favorites_logic/favorites_main.js';  // Asegúrate de que la función loadFavorites sea exportada
+    import { loadFavorites } from './favorites_logic/favorites_main.js';  // Asegúrate de que la función loadFavorites sea exportada
     import { updateUIForAuthenticatedUser } from './auth_logic/auth_utils.js';
     
     const auth = getAuth();

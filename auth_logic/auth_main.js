@@ -7,14 +7,14 @@ import { updateUIForAuthenticatedUser, updateUIForUnauthenticatedUser, verifyAut
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
 
 // Eventos de botones
-document.getElementById('signInBtn').addEventListener('click', handleSignIn);
-document.getElementById('registerBtn').addEventListener('click', handleSignUp);
-document.getElementById('logoutBtn').addEventListener('click', handleSignOut);
-document.getElementById('deleteUserBtn').addEventListener('click', handleDeleteUser);
-
-document.getElementById('signUpBtn').addEventListener('click', showSignUpModal);
-
-document.getElementById('favoritesLink').addEventListener('click', verifyAuth);
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('signInBtn')?.addEventListener('click', handleSignIn);
+  document.getElementById('registerBtn')?.addEventListener('click', handleSignUp);
+  document.getElementById('logoutBtn')?.addEventListener('click', handleSignOut);
+  document.getElementById('deleteUserBtn')?.addEventListener('click', handleDeleteUser);
+  document.getElementById('signUpBtn')?.addEventListener('click', showSignUpModal);
+  document.getElementById('favoritesLink')?.addEventListener('click', verifyAuth);
+});
 
 // Inicio a la Web - Manejar el estado de autenticación
 onAuthStateChanged(auth, user => {
