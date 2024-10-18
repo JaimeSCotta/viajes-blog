@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-  
+
   <!-- Firebase SDK -->
   <script type="module" defer src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js"></script>
   <script type="module" defer src="https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js"></script>
@@ -77,8 +77,8 @@
 
   <script type="module">
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
-    import { loadFavorites } from './favorites.js';  // Asegúrate de que la función loadFavorites sea exportada
-    import { actualizarUIParaUsuarioAutenticado } from './auth.js';
+    import { loadFavorites } from ':/favorites_logic/favorites_main.js';  // Asegúrate de que la función loadFavorites sea exportada
+    import { updateUIForAuthenticatedUser } from './auth_logic/auth_utils.js';
     
     const auth = getAuth();
   
@@ -87,7 +87,7 @@
       if (user) {
         console.log('Usuario autenticado:', user.email); // Mensaje de depuración
         loadFavorites();  // Cargar favoritos si está autenticado
-        actualizarUIParaUsuarioAutenticado();
+        updateUIForAuthenticatedUser();
       } else {
         console.log('No hay usuario autenticado, redirigiendo a login.'); // Mensaje de depuración
         window.location.href = "https://jaimescotta.github.io/viajes-blog/"; // Redirigir a login si no está autenticado
