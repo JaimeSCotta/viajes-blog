@@ -1,4 +1,5 @@
 // favorites_utils.js
+import { removeFavorite } from './favorites_handlers.js';
 
 // Actualizar el estado de los botones de favoritos
 export function updateFavoriteButton(button, isFavorite) {
