@@ -14,9 +14,7 @@ export async function handleFavoriteToggle(tripId, tripName, button) {
     }
 
     try {
-      console.log('Usuario autenticado toggle:', user.email);
       const userFavorites = await getFavorites(user.uid);
-      console.log('Favoritos obtenido toggle:', userFavorites);
       const isFavorite = userFavorites.some(fav => fav.id === tripId);
 
       if (isFavorite) {
@@ -40,9 +38,7 @@ export async function loadFavoritesIndex() {
       return;
     }
     try {
-      console.log('Usuario autenticado index:', user.email);
       const userFavorites = await getFavorites(user.uid);
-      console.log('Favoritos obtenidos indx:', userFavorites);
       const favButtons = document.querySelectorAll('.fav-button');
       favButtons.forEach(button => {
         const tripId = button.getAttribute('data-trip-id');
@@ -63,9 +59,7 @@ export async function loadFavorites() {
       return;
     }
     try {
-      console.log('Usuario autenticado load:', user.email);
       const userFavorites = await getFavorites(user.uid);
-      console.log('Favoritos obtenidos load:', userFavorites);
       const favButtons = document.querySelectorAll('.fav-button');
       favButtons.forEach(button => {
         const tripId = button.getAttribute('data-trip-id');
