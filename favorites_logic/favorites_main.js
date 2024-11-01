@@ -73,15 +73,22 @@ export async function loadFavoritesIndex() {
 //   });
 // }
 
-// Función para cargar los favoritos en favorites.html
+// favorites_main.js
 export function loadFavorites() {
   onAuthStateChanged(auth, (user) => {
     if (!user) return;
 
-    const favoritesRef = collection(db, "favorites", user.uid, "viajes"); // Asegúrate de que "viajes" es correcto
-    onSnapshot(favoritesRef, (snapshot) => {
-      const userFavorites = snapshot.docs.map(doc => doc.data());
-      renderFavorites(userFavorites);
+    // Carga la referencia de los favoritos del usuario
+    const favoritesRef = getFavoritesDocRef(user.uid);
+    
+    // Usar onSnapshot para escuchar cambios en el documento de favoritos
+    onSnapshot(favoritesRef, (doc) => {
+      if (doc.exists()) {
+        const userFavorites = doc.data().viajes || [];
+        renderFavorites(userFavorites); // Renderiza los favoritos en la UI
+      } else {
+        renderFavorites([]); // Si no hay favoritos, renderiza vacío
+      }
     });
   });
 }

@@ -57,7 +57,6 @@ export function renderFavorites(favorites) {
 
       // Delegar la lógica de alternar favorito a favorites.js
       handleFavoriteToggle(tripId, tripName, this);
-      loadFavorites(); // Recargar la lista de favoritos
     });
   });
 }
