@@ -49,7 +49,7 @@ export function isUserAuthenticated() {
 /* -- Gestionar Favorites: Verificar autenticación al hacer clic en "Favorites" -- */
 export function verifyAuth(event) {
   event.preventDefault();
-  if (isUserAuthenticated) {
+  if (auth.currentUser) {
     console.log('Boton favoritos seleccionado, registrado, navegando a fav')
     // Si el usuario está autenticado, redirigir a favoritos
     window.location.href = 'favorites.html';
