@@ -1,6 +1,6 @@
 // favorites_main.js
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
-import { getFavorites, saveFavorite, removeFavorite } from './favorites_handlers.js';
+import { getFavorites, saveFavorite, removeFavorite, getFavoritesDocRef } from './favorites_handlers.js';
 import { updateFavoriteButton, renderFavorites } from './favorites_utils.js';
 import { auth, db, onSnapshot, collection } from '../firebase_logic/firebase.js';
 
