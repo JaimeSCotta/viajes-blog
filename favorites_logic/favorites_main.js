@@ -73,11 +73,12 @@ export async function loadFavoritesIndex() {
 //   });
 // }
 
+// Función para cargar los favoritos en favorites.html
 export function loadFavorites() {
   onAuthStateChanged(auth, (user) => {
     if (!user) return;
-    
-    const favoritesRef = collection(db, "favorites", user.uid, "userFavorites");
+
+    const favoritesRef = collection(db, "favorites", user.uid, "viajes"); // Asegúrate de que "viajes" es correcto
     onSnapshot(favoritesRef, (snapshot) => {
       const userFavorites = snapshot.docs.map(doc => doc.data());
       renderFavorites(userFavorites);
