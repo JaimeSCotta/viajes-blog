@@ -1,5 +1,5 @@
 // favorites_utils.js
-import { handleFavoriteToggle, loadFavorites } from './favorites_main.js';
+import { handleFavoriteToggle } from './favorites_main.js';
 
 // Actualizar el estado de los botones de favoritos
 export function updateFavoriteButton(button, isFavorite) {

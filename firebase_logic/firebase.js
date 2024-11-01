@@ -1,7 +1,7 @@
 // firebase.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
-import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js";
+import { getFirestore, onSnapshot } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js";
 
 // Configuración de Firebase
 const firebaseConfig = {
@@ -18,4 +18,4 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-export { auth, db, collection, onSnapshot}; // Exporta las instancias para usarlas en otros archivos
+export { auth, db, onSnapshot}; // Exporta las instancias para usarlas en otros archivos
