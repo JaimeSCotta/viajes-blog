@@ -16,7 +16,7 @@ export function handleSignOut() {
       sessionStorage.removeItem('bienvenidaShown');
       console.log('Sesión cerrada');
       alert('Sesión cerrada correctamente');
-      location.reload();
+      window.location.href = 'index.html';
     })
     .catch(error => {
       console.error('Error al cerrar sesión:', error.message);
