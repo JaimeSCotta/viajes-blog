@@ -8,7 +8,6 @@ import { auth, onSnapshot } from '../firebase_logic/firebase.js';
 export async function handleFavoriteToggle(tripId, tripName, button) {
   onAuthStateChanged(auth, async (user) => {
     if (!user) {
-      alert("Debes iniciar sesión para agregar favoritos.");
       return;
     }
 
