@@ -1,9 +1,8 @@
 // favorites_main.js
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
 import { getFavorites, saveFavorite, removeFavorite } from './favorites_handlers.js';
 import { updateFavoriteButton, renderFavorites } from './favorites_utils.js';
-import { onSnapshot, collection } from "firebase/firestore";
-import { auth, db } from '../firebase_logic/firebase.js';
+import { auth, db, onSnapshot, collection } from '../firebase_logic/firebase.js';
 
 // Función para manejar el toggle de un favorito (agregar o eliminar)
 export async function handleFavoriteToggle(tripId, tripName, button) {
