@@ -2,8 +2,8 @@
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
 import { getFavorites, saveFavorite, removeFavorite } from './favorites_handlers.js';
 import { updateFavoriteButton, renderFavorites } from './favorites_utils.js';
-
-const auth = getAuth();
+import { onSnapshot, collection } from "firebase/firestore";
+import { auth, db } from '../firebase_logic/firebase.js';
 
 // Función para manejar el toggle de un favorito (agregar o eliminar)
 export async function handleFavoriteToggle(tripId, tripName, button) {
@@ -52,24 +52,36 @@ export async function loadFavoritesIndex() {
 }
 
 // Función para cargar los favoritos en favorites.html
-export async function loadFavorites() {
-  onAuthStateChanged(auth, async (user) => {
-    if (!user) {
-      console.log("No hay usuario autenticado.");
-      return;
-    }
-    try {
-      const userFavorites = await getFavorites(user.uid);
-      const favButtons = document.querySelectorAll('.fav-button');
-      favButtons.forEach(button => {
-        const tripId = button.getAttribute('data-trip-id');
-        const isFavorite = userFavorites.some(fav => fav.id === tripId);
-        updateFavoriteButton(button, isFavorite);
-      });
+// export async function loadFavorites() {
+//   onAuthStateChanged(auth, async (user) => {
+//     if (!user) {
+//       console.log("No hay usuario autenticado.");
+//       return;
+//     }
+//     try {
+//       const userFavorites = await getFavorites(user.uid);
+//       const favButtons = document.querySelectorAll('.fav-button');
+//       favButtons.forEach(button => {
+//         const tripId = button.getAttribute('data-trip-id');
+//         const isFavorite = userFavorites.some(fav => fav.id === tripId);
+//         updateFavoriteButton(button, isFavorite);
+//       });
 
-      renderFavorites(userFavorites); // Renderizar los favoritos en la página
-    } catch (error) {
-      console.error("Error al cargar los favoritos:", error);
-    }
+//       renderFavorites(userFavorites); // Renderizar los favoritos en la página
+//     } catch (error) {
+//       console.error("Error al cargar los favoritos:", error);
+//     }
+//   });
+// }
+
+export function loadFavorites() {
+  onAuthStateChanged(auth, (user) => {
+    if (!user) return;
+    
+    const favoritesRef = collection(db, "favorites", user.uid, "userFavorites");
+    onSnapshot(favoritesRef, (snapshot) => {
+      const userFavorites = snapshot.docs.map(doc => doc.data());
+      renderFavorites(userFavorites);
+    });
   });
 }
