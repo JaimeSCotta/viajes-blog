@@ -41,20 +41,13 @@ export function updateUIForUnauthenticatedUser() {
 }
 
 
-/* -- Gestionar: Verificar autenticación -- */
-export function isUserAuthenticated() {
-  return auth.currentUser;
-}
-
 /* -- Gestionar Favorites: Verificar autenticación al hacer clic en "Favorites" -- */
 export function verifyAuth(event) {
   event.preventDefault();
   if (auth.currentUser) {
-    console.log('Boton favoritos seleccionado, registrado, navegando a fav')
     // Si el usuario está autenticado, redirigir a favoritos
     window.location.href = 'favorites.html';
   } else {
-    console.log('Boton favoritos seleccionado, pero no esta registrado, Mostrando modal de auth')
     // Si el usuario no está autenticado, mostrar el modal de autenticación
     document.getElementById('authModal').style.display = 'block';
   }
