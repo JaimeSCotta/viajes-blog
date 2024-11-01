@@ -53,6 +53,7 @@ export function verifyAuth(event) {
     // Si el usuario está autenticado, redirigir a favoritos
     window.location.href = 'favorites.html';
   } else {
+    console.log('Boton favoritos seleccionado, pero no esta registrado, Mostrando modal de auth')
     // Si el usuario no está autenticado, mostrar el modal de autenticación
     document.getElementById('authModal').style.display = 'block';
   }
