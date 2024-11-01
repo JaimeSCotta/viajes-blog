@@ -57,7 +57,7 @@ export function renderFavorites(favorites) {
       const tripName = button.getAttribute('data-trip-name');
 
       // Eliminar el favorito y volver a cargar la lista
-      await removeFavorite(tripId);
+      handleFavoriteToggle(tripId, tripName, this);
       loadFavorites(); // Recargar la lista de favoritos
     });
   });
