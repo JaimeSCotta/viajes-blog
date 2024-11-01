@@ -38,7 +38,7 @@ export function renderFavorites(favorites) {
       <article>
         <img src="${imageUrl}" alt="${favorite.nombre}">
         <h2>${favorite.nombre}</h2>
-        <a href="trip-details.html?tripId=${favorite.id}" class="read-more">Read More</a>
+        <a href="trips/${favorite.id}.html" class="read-more">Read More</a>
         <button class="fav-button active" data-trip-id="${favorite.id}" data-trip-name="${favorite.nombre}" aria-label="Eliminar de favoritos ${favorite.nombre}" type="button">
           <i class="fa-solid fa-heart"></i>
         </button>
