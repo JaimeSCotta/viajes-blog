@@ -51,13 +51,12 @@ export function renderFavorites(favorites) {
   // Agregar manejador de eventos a cada botón de eliminar
   const buttons = document.querySelectorAll('.fav-button');
   buttons.forEach(button => {
-    button.addEventListener('click', async (event) => {
-      const tripId = button.getAttribute('data-trip-id');
-      const tripName = button.getAttribute('data-trip-name');
+    button.addEventListener('click', function () {
+      const tripId = this.getAttribute('data-trip-id');
+      const tripName = this.getAttribute('data-trip-name');
 
-      // Eliminar el favorito y volver a cargar la lista
+      // Delegar la lógica de alternar favorito a favorites.js
       handleFavoriteToggle(tripId, tripName, this);
-      loadFavorites(); // Recargar la lista de favoritos
     });
   });
 }
