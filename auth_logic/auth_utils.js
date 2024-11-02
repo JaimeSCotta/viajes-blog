@@ -64,7 +64,7 @@ function resetPassword() {
     return;
   }
 
-  const confirmRecoverEmail = confirm('¿Estás seguro de que deseas recuperar tu cuenta?');
+  const confirmRecoverEmail = confirm('¿Estás seguro de que deseas recuperar tu cuenta? Se enviará un correo a la dirección proporcionada con el cambio de contraseña.');
   if (confirmRecoverEmail) {
     sendPasswordResetEmail(auth, email)
       .then(() => {
