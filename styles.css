@@ -772,7 +772,7 @@ input:-webkit-autofill:active {
   background-repeat: no-repeat;
   background-position: center;
   padding: 20px;
-  margin-top: 80px;
+  margin-top: 60px;
   margin-bottom: 70px;
 }
 
@@ -796,14 +796,6 @@ input:-webkit-autofill:active {
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Rejilla de rutas */
-.main_trips {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  width: 100%;
 }
 
 /* Tarjetas individuales de rutas */
