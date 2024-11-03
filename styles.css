@@ -765,6 +765,7 @@ input:-webkit-autofill:active {
 /* MAIN específico para la página "Tenerife 2024" */
 .main-tenerife {
   display: block;
+  justify-content: center;
   background-image: url('img/backgrounds/white_wood_background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -775,7 +776,7 @@ input:-webkit-autofill:active {
   overflow-y: auto;
 }
 
-/* Título centrado */
+/* Título centrado, específico para "Tenerife 2024" */
 .title-section-tenerife h1 {
   text-align: center;
   font-size: 2.5em;
@@ -783,7 +784,7 @@ input:-webkit-autofill:active {
   color: #333;
 }
 
-/* Imagen del mapa centrada */
+/* Imagen del mapa centrada, específico para "Tenerife 2024" */
 .map-section-tenerife {
   display: flex;
   justify-content: center;
@@ -793,17 +794,17 @@ input:-webkit-autofill:active {
 .map-section-tenerife img {
   max-width: 90%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 8px; /* Opcional: añade un borde redondeado */
 }
 
-/* Sección de rutas en formato de cuadrícula, ocupando todo el ancho */
+/* Sección de rutas en formato de rejilla, específico para "Tenerife 2024" */
 .routes-section-tenerife {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adaptación para pantallas más grandes */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   padding: 20px;
   background-color: #f0f0f0;
-  border-radius: 8px;
+  border-radius: 8px; /* Opcional: añade bordes redondeados */
 }
 
 /* Estilos para cada tarjeta de ruta */
@@ -815,12 +816,12 @@ input:-webkit-autofill:active {
   border-radius: 8px;
   overflow: hidden;
   transition: transform 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade sombra a la tarjeta */
 }
 
 .route-card-tenerife:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Intensifica la sombra en hover */
 }
 
 .route-card-tenerife img {
