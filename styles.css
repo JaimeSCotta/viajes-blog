@@ -780,7 +780,6 @@ input:-webkit-autofill:active {
 .title-section-tenerife h1 {
   text-align: center;
   font-size: 2.5em;
-  margin-top: 1em;
   color: #333;
 }
 
@@ -789,7 +788,7 @@ input:-webkit-autofill:active {
   display: flex;
   justify-content: center;
   margin: 20px 0;
-  max-width: 300px; /* Limita el ancho del contenedor */
+  max-width: 400px; /* Limita el ancho del contenedor */
 }
 
 .map-section-tenerife img {
