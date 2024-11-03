@@ -762,84 +762,89 @@ input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s; /* Para prevenir cambios rápidos de color */
 }
 
-/* MAIN específico para la página "Tenerife 2024" */
+/* Estilo del contenedor principal */
 .main-tenerife {
-  display: block;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-image: url('img/backgrounds/white_wood_background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  padding: 20px;
   margin-top: 30px;
   margin-bottom: 70px;
-  padding: 20px;
-  overflow-y: auto;
 }
 
-/* Título centrado, específico para "Tenerife 2024" */
+/* Título de la sección */
 .title-section-tenerife h1 {
-  text-align: center;
-  font-size: 2.5em;
+  font-size: 2.5rem;
   color: #333;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-/* Imagen del mapa centrada, específico para "Tenerife 2024" */
+/* Mapa centrado */
 .map-section-tenerife {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin-bottom: 30px;
 }
 
 .map-section-tenerife img {
-  max-width: 70%;
+  max-width: 100%;
   height: auto;
-  border-radius: 8px; /* Opcional: añade un borde redondeado */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Sección de rutas en formato de rejilla, específico para "Tenerife 2024" */
-.routes-section-tenerife {
+/* Rejilla de rutas */
+.main_trips {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  padding: 20px;
-  background-color: #f0f0f0;
-  border-radius: 8px; /* Opcional: añade bordes redondeados */
+  width: 100%;
 }
 
-/* Estilos para cada tarjeta de ruta */
+/* Tarjetas individuales de rutas */
 .route-card-tenerife {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-decoration: none;
-  color: #333;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  color: inherit;
+  border-radius: 10px;
   overflow: hidden;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade sombra a la tarjeta */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+  background-color: #fff;
 }
 
 .route-card-tenerife:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Intensifica la sombra en hover */
 }
 
+/* Imagen dentro de cada tarjeta */
 .route-card-tenerife img {
   width: 100%;
   height: auto;
-  display: block;
+  border-bottom: 1px solid #ddd;
 }
 
+/* Información de la ruta */
 .route-info-tenerife {
-  text-align: center;
+  display: flex;
+  align-items: center;
   padding: 10px;
+  font-size: 1.2rem;
+  color: #555;
 }
 
 .route-info-tenerife i {
-  font-size: 1.5em;
-  color: #ff5733;
+  margin-right: 8px;
+  color: #ff7e00;
 }
 
 .route-info-tenerife p {
-  margin-top: 5px;
-  font-size: 1.1em;
+  margin: 0;
 }
