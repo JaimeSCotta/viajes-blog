@@ -761,3 +761,67 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0px 1000px transparent inset !important; /* Elimina el fondo en webkit */
   transition: background-color 5000s ease-in-out 0s; /* Para prevenir cambios rápidos de color */
 }
+
+/* Título centrado */
+.title-section h1 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-top: 1em;
+  color: #333;
+}
+
+/* Imagen del mapa centrada */
+.map-section {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.map-section img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Sección de rutas en formato de rejilla */
+.routes-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.route-card {
+  text-decoration: none;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.route-card:hover {
+  transform: scale(1.05);
+}
+
+.route-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.route-info {
+  text-align: center;
+  padding: 10px;
+}
+
+.route-info i {
+  font-size: 1.5em;
+  color: #ff5733; /* Cambia este color al que prefieras */
+}
+
+.route-info p {
+  margin-top: 5px;
+  font-size: 1.1em;
+}
