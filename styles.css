@@ -762,36 +762,53 @@ input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s; /* Para prevenir cambios rápidos de color */
 }
 
-/* Título centrado */
-.title-section h1 {
+/* MAIN específico para la página "Tenerife 2024" */
+.main-tenerife {
+  display: block;
+  justify-content: center;
+  background-image: url('img/backgrounds/white_wood_background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 80px;
+  margin-bottom: 70px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Título centrado, específico para "Tenerife 2024" */
+.title-section-tenerife h1 {
   text-align: center;
   font-size: 2.5em;
   margin-top: 1em;
   color: #333;
 }
 
-/* Imagen del mapa centrada */
-.map-section {
+/* Imagen del mapa centrada, específico para "Tenerife 2024" */
+.map-section-tenerife {
   display: flex;
   justify-content: center;
   margin: 20px 0;
 }
 
-.map-section img {
-  max-width: 100%;
+.map-section-tenerife img {
+  max-width: 90%;
   height: auto;
+  border-radius: 8px; /* Opcional: añade un borde redondeado */
 }
 
-/* Sección de rutas en formato de rejilla */
-.routes-section {
+/* Sección de rutas en formato de rejilla, específico para "Tenerife 2024" */
+.routes-section-tenerife {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #f0f0f0;
+  border-radius: 8px; /* Opcional: añade bordes redondeados */
 }
 
-.route-card {
+/* Estilos para cada tarjeta de ruta */
+.route-card-tenerife {
   text-decoration: none;
   color: #333;
   background-color: #fff;
@@ -799,29 +816,31 @@ input:-webkit-autofill:active {
   border-radius: 8px;
   overflow: hidden;
   transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade sombra a la tarjeta */
 }
 
-.route-card:hover {
+.route-card-tenerife:hover {
   transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Intensifica la sombra en hover */
 }
 
-.route-card img {
+.route-card-tenerife img {
   width: 100%;
   height: auto;
   display: block;
 }
 
-.route-info {
+.route-info-tenerife {
   text-align: center;
   padding: 10px;
 }
 
-.route-info i {
+.route-info-tenerife i {
   font-size: 1.5em;
-  color: #ff5733; /* Cambia este color al que prefieras */
+  color: #ff5733;
 }
 
-.route-info p {
+.route-info-tenerife p {
   margin-top: 5px;
   font-size: 1.1em;
 }
