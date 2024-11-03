@@ -774,6 +774,7 @@ input:-webkit-autofill:active {
   padding: 20px;
   margin-top: 60px;
   margin-bottom: 70px;
+  flex: 1;
 }
 
 /* Título de la sección */
@@ -796,6 +797,14 @@ input:-webkit-autofill:active {
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor de rutas en formato de rejilla */
+.routes-section-tenerife {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px 0; /* Espaciado superior e inferior */
 }
 
 /* Tarjetas individuales de rutas */
