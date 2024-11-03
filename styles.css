@@ -770,7 +770,7 @@ input:-webkit-autofill:active {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  margin-top: 70px;
+  margin-top: 10px;
   margin-bottom: 70px;
   padding: 20px;
   overflow-y: auto;
