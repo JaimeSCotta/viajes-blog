@@ -789,11 +789,12 @@ input:-webkit-autofill:active {
   display: flex;
   justify-content: center;
   margin: 20px 0;
-  max-width: 600px; /* Limita el ancho del contenedor */
+  max-width: 300px; /* Limita el ancho del contenedor */
 }
 
 .map-section-tenerife img {
-  transform: scale(0.8);
+  max-width: 90%;
+  height: auto;
   border-radius: 8px; /* Opcional: añade un borde redondeado */
 }
 
