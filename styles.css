@@ -269,7 +269,7 @@ header h1 {
   cursor: pointer;
 }
 
-main {
+.main {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -795,6 +795,7 @@ input:-webkit-autofill:active {
 .map-section-tenerife img {
   max-width: 60%;
   height: auto;
+  align-items: center;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -872,6 +873,7 @@ input:-webkit-autofill:active {
 @media (max-width: 480px) {
   .routes-section-tenerife {
     grid-template-columns: 1fr; /* 1 columna en pantallas muy pequeñas */
+    max-width: 80%;
   }
   .title-section-tenerife h1 {
     font-size: 1.5rem; /* Más pequeño en pantallas muy pequeñas */
