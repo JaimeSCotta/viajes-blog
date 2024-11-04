@@ -8,9 +8,7 @@ html, body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  display: flex;
-  flex-direction: column;
-  overflow: auto; /* Evita el scroll del body, delegándolo al main fixed */
+  overflow-y: auto;
 }
 /* -- --------------------- -- */
 
@@ -296,12 +294,10 @@ footer {
   color: white;
   text-align: center;
   padding: 5px;
-  position: fixed; /* Mantiene el footer fijo en la parte inferior */
-  bottom: 0;
-  left: 0;
   width: 100%;
-  z-index: 1000;
+  position: relative; /* Permite que el footer se ajuste al flujo del documento */
 }
+
 
 
 /* -- Organizar para varios dispositivos-tipos de pantalla -- */
