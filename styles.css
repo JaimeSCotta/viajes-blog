@@ -8,7 +8,9 @@ html, body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: auto; /* Evita el scroll del body, delegándolo al main fixed */
 }
 /* -- --------------------- -- */
 
@@ -294,10 +296,12 @@ footer {
   color: white;
   text-align: center;
   padding: 5px;
+  position: fixed; /* Mantiene el footer fijo en la parte inferior */
+  bottom: 0;
+  left: 0;
   width: 100%;
-  position: relative; /* Permite que el footer se ajuste al flujo del documento */
+  z-index: 1000;
 }
-
 
 
 /* -- Organizar para varios dispositivos-tipos de pantalla -- */
@@ -767,10 +771,11 @@ input:-webkit-autofill:active {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  padding: 100px 20px 80px; /* Espacio para header (top) y footer (bottom) */
-  flex: 1; /* Permite que el contenido ocupe el espacio disponible */
+  padding: 80px;
+  margin-top: 80px;
+  margin-bottom: 70px;
+  flex: 1;
 }
-
 
 /* Título de la sección */
 .title-section-tenerife h1 {
@@ -884,7 +889,23 @@ input:-webkit-autofill:active {
   box-sizing: border-box;
 }
 
-.title-section-tenerife,
-.map-section-tenerife {
-  padding-top: 20px; /* Agrega relleno superior para separación */
+.html-trips, .body-trips {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('img/backgrounds/white_wood_background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow-y: auto;
+}
+
+.footer-trips {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  width: 100%;
+  position: relative;
 }
