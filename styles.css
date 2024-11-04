@@ -801,7 +801,7 @@ input:-webkit-autofill:active {
 
 /* Imagen del mapa */
 .map-section-tenerife img {
-  max-width: 40%;             /* Controla el tamaño máximo del mapa */
+  max-width: 20%;             /* Controla el tamaño máximo del mapa */
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
