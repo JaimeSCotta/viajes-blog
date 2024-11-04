@@ -773,11 +773,6 @@ input:-webkit-autofill:active {
   background-position: center;
   padding: 10px 10px 10px; /* Añadir padding para header y footer */
   flex: 1;
-
-  /* margin-top: 40px;
-  justify-content: center;
-  overflow-y: auto;
-  min-height: calc(10vh - 80px); */
 }
 
 /* Título de la sección */
@@ -790,20 +785,24 @@ input:-webkit-autofill:active {
   margin-bottom: 20px;
 }
 
-/* Mapa centrado */
+/* Contenedor del mapa centrado */
 .map-section-tenerife {
+  display: flex;             /* Activa el modo flex */
+  justify-content: center;    /* Centra horizontalmente el contenido */
+  align-items: center;        /* Centra verticalmente, por si quieres más flexibilidad */
   position: relative;
   top: 0;
+  width: 100%;                /* Ocupar el ancho completo del contenedor */
 }
 
+/* Imagen del mapa */
 .map-section-tenerife img {
-  max-width: 60%;
+  max-width: 60%;             /* Controla el tamaño máximo del mapa */
   height: auto;
-  display: flex;
-  align-items: center;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 
 /* Contenedor de rutas en formato de rejilla */
 .routes-section-tenerife {
