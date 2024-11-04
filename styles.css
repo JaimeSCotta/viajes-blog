@@ -10,7 +10,7 @@ html, body {
   background-position: center;
   display: flex;
   flex-direction: column;
-  overflow: auto; /* Evita el scroll del body, delegándolo al main */
+  overflow: auto; /* Evita el scroll del body, delegándolo al main fixed */
 }
 /* -- --------------------- -- */
 
@@ -771,11 +771,10 @@ input:-webkit-autofill:active {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  padding: 80px;
-  margin-top: 80px;
-  margin-bottom: 70px;
-  flex: 1;
+  padding: 100px 20px 80px; /* Espacio para header (top) y footer (bottom) */
+  flex: 1; /* Permite que el contenido ocupe el espacio disponible */
 }
+
 
 /* Título de la sección */
 .title-section-tenerife h1 {
