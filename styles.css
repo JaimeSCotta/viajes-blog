@@ -269,7 +269,7 @@ header h1 {
   cursor: pointer;
 }
 
-.main {
+main {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -795,6 +795,7 @@ input:-webkit-autofill:active {
 .map-section-tenerife img {
   max-width: 60%;
   height: auto;
+  display: flex;
   align-items: center;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
