@@ -269,7 +269,7 @@ header h1 {
   cursor: pointer;
 }
 
-main {
+.main {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -771,9 +771,13 @@ input:-webkit-autofill:active {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  margin-top: 40px;
   padding: 10px 10px 10px; /* Añadir padding para header y footer */
   flex: 1;
+
+  /* margin-top: 40px;
+  justify-content: center;
+  overflow-y: auto;
+  min-height: calc(10vh - 80px); */
 }
 
 /* Título de la sección */
