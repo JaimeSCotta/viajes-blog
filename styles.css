@@ -24,7 +24,7 @@
   background-color: #333;
   color: white;
   padding: 5px 10px;
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -907,4 +907,18 @@ input:-webkit-autofill:active {
   padding: 5px;
   width: 100%;
   position: relative;
+}
+
+.site-header-trips {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
