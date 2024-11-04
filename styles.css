@@ -777,13 +777,17 @@ input:-webkit-autofill:active {
 
 /* Título de la sección */
 .title-section-tenerife h1 {
-  font-size: 2.5rem; /* Ajustable en media queries */
+  font-size: 2.5rem;           /* Ajustable en media queries */
   color: #333;
   text-align: center;
-  position: relative;
-  top: 0;
+  background-color: white;     /* Fondo blanco */
+  padding: 10px 20px;          /* Espaciado alrededor del texto */
+  border-radius: 15px;         /* Bordes redondeados */
+  display: inline-block;       /* Ajusta el fondo al tamaño del texto */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
   margin-bottom: 20px;
 }
+
 
 /* Contenedor del mapa centrado */
 .map-section-tenerife {
