@@ -771,9 +771,7 @@ input:-webkit-autofill:active {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  padding: 80px;
-  margin-top: 80px;
-  margin-bottom: 70px;
+  padding: 100px 20px 80px; /* Añadir padding para header y footer */
   flex: 1;
 }
 
