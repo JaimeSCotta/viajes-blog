@@ -807,19 +807,14 @@ input:-webkit-autofill:active {
   padding: 20px 0; /* Espaciado superior e inferior */
 }
 
-/* Tarjetas individuales de rutas */
-.route-card-tenerife {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: inherit;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease-in-out;
-  background-color: #fff;
+/* Imagen dentro de cada tarjeta */
+.route-card-tenerife img {
+  width: 100%;             /* Ocupar todo el ancho de la tarjeta */
+  height: 250px;           /* Altura fija para mantener un tamaño uniforme */
+  object-fit: cover;       /* Recorta las imágenes para llenar el espacio sin deformarse */
+  border-bottom: 1px solid #ddd;
 }
+
 
 .route-card-tenerife:hover {
   transform: scale(1.05);
