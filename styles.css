@@ -837,7 +837,7 @@ input:-webkit-autofill:active {
 /* Imagen dentro de cada tarjeta */
 .route-card-tenerife img {
   width: 100%;             /* Ocupar todo el ancho de la tarjeta */
-  height: 150px;           /* Altura fija para mantener un tamaño uniforme */
+  height: 100px;           /* Altura fija para mantener un tamaño uniforme */
   object-fit: cover;       /* Recorta las imágenes para llenar el espacio sin deformarse */
   border-bottom: 1px solid #ddd;
 }
