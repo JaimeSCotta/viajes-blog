@@ -803,7 +803,7 @@ input:-webkit-autofill:active {
 /* Contenedor de rutas en formato de rejilla */
 .routes-section-tenerife {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsivo */
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas */
   gap: 20px;
   padding: 20px 0; /* Espaciado superior e inferior */
 }
@@ -852,18 +852,28 @@ input:-webkit-autofill:active {
   margin: 0;
 }
 
-/* Media Queries para Responsividad */
+@media (max-width: 1200px) {
+  .routes-section-tenerife {
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas medianas */
+  }
+}
+
 @media (max-width: 768px) {
   .title-section-tenerife h1 {
     font-size: 2rem; /* Disminuir tamaño del título */
   }
-
   .map-section-tenerife img {
     max-width: 80%; /* Ajustar tamaño del mapa */
+  }
+  .routes-section-tenerife {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas pequeñas */
   }
 }
 
 @media (max-width: 480px) {
+  .routes-section-tenerife {
+    grid-template-columns: 1fr; /* 1 columna en pantallas muy pequeñas */
+  }
   .title-section-tenerife h1 {
     font-size: 1.5rem; /* Más pequeño en pantallas muy pequeñas */
   }
