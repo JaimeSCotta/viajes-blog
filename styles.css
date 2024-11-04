@@ -1,5 +1,5 @@
 /* -- Estilos web generales -- */
-html, body {
+.html-main, .body-main {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -291,7 +291,7 @@ main {
   padding: 20px 0;
 }
 
-footer {
+.footer-main {
   background-color: #333;
   color: white;
   text-align: center;
@@ -771,7 +771,7 @@ input:-webkit-autofill:active {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  padding: 100px 20px 80px; /* Añadir padding para header y footer */
+  padding: 80px 20px 30px; /* Añadir padding para header y footer */
   flex: 1;
 }
 
