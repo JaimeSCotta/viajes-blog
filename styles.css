@@ -277,7 +277,7 @@ main {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  margin-top: 60px; /* Ajuste para evitar que el contenido se superponga al header */
+  margin-top: 50px; /* Ajuste para evitar que el contenido se superponga al header */
   margin-bottom: 20px; /* Asegura que haya espacio suficiente antes del footer */
   padding-bottom: 10px; /* Espacio adicional para evitar que el contenido se corte antes del footer */
   min-height: calc(10vh - 80px);
@@ -771,7 +771,7 @@ input:-webkit-autofill:active {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  margin-top: 60px;
+  margin-top: 90px;
   padding: 10px 10px 10px; /* Añadir padding para header y footer */
   flex: 1;
 }
