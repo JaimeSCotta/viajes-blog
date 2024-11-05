@@ -938,4 +938,5 @@ input:-webkit-autofill:active {
   height: auto !important;
   margin-right: 8px !important;
   vertical-align: middle !important;
+  border-radius: 10px;
 }
