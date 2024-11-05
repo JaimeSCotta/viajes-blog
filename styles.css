@@ -934,8 +934,8 @@ input:-webkit-autofill:active {
 }
 
 .route-icon {
-  width: 20px; 
-  height: auto; 
-  margin-right: 8px; 
-  vertical-align: middle;
+  width: 20px !important;
+  height: auto !important;
+  margin-right: 8px !important;
+  vertical-align: middle !important;
 }
