@@ -16,55 +16,15 @@
 
   <!-- Scripts para la funcionalidad de la página -->
   <script type="module" src="trips_logic/main_trips.js"></script>  
+  <script type="module" defer src="html_utils/header.js"></script>
+  <script type="module" defer src="html_utils/footer.js"></script>
+  <script type="module" defer src="html_utils/sidebar.js"></script>
+  <script type="module" defer src="html_utils/modals.js"></script>
 
 </head>
 <body class="body-trips">
-  <header class="site-header-trips">
-    <div class="wrapper site-header__wrapper">
-      
-      <!-- Botón de hamburguesa -->
-      <div class="nav-left">
-        <button class="hamburger" id="openSidebar" aria-label="Abrir barra lateral" type="button">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
-  
-      <!-- Navegación principal (centrada) -->
-      <nav class="nav nav-center">
-        <ul>
-          <li><a href="https://jaimescotta.github.io/viajes-blog/">Home</a></li>
-          <li><a href="#" id="favoritesLink">Favorites</a></li>
-        </ul>
-      </nav>
-  
-      <!-- Imagen de "Sign In" -->
-      <div class="auth-container">
-        <img id="loginIcon" src="img/sign_in.png" alt="Login" class="login-icon">
-        <div id="dropdownMenu" class="dropdown" style="display: none;">
-          <p id="userNameDropdown">Nombre Usuario</p>
-          <button id="logoutBtn">
-            <i class="fas fa-sign-out-alt"></i> Sign out
-          </button>
-          <!-- Botón para eliminar la cuenta -->
-          <button id="deleteUserBtn" class="delete-account-btn">
-            <i class="fas fa-user-times"></i> Delete account
-          </button>
-        </div>
-      </div>
-      
-    </div>
-  </header>
-  
-  <!-- Barra lateral izquierda con todos los viajes -->
-  <div id="sidebar" class="sidebar">
-    <button class="hamburger" id="sidebarHamburger" aria-label="Abrir barra lateral" type="button">
-      <i class="fas fa-bars"></i>
-    </button>
-    <button id="closeSidebar" class="close-btn" type="button">&times;</button>
-    <ul>
-      <!-- Contenido de la barra lateral -->
-    </ul>
-  </div>
+  <div id="header-placeholder"></div>
+  <div id="sidebar-placeholder"></div>
 
   <main class="main-tenerife">
     <!-- Título de la página -->
@@ -132,77 +92,8 @@
   </main>
   
 
-  <footer class ="footer-trips">
-    <p>© 2024 Blog de Viajes</p>
-  </footer>
+  <div id="footer-placeholder"></div>
 
-
-  <!-- Modal personalizado de bienvenida -->
-  <div id="welcomeModal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal">&times;</span>
-      <h2>Bienvenido, <span id="userName"></span>!</h2>
-      <p>Estamos felices de tenerte de vuelta.</p>
-    </div>
-  </div>
-
-
-  <!-- Modal para Login -->
-  <div id="authModal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal">&times;</span>
-      <h2>Login</h2>
-
-      <div id="login-banner" class="banner-message">
-        <p>Want to use favorites functionality? Sign in down here! Nevertheless, you can continue your visit without login but with limited functions.</p>
-      </div>
-  
-      <div class="input-icon">
-        <i class="fa fa-envelope"></i>
-        <input type="email" id="email" placeholder="Email ID" required>
-      </div>
-  
-      <div class="input-icon">
-        <i class="fa fa-lock"></i>
-        <input type="password" id="password" placeholder="Password" required>
-      </div>
-  
-      <div class="checkbox-container remember-checkbox">
-        <label><input type="checkbox"> Remember me</label>
-        <a href="#" id="forgot-password" class="forgot-password">Forgot Password?</a>
-      </div>
-  
-      <button id="signInBtn">Sign In</button>
-      <p class="signup-link">Not registered? <a href="#" id="signUpBtn">Sign Up!</a></p>
-
-      <div class="checkbox-policy-container">
-        <label class="custom-checkbox">
-          <input type="checkbox" id="terms" name="terms" required>
-          <span class="checkmark"></span>
-          Acepto los <a href="terms_and_privacy/terminos_uso.html" id="terminosLink">términos de uso</a> y la <a href="terms_and_privacy/politica_privacidad.html" id="privacidadLink">política de privacidad</a>
-        </label>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal para Sign In -->
-  <div id="signUpModal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal">&times;</span>
-      <h2>Sign Up</h2>
-      
-      <div class="input-icon">
-        <i class="fa fa-envelope"></i>
-        <input type="email" id="newEmail" placeholder="New Email ID" required>
-      </div>
-
-      <div class="input-icon">
-        <i class="fa fa-lock"></i>
-        <input type="password" id="newPassword" placeholder="New Password" required>
-      </div>
-
-      <button id="registerBtn">Register</button>
-    </div>
-  </div>
+  <!-- Los modales ahora se cargan desde el archivo JS -->
 </body>
 </html>
