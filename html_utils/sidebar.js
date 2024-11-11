@@ -13,4 +13,5 @@ document.addEventListener("DOMContentLoaded", function() {
     </div>
   `;
   document.getElementById("sidebar-placeholder").innerHTML = sidebar;
+  generateMenu();
 });
