@@ -1,4 +1,7 @@
 // sidebar.js
+
+import { generateMenu } from '../menu_logic/menu_main.js';
+
 document.addEventListener("DOMContentLoaded", function() {
   const sidebar = `
     <!-- Barra lateral izquierda con todos los viajes -->
