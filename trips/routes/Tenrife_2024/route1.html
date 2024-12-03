@@ -1,3 +1,72 @@
-<article>
-    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1H-5W91xke8RqFLbHX8FKnRoj1yYoWr0&ehbc=2E312F" width="640" height="480" loading="lazy"></iframe>
-  </article>
+<!DOCTYPE html>
+<html lang="es" class="html-trips">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tenerife 2024</title>
+  <base href="https://jaimescotta.github.io/viajes-blog/">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+  <!-- Firebase SDK -->
+  <script type="module" defer src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js"></script>
+  <script type="module" defer src="https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js"></script>
+  <script type="module" defer src="https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js"></script>
+
+  <!-- Scripts para la funcionalidad de la página -->
+  <script type="module" defer src="html_utils/header.js"></script>
+  <script type="module" defer src="html_utils/footer.js"></script>
+  <script type="module" defer src="html_utils/modals.js"></script>
+  <script type="module" defer src="trips_logic/main_trips.js"></script>
+  <script type="module" defer src="html_utils/sidebar.js"></script>
+
+</head>
+<body class="body-trips">
+  <div id="header-placeholder"></div>
+  <div id="sidebar-placeholder"></div>
+  <div id="modals-placeholder"></div>
+
+  <main class="main-tenerife">
+    <!-- Título de la página -->
+    <section class="title-section-tenerife">
+      <h1>Tenerife 2024 - Ruta 1</h1>
+    </section>
+  
+    <!-- Mapa centrado de Google Maps -->
+    <section class="map-section-tenerife">
+      <iframe src="https://www.google.com/maps/d/u/1/edit?mid=1oZNdwDIk4WYcpuIayZ6bz-AgXO4V_t8&usp=sharing" width="640" height="480" loading="lazy"></iframe>
+    </section>
+
+        <!-- Contenedor de rutas en formato de rejilla -->
+    <section class="routes-section-tenerife">
+      <a href="trips/routes/Tenrife_2024/route1.html" class="route-card-tenerife">
+        <img src="img/trips/Tenerife_2024/ruta1_1.jpg" alt="Ruta 1">
+      </a>      
+      <a href="trips/routes/Tenrife_2024/route2.html" class="route-card-tenerife">
+        <img src="img/trips/Tenerife_2024/ruta2_1.jpg" alt="Ruta 2">
+      </a>
+      <a href="trips/routes/Tenrife_2024/route3.html" class="route-card-tenerife">
+        <img src="img/trips/Tenerife_2024/ruta3_1.jpg" alt="Ruta 3">
+      </a>
+      <a href="trips/routes/Tenrife_2024/route4.html" class="route-card-tenerife">
+        <img src="img/trips/Tenerife_2024/ruta4_1.jpg" alt="Ruta 4">
+      </a>
+      <a href="trips/routes/Tenrife_2024/route5.html" class="route-card-tenerife">
+        <img src="img/trips/Tenerife_2024/ruta5_1.jpg" alt="Ruta 5">
+      </a>
+      <a href="trips/routes/Tenrife_2024/route6.html" class="route-card-tenerife">
+        <img src="img/trips/Tenerife_2024/ruta6_13.jpg" alt="Ruta 6">
+      </a>
+      <a href="trips/routes/Tenrife_2024/route7.html" class="route-card-tenerife">
+        <img src="img/trips/Tenerife_2024/ruta7_1.jpg" alt="Ruta 7">
+      </a>
+    </section>
+  </main>
+
+
+  <div id="footer-placeholder"></div>
+
+  <!-- Los modales ahora se cargan desde el archivo JS -->
+</body>
+</html>
